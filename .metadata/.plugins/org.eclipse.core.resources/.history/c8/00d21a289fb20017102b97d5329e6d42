@@ -1,0 +1,12 @@
+package core;
+
+public class Map 
+{
+	Entity[] entities;
+	MapEntity[] mapEntities;
+	
+	public Map()
+	{
+		
+	}
+}

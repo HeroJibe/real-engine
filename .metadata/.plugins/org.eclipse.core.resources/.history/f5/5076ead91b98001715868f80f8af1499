@@ -1,0 +1,256 @@
+package gui;
+
+import java.awt.Color;
+import java.awt.DisplayMode;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.Window;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import main.Main;
+
+public class GameWindow extends JFrame
+{
+	GraphicsDevice device;
+	Window window;
+	DrawPane pane;
+	private int leftBounds;
+	private int rightBounds;
+	private int topBounds;
+	private int bottomBounds;
+	
+	private static GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	private static DisplayMode dm = gd.getDisplayMode();
+	public static final int XRES_GL = gd.getDisplayMode().getWidth();
+	public static final int YRES_GL = gd.getDisplayMode().getHeight();
+	public static final int REFRESH_RATE = dm.getRefreshRate();
+	
+	public Color backgroundColor;
+	public boolean drawBackground;
+	public float fontSize = 1.5F;
+	
+	private int xRes;
+	private int yRes;
+	private String console[] = new String[20];
+	private Color consoleColor[] = new Color[20];
+	
+	private boolean borderless;
+	
+	private ImageHandler imgHandle;
+	
+	private short num = 0;
+	
+	public int renderUpdates = 0;
+	
+	public GameWindow(String name, int x, int y, boolean borderless, int cacheSize)
+	{
+        super(name);
+        
+        imgHandle = new ImageHandler(cacheSize);
+
+        //you can set the content pane of the frame 
+        //to your custom class.
+
+        pane = new DrawPane();
+        setContentPane(pane);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        setSize(x, y);
+        xRes = x;
+        yRes = y;
+        leftBounds = 0;
+        rightBounds = x;
+        topBounds = 0;
+        bottomBounds = y;
+        this.borderless = borderless;
+        setResizable(false);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        if (borderless)
+        	setUndecorated(true);
+
+        setVisible(true);
+        
+        for (int i = 0; i < consoleColor.length; i++)
+        	consoleColor[i] = Color.BLACK;
+   }
+
+    //create a component that you can actually draw on.
+    class DrawPane extends JPanel
+    {
+    	
+    	// Draws everything
+    	public void paintComponent(Graphics g)
+    	{
+    		super.paintComponent(g);
+    		
+    		renderUpdates++;
+    		
+    		Graphics2D g2 = (Graphics2D)g;
+    	    RenderingHints rh = new RenderingHints(
+    	             RenderingHints.KEY_ANTIALIASING,
+    	             RenderingHints.VALUE_ANTIALIAS_ON);
+    	    g2.setRenderingHints(rh);
+    	    Font currentFont = g.getFont();
+    	    Font newFont = currentFont.deriveFont(currentFont.getSize() * fontSize);
+    	    g.setFont(newFont);
+    		
+    		if (drawBackground) {
+    			g.setColor(backgroundColor);
+    			g.fillRect(leftBounds, topBounds, rightBounds - leftBounds, bottomBounds - topBounds);
+    		}
+    		
+    		//draw on g here e.g.
+    		for (int i = 0; i < imgHandle.getDynSize(); i++)
+    		{
+    			if (imgHandle.isInUse(i))
+    			{    				
+    				g.setColor(imgHandle.getColor(i));
+    				if (imgHandle.getImage(i) != null)
+    				{
+    					if (Main.lossyRendering && i % 2 == num) {}
+    					else
+    						g.drawImage(imgHandle.getImage(i), imgHandle.getX(i), imgHandle.getY(i), null);
+    				}
+    				else
+    				{
+    					g.fillRect(imgHandle.getX(i), imgHandle.getY(i), imgHandle.getW(i), imgHandle.getH(i));
+    				}
+    			}
+    		}
+    		
+    		if (num == 0)
+    			num = 1;
+    		else
+    			num = 0;
+    		
+    		if (Main.DEBUG && ! Main.loadingMap)
+    		{
+    			g.setColor(Color.BLACK);
+    			g.drawString(Main.debugMessage, (int) (10 * Main.resolutionScaleX), (int) (1070 * Main.resolutionScaleY));
+    			g.setColor(Color.WHITE);
+    			g.drawString(Main.debugMessage, (int) (9 * Main.resolutionScaleX), (int) (1069 * Main.resolutionScaleY));
+    			g.setColor(Color.GREEN);
+    			g.drawLine(leftBounds, topBounds, leftBounds, bottomBounds);
+    			g.drawLine(leftBounds, topBounds, rightBounds, topBounds);
+    			g.drawLine(rightBounds, topBounds, rightBounds, bottomBounds);
+    			g.drawLine(leftBounds, bottomBounds, rightBounds, bottomBounds);
+    		}
+    		if (Main.loadingMap)
+    		{
+    			g.setColor(Color.BLACK);
+    			g.fillRect(leftBounds, topBounds, rightBounds, bottomBounds);
+    			g.setColor(Color.WHITE);
+    			g.drawString("Loading...  " + Main.loadMessage, (int) (10 * Main.resolutionScaleX), (int) (1070 * Main.resolutionScaleY));
+    		}
+    		if (Main.DEBUG || Main.loadingMap)
+    		{
+    			int offset = 0;
+    			for (int i = 0; i < console.length / (int) fontSize; i++)
+    			{
+    				offset = (int) (i * 10 * fontSize);
+    				if (console[i] != null)
+    				{
+    					g.setColor(Color.BLACK);
+    					g.drawString(console[i], 10, 200 - offset);
+    					g.setColor(consoleColor[i]);
+    					g.drawString(console[i], 9, 200 - offset);
+    				}
+    			}
+    		}
+    	}
+    }
+
+    public void paint()
+    {
+    	pane.repaint();
+    }
+    
+    public void addToCache(int nx, int ny, int nw, int nh, Color nc)
+    {
+    	imgHandle.addToCache(nx, ny, nw, nh, nc);   	
+    }
+    
+    public void addToCache(int nx, int ny, Image image)
+    {
+    	imgHandle.addToCache(nx, ny, image);
+    }
+    
+    public ImageHandler getHandler()
+    {
+    	return imgHandle;
+    }
+    
+    public int getTopBounds()
+    {
+    	return topBounds;
+    }
+    
+    public void setTopBounds(int bounds)
+    {
+    	topBounds = bounds;
+    }
+    
+    public int getBottomBounds()
+    {
+    	return bottomBounds;
+    }
+    
+    public void setBottomBounds(int bounds)
+    {
+    	bottomBounds = bounds;
+    }
+    
+    public int getRightBounds()
+    {
+    	return rightBounds;
+    }
+    public void setRightBounds(int bounds)
+    {
+    	rightBounds = bounds;
+    }
+    
+    public int getLeftBounds()
+    {
+    	return leftBounds;
+    }
+    
+    public void setLeftBounds(int bounds)
+    {
+    	leftBounds = bounds;
+    }
+    
+    public int getScreenResX()
+    {
+    	return xRes;
+    }
+    
+    public int getScreenResY()
+    {
+    	return yRes;
+    }
+    
+    public ImageHandler getImageHandler()
+    {
+    	return imgHandle;
+    }
+    
+    public void addToConsole(String str, Color c)
+    {
+    	for (int i = console.length - 1; i > 0; i--)
+    	{
+    		console[i] = console[i - 1];
+    		consoleColor[i] = consoleColor[i - 1];
+    	}
+    	console[0] = str;
+    	consoleColor[0] = c;
+    	Main.getEntityHandler().invokeUpdate();
+    }
+}

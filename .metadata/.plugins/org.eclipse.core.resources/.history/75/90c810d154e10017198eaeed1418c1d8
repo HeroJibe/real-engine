@@ -1,0 +1,9 @@
+package core.commands;
+
+import core.Command;
+
+public class Configuration
+	extends Command
+{
+	
+}

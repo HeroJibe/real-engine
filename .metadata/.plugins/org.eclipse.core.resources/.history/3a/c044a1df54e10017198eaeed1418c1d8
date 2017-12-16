@@ -1,0 +1,24 @@
+package core.commands;
+
+import core.Command;
+
+public class Configuration
+	extends Command
+{
+	public Configuration()
+	{
+		super("config", "sets a program configuration setting");
+	}
+
+	@Override
+	public void execute(String[] args) 
+	{
+		
+	}
+
+	@Override
+	public String help() 
+	{
+		return null;
+	}
+}

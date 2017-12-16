@@ -1,0 +1,98 @@
+package wizards;
+
+public abstract class Wizard 
+{
+	private static int nextID = 0;
+	
+	private int ID;
+	private int numKeyValues;
+	private String[] dataName;
+	private String[] dataType;
+	private String[] dataValue;
+	
+	protected String name;
+	
+	public Wizard(int numKeyValues)
+	{
+		ID = nextID;
+		nextID++;
+		this.numKeyValues = numKeyValues;
+		dataName = new String[numKeyValues];
+		dataType = new String[numKeyValues];
+		dataValue = new String[numKeyValues];
+		setupDataTypes();
+		setDefaultValues();
+		update();
+	}
+	
+	public void setValue(String name, String value)
+	{
+		for (int i = 0; i < numKeyValues; i++)
+		{
+			if (dataName[i] != null)
+			{
+				if (dataName[i].equals(name))
+				{
+					dataValue[i] = value;
+				}
+			}
+		}
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	protected void setupDataType(int i, String name, String dataType)
+	{
+		this.dataType[i] = dataType;
+	}
+	
+	protected String getStringAt(int i)
+	{
+		if (dataType[i].equals("String"))
+		{
+			return dataValue[i];
+		}
+		return null;
+	}
+	
+	protected int getIntAt(int i)
+	{
+		if (dataType[i].equals("int"))
+		{
+			return Integer.parseInt(dataValue[i]);
+		}
+		return - 1;
+	}
+	
+	protected double getDoubleAt(int i)
+	{
+		if (dataType[i].equals("double"))
+		{
+			return Double.parseDouble(dataValue[i]);
+		}
+		return -1;
+	}
+	
+	protected boolean getBooleanAt(int i)
+	{
+		if (dataType[i].equals("boolean"))
+		{
+			return Boolean.parseBoolean(dataValue[i]);
+		}
+		return false;
+	}
+	
+	public abstract void setupDataTypes();		// Sets up the data types
+	public abstract void setDefaultValues();	// Sets default data values
+	public abstract void update();				// Updates a changed value
+	public abstract void add();					// Adds the element to the visual editor
+	public abstract String export();			// Exports to a String to be read by the map reader
+}

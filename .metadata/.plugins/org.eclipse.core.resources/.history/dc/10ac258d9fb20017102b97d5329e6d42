@@ -1,0 +1,16 @@
+package core;
+
+import core.MapEntities.MapEntity;
+
+public class Map 
+{
+	String name;
+	int[] backgroundRGB;
+	Trigger[] triggers;
+	Entity[] entities;
+	
+	public Map()
+	{
+		
+	}
+}

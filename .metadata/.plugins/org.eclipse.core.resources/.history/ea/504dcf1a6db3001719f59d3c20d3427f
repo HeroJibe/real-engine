@@ -1,0 +1,105 @@
+package wizards;
+
+import java.io.File;
+
+import core.Entity;
+import main.Main;
+
+public class BrushWizard 
+	extends Wizard
+{
+	private String type;
+	private String texture;
+	private double x;
+	private double y;
+	private int z;
+	private int w;
+	private int h;
+	private boolean solid;
+	private int mass;
+	private boolean kinetic;
+
+	public BrushWizard() 
+	{
+		super(11);
+	}
+
+	public void setupDataTypes() 
+	{
+		setupDataType(0, "type", "String");
+		setupDataType(1, "texture", "String");
+		setupDataType(2, "x", "double");
+		setupDataType(3, "y", "double");
+		setupDataType(4, "z", "int");
+		setupDataType(5, "w", "int");
+		setupDataType(6, "h", "int");
+		setupDataType(7, "solid", "boolean");
+		setupDataType(8, "mass","int");
+		setupDataType(9, "kinetic", "boolean");
+		setupDataType(10, "name", "String");
+	}
+
+	public void setDefaultValues() 
+	{
+		setValue("type", "STATIC");
+		setValue("texture", "gabenobedy.png");
+		setValue("x", "0");
+		setValue("y", "0");
+		setValue("z", "0");
+		setValue("w", "50");
+		setValue("h", "50");
+		setValue("solid", "true");
+		setValue("mass", "10");
+		setValue("kinetic", "true");
+		setValue("name", "");
+	}
+	
+	public void update()
+	{
+		type = getStringAt(0);
+		texture = getStringAt(1);
+		x = getDoubleAt(2);
+		y = getDoubleAt(3);
+		z = getIntAt(4);
+		w = getIntAt(5);
+		h = getIntAt(6);
+		solid = getBooleanAt(7);
+		mass = getIntAt(8);
+		kinetic = getBooleanAt(9);
+	}
+
+	public void add() 
+	{
+		update();
+		Main.println("updating....");
+		if (type.equals("STATIC"))
+		{
+			Entity e = new Entity(Entity.STATIC, Main.getResourceHandler().getByName(texture), w, h, solid, name, x, y, z, w, h, 100, false);
+			Main.getEntityHandler().addStaticEntity(e);
+		}
+		else if (type.equals("DYNAMIC"))
+		{
+			Entity e = new Entity(Entity.DYNAMIC, Main.getResourceHandler().getByName(texture), w, h, solid, name, x, y, z, w, h, 100, false);
+			Main.getEntityHandler().addStaticEntity(e);
+		}
+	}
+
+	public String export() 
+	{
+		update();
+		if (getStringAt(0).equals("STATIC"))
+		{
+			String toReturn = "Brush = " + "STATIC " + texture + " " + x + " " + y + " " + z + " " + w + " " + h  + 
+					" " + solid;
+			return toReturn;
+		}
+		else if (getStringAt(0).equals("DYNAMIC"))
+		{
+			String toReturn = "Brush = " + "STATIC " + texture + " " + x + " " + y + " " + z + " " + w + " " + h  + 
+					" " + solid + " " + mass + " " + kinetic + " " + name;
+			return toReturn;
+		}
+		return null;
+	}
+
+}

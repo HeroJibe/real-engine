@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="Brush" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="Brush"/>
+			<item value="camera"/>
+			<item value="translateX"/>
+			<item value="AnimatedBrush"/>
+			<item value="Trigger"/>
+			<item value="DRAW_TRIGGERS"/>
+			<item value="getClass"/>
+			<item value="collided"/>
+			<item value="getActualX"/>
+			<item value="getActual"/>
+			<item value="sound"/>
+			<item value="Inset"/>
+			<item value="Insets"/>
+			<item value="isOnScreen"/>
+			<item value="Image.SCALE_DEFAULT"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+			<item value="Main.println"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="385" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="434" key="DIALOG_HEIGHT"/>
+		<item value="1497" key="DIALOG_X_ORIGIN"/>
+		<item value="512" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

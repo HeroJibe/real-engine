@@ -1,0 +1,178 @@
+package core;
+
+import java.awt.Color;
+import java.awt.Image;
+
+import core.guiElements.GuiElement;
+import main.Main;
+
+public class Animation
+	implements Runnable
+{
+	private String name;
+	private Image[] images;
+	private int frame = 0;
+	private int rate;
+	private boolean runAnimation;
+	private boolean autoAnimate;
+	
+	Entity entity;
+	GuiElement element;
+	
+	public Animation(String name, Entity entity, Image[] images, int rate)
+	{
+		this.name = name;
+		this.images = images;
+		this.rate = rate;
+		runAnimation = true;
+		this.entity = entity;
+	}
+	
+	public Animation(String name, GuiElement element, Image[] images, int rate)
+	{
+		this.name = name;
+		this.images = images;
+		this.rate = rate;
+		runAnimation = true;
+		this.element = element;
+	}
+	
+	public Animation(String name, Image[] images, int rate)
+	{
+		this.name = name;
+		this.images = images;
+		this.rate = rate;
+		runAnimation = true;
+	}
+	
+	public void run()
+	{
+		Main.getAnimationHandler().incrementRunning();
+		while (runAnimation)
+		{
+			if (entity != null)
+			{
+				animate(entity, this);
+			}
+			else if (element != null)
+			{
+				animate(element, this);
+			}
+			else
+			{
+				nextFrame();
+			}
+			
+			try 
+			{
+				Thread.sleep(rate);
+			}
+			catch (InterruptedException e) 
+			{ 
+				runAnimation = false;
+				break;
+			}
+		}
+		Main.getAnimationHandler().decrementRunning();
+	}
+	
+	public Image nextFrame()
+	{
+		Image img = images[frame];
+		frame++;
+		if (frame >= images.length)
+			frame = 0;
+		
+		if (runAnimation)
+		{
+			Main.getEntityHandler().invokeUpdate();
+		}
+		return img;
+	}
+	
+	public Image frame(int frame)
+	{
+		if (frame > images.length || frame < 0)
+		{
+			Main.println("Error: animation frame outside of animation bounds", Color.RED);
+			return null;
+		}
+		else
+			return images[frame];
+	}
+	
+	public Image currFrame()
+	{
+		return images[frame];
+	}
+	
+	public void setFrame(int frame)
+	{
+		if (frame > images.length || frame < 0)
+			Main.println("Error: animation frame outside of animation bounds", Color.RED);
+		else
+			this.frame = frame;
+	}
+	
+	public void update(Entity e)
+	{
+		e.setImage(images[frame]);
+		Main.getEntityHandler().invokeUpdate();
+	}
+	
+	public void update(GuiElement g)
+	{
+		g.setImage(images[frame]);
+		Main.getEntityHandler().invokeUpdate();
+	}
+	
+	public int getFrame()
+	{
+		return frame;
+	}
+	
+	public int getRate()
+	{
+		return rate;
+	}
+	
+	public int getNumFrames()
+	{
+		return images.length;
+	}
+	
+	public void setRate(int rate)
+	{
+		this.rate = rate;
+	}
+	
+	public boolean isAnimating()
+	{
+		return runAnimation;
+	}
+	
+	public void shouldRun(boolean runAnimation)
+	{
+		this.runAnimation = runAnimation;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public String toString()
+	{
+		return name + " frame: " + frame;	
+	}
+	
+	public static void animate(Entity e, Animation a)
+	{
+		e.setImage(a.nextFrame());
+	}
+	
+	public static void animate(GuiElement g, Animation a)
+	{
+		g.setImage(a.nextFrame());
+	}
+}

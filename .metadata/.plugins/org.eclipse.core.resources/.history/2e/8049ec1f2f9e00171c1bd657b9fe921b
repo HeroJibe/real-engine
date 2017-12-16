@@ -1,0 +1,9 @@
+package core;
+
+public class AnimationHandler 
+{
+	public AnimationHandler(int max)
+	{
+		
+	}
+}

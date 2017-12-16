@@ -1,0 +1,6 @@
+Prefab
+Brush = DYNAMIC gabenobedy.png 960 540 100 64 64 true 19 true MovingEntity
+Brush = DYNAMIC physicsblock.png 1300 800 1 64 64 true 5 true PhysicsBlock
+//Entity = TRACK XPLANE 0.1 1 PhysicsBlock true
+
+Trigger = STATIC TriggerSound true 940 520 120 120 pop.wav 1 0 10 MovingEntityTrigger

@@ -1,0 +1,76 @@
+package core;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.util.Scanner;
+
+import main.Main;
+
+public final class Material 
+{
+	private String name;
+	private GameSound sound;
+	private String[] textures;
+	
+	public Material(String name)
+	{
+		this.name = name;
+		Main.getMaterialHandler().addMaterial(this);
+	}
+	
+	public Material(String name, GameSound sound)
+	{
+		this.name = name;
+		this.sound = sound;
+		Main.getMaterialHandler().addMaterial(this);
+	}
+	
+	public Material(String name, GameSound sound, String[] textures)
+	{
+		this.name = name;
+		this.sound = sound;
+		this.textures = textures;
+	}
+	
+	public GameSound getSound()
+	{
+		return sound;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public String[] getTextures()
+	{
+		return textures;
+	}
+	
+	@Override
+	public boolean equals(Object mat)
+	{
+		if (mat == null)
+			return false;
+		return toString().equals(mat.toString());
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "[Material]: " + name;
+	}
+	
+	public static Material load(File file)
+	{
+		try
+		{
+			Scanner in = new Scanner(file);
+			String[] tokens;
+		}
+		catch (Exception e)
+		{
+			Main.println("Failed to create material: " + file.toString() + " " + e);
+		}
+	}
+}

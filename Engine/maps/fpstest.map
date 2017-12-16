@@ -1,0 +1,27 @@
+Map
+ForceSeperate
+Name fpstest
+
+Entity = PLAYER_START 0 -128
+
+Entity = NODE 128 -128 first
+Entity = NODE 2550 -128 second
+Entity = NODE 2550 -1800 third
+Entity = NODE 4500 -1800 fourth
+
+Trigger = STATIC TriggerGameEvent true 0 -512 64 512 performanceTest
+
+TiledBrush = STATIC brick.png 0 0 0 64 64 true 48 1
+TiledBrush = STATIC brick.png -64 -512 0 64 64 true 1 8
+TiledBrush = STATIC brick.png 0 -576 0 64 64 true 32 1
+Brush = STATIC background.png 540 -540 -10 960 540 false
+ReflectiveBrush = metal.png 0 -64 0 64 64 true 0.4 48 1
+
+TiledBrush = STATIC brick.png 2048 -1536 0 64 64 true 1 16
+TiledBrush = STATIC brick.png 3072 -1536 0 64 64 true 1 24
+
+TiledBrush = STATIC brick.png 3072 -1536 0 64 64 true 24 1
+Entity = PARTICLE_EFFECT 4000 -2500 WaterBottom
+Entity = PARTICLE_EFFECT 3900 -2500 WaterBottom
+Entity = PARTICLE_EFFECT 4100 -2500 WaterBottom
+ReflectiveBrush = metal.png 3800 -1600 0 64 64 true 0.8 10 1

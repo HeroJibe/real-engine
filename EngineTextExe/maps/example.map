@@ -1,0 +1,17 @@
+Map
+Name = example
+Background = 255 255 255
+
+Brush = STATIC devorange64.png 104.3 59.4 5 128 128 true ThisIsABrush
+
+TiledBrush = STATIC devgrey64.png 345.1 459.1 3 64 64 true 10 4
+
+Trigger = STATIC TriggerMove con 64 928 64 16 ThisIsABrush 0 -1 10 moveBrush
+
+Entity = PLAYER_START 10 525
+Entity = VARIABLE thisIsAVariable 542
+
+Prefab = thisIsAPrefab.prefab 39 109
+
+Entity = VARIABLE referenceExample %Random:1:100
+Entity = VARIABLE referenceExample2 %Variable:referenceExample

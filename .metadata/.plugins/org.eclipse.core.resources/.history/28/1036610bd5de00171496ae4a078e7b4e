@@ -1,0 +1,39 @@
+package core;
+
+import main.Main;
+
+public final class Material 
+{
+	private String name;
+	private GameSound sound;
+	
+	public Material(String name)
+	{
+		this.name = name;
+		Main.getMaterialHandler().addMaterial(this);
+	}
+	
+	public GameSound getSound()
+	{
+		
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	@Override
+	public boolean equals(Object mat)
+	{
+		if (mat == null)
+			return false;
+		return toString().equals(mat.toString());
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "[Material]: " + name;
+	}
+}

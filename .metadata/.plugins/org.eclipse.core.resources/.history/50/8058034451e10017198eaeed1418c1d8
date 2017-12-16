@@ -1,0 +1,45 @@
+package core.commands;
+
+import core.Command;
+
+public class Echo 
+	extends Command
+{
+	private static boolean echo;
+	
+	public Echo()
+	{
+		super("echo", "prints a message to the console");
+		echo = true;
+	}
+
+	@Override
+	public void execute(String[] args)
+	{
+		String toPrint = "";
+		try
+		{
+			if (args[0].equals("@off"))
+		}
+		catch (ArrayIndexOutOfBoundsException e)
+		{
+			return;
+		}
+		
+		for (int i = 0; i < args.length; i++)
+		{
+			
+		}
+	}
+
+	@Override
+	public String help() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public static boolean shouldEcho()
+	{
+		return echo;
+	}
+}

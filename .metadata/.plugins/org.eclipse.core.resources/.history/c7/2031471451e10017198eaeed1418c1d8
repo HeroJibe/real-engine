@@ -1,0 +1,28 @@
+package core.commands;
+
+import core.Command;
+
+public class Echo 
+	extends Command
+{
+	public Echo()
+	{
+		super("echo", "prints a message to the console");
+	}
+
+	@Override
+	public void execute(String[] args)
+	{
+		String toPrint = "";
+		for (int i = 0; i < args.length)
+		{
+			
+		}
+	}
+
+	@Override
+	public String help() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

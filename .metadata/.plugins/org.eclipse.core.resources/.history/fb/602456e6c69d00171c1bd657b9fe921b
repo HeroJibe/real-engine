@@ -1,0 +1,11 @@
+package core;
+
+public class AnimationLoader 
+{
+	private static String name = "";
+	
+	public static load(String animName)
+	{
+		
+	}
+}

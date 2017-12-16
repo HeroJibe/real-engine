@@ -1,0 +1,5 @@
+Prefab
+Brush = STATIC bricktop1920.png 0 0 0 1920 64 true
+//Brush = STATIC brickside1080.png 0 0 0 64 1080 true
+Brush = STATIC bricktop1920.png 0 1023 20 1920 64 true
+//Brush = STATIC brickside1080.png 1856 0 0 64 1080 true

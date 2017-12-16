@@ -1,0 +1,12 @@
+package core;
+
+public class AnimationHandler 
+{
+	private Animation[] anims;
+	private int maxAnims;
+	
+	public AnimationHandler(int max)
+	{
+		
+	}
+}

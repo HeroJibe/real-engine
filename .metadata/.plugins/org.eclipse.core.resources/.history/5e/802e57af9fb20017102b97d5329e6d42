@@ -1,0 +1,29 @@
+package core;
+
+import core.MapEntities.MapEntity;
+import core.Triggers.*;
+
+public class Map 
+{
+	public static final maxElements = 256;
+	
+	String name;
+	int[] backgroundRGB;
+	TriggerGameEvent[] triggerGEs;
+	TriggerGravity[] triggerGs;
+	TriggerHurt[] triggerHs;
+	TriggerLoad[] triggerLs;
+	TriggerMove[] triggerMs;
+	TriggerShader[] triggerSHs;
+	TriggerSound[] triggerSOs;
+	TriggerStartTrigger[] triggerSTAs;
+	TriggerStopTrigger[] triggerSTOs;
+	Entity[] entities;
+	
+	public Map(String name)
+	{
+		this.name = name;
+	}
+	
+	public void add()
+}

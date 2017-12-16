@@ -1,0 +1,71 @@
+package core;
+
+import java.awt.Color;
+import java.io.File;
+import java.util.Scanner;
+
+import main.Main;
+
+public class AnimationLoader 
+{
+	public static final int ENTITY_ANIM = 0;
+	public static final int GUI_ANIM = 1;
+	
+	private static String name = "";
+	private static int type;
+	private static File animFile;
+	
+	public static void loadFile(String animName)
+	{
+		name = animName;
+		animFile = new File("resources\\animations\\" + name + ".anim");
+	}
+	
+	public static void load()
+	{
+		int i = 0;
+		try
+		{
+			Scanner in = new Scanner(animFile);
+			if (in.nextLine().equals("Animation"))
+			{
+				int type = -1;
+				int rate = -1;
+				while (in.hasNextLine())
+				{
+					String line = in.nextLine();
+					String delims = " = ";
+					String[] tokens = line.split(delims);
+					if (tokens[0].equals("Type"))
+					{
+						
+					}
+					else if (tokens[0].equals("Rate"))
+					{
+						
+					}
+					else if (tokens[0].equals("Frames:"))
+					{
+						
+					}
+					else
+					{
+						Main.println("Error at " + animFile.toString() + ": " + i + ": unkown key: " + tokens[0], Color.RED);
+					}
+				}
+			}
+			else
+			{
+				Main.println("Error at " + animFile.toString() + ": " + "Invalid file header", Color.RED);
+			}
+			in.close();
+		}
+		catch (Exception e)
+		{
+			if (i != 0)
+				Main.println("Error at " + animFile.toString() + ":" + i + ": " + e, Color.RED);
+			else
+				Main.println("Error at " + animFile.toString() + ": " + e, Color.RED);
+		}
+	}
+}

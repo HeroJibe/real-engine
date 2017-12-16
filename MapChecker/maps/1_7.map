@@ -1,0 +1,15 @@
+Map
+ForceSeperate
+Name = 1_7
+Background = 255 255 255
+Prefab = walls.prefab 0 0 
+
+Brush = STATIC Down.png 128 1016 0 64 64 true
+
+Trigger = STATIC TriggerGravity true 128 1016 64 64 0.1 hijump
+Trigger = STATIC TriggerLoad true 1984 0 0 64 1080 1_8.map 0 0 
+
+Brush = STATIC DirtFloor.png 960 760 0 64 320 true
+Brush = STATIC DirtFloor.png 1056 64 0 64 760 true
+
+Entity = PLAYER_START 64 1016

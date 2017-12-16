@@ -1,0 +1,88 @@
+package core;
+
+import core.guiElements.ButtonHandlers.ButtonAnimationHandler;
+import game.GameMain;
+import game.Player;
+import gui.GameWindow;
+import main.Main;
+
+public class RenderLoop 
+	implements Runnable
+{
+	public static int maximumFPS = -1;
+	
+	private EntityHandler entityHandler;
+	private GameWindow window;
+	private Player player;
+	private GuiElementHandler guiHandler;
+	private ButtonAnimationHandler bAnimationHandler;
+	private TriggerHandler triggerHandler;
+	private ReflectiveEntityHandler reflectionHandler;
+	private int numEntities;
+	private static int sv;
+	
+	public RenderLoop()
+	{
+		entityHandler = Main.getEntityHandler();
+		window = Main.getGameWindow();
+		player = Main.getPlayer();
+		guiHandler = Main.getGuiHandler();
+		bAnimationHandler = Main.getButtonAnimationHandler();
+		triggerHandler = Main.getTriggerHandler();
+		reflectionHandler = Main.getReflectionHandler();
+	}
+	
+	public void run()
+	{	
+		Main.println("Render thread started");
+		
+		while (true)
+		{
+			try
+			{
+				numEntities = entityHandler.getNumEntities();
+				Main.debugMessage = ("Player (" + Math.round(player.getPlayerEntity().getX()) 
+						+ ", " + Math.round(player.getPlayerEntity().getY()) 
+						+ ")   entities: " + numEntities + "/" + entityHandler.getMaxEntities()
+						+ "   rendering: " + window.getImageHandler().getNumImage() + "/" + numEntities + "/" + window.getImageHandler().getCacheSize() 
+						+ "   fps: " + Main.getFpsCounter().getFps()
+						+ "   threads: " + Main.getThreadsRunning()
+						+ "   shaders: " + Main.getShaderHandler().getNumEnabled()
+						+ "   gems: " + GameMain.gems
+						+ "   particles: " + Main.getParticleEffectHandler().getNumParticles()
+						);
+				
+				try
+				{
+					bAnimationHandler.update();
+				}
+				catch (Exception e) {}
+				
+				try
+				{
+					guiHandler.update();
+				}
+				catch (Exception e) {}
+				
+				try
+				{
+					entityHandler.update();
+				}
+				catch (Exception e) {}
+				
+				Main.getFpsCounter().tick();
+				
+				if (maximumFPS != -1)
+				{
+					Thread.sleep(1000 / maximumFPS);
+				}
+			}
+			catch (Exception e) {}
+		}
+	}
+	
+	public static int getSV()
+	{
+		return sv;
+	}
+}

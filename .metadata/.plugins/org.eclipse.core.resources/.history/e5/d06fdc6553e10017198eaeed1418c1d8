@@ -1,0 +1,17 @@
+package gui;
+
+public class SystemConsole 
+	implements Runnable
+{
+	private Scanner in;
+	
+	public SystemConsole()
+	{
+		
+	}
+	
+	public void run()
+	{
+		
+	}
+}

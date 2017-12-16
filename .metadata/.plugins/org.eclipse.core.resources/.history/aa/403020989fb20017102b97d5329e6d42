@@ -1,0 +1,25 @@
+package core;
+
+import core.MapEntities.MapEntity;
+import core.Triggers.*;
+
+public class Map 
+{
+	String name;
+	int[] backgroundRGB;
+	TriggerGameEvent[] triggerGEs;
+	TriggerGravty[] triggerGs;
+	TriggerHurt[] triggerHs;
+	TriggerLoad[] triggerLs;
+	TriggerMove[] triggerMs;
+	TriggerShader[] triggerSHs;
+	TriggerSound[] triggerSOs;
+	TriggersStartTrigger[] triggerSTAs;
+	TriggerStopTrigger[] triggerSTOs;
+	Entity[] entities;
+	
+	public Map()
+	{
+		
+	}
+}

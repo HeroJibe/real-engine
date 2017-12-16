@@ -1,0 +1,12 @@
+Map
+Name = RipOffMario
+Prefab = walls.prefab 0 0
+Brush = STATIC brickside1080.png 0 0 0 64 1080 true
+Brush = STATIC brickside491.png 1856 0 0 64 491 true
+Brush = STATIC brickside491.png 1856 619 0 64 491 true
+Prefab = physicsEntities.prefab 0 0
+TiledBrush = STATIC brick.png 64 960 1 64 64 true 16 1
+TiledBrush = STATIC brick.png 64 896 1 64 64 true 8 1
+Entity = PLAYER_START 1850 525
+Trigger = STATIC TriggerLoad true 1920 491 64 128 test.map 20 0 LoadTest
+//Decal = STATIC concretefloor.png 0 0 1920 1080

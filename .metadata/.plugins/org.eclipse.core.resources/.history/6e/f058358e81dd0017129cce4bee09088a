@@ -1,0 +1,13 @@
+package core;
+
+public class MaterialHandler 
+{
+	public static final int MAX_MATERIALS = 8;
+	
+	private Material[] materials;
+	
+	public MaterialHandler()
+	{
+		materials = new Material[MAX_MATERIALS];
+	}
+}

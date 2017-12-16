@@ -1,0 +1,34 @@
+package core;
+
+import java.io.File;
+import java.util.Scanner;
+
+import main.Main;
+
+public class AnimationLoader 
+{
+	public static final int ENTITY_ANIM = 0;
+	public static final int GUI_ANIM = 1;
+	
+	private static String name = "";
+	private static int type;
+	private static File animFile;
+	
+	public static void loadFile(String animName)
+	{
+		name = animName;
+		animFile = new File("resources\\animations\\" + name + ".anim");
+	}
+	
+	public static void load()
+	{
+		try
+		{
+			Scanner in = new Scanner(animFile);
+		}
+		catch (Exception e)
+		{
+			Main.println("Error at " + animFile.toString() + ": " + e);
+		}
+	}
+}

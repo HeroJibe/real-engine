@@ -1,0 +1,15 @@
+package core;
+
+import core.MapEntities.MapEntity;
+
+public class Map 
+{
+	Entity[] entities;
+	MapEntity[] mapEntities;
+	
+	
+	public Map()
+	{
+		
+	}
+}

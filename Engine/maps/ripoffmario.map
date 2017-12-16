@@ -1,0 +1,35 @@
+Map
+ForceSeperate
+Name = ripoffmario
+Version = 13100
+Prefab = walls.prefab 0 0
+
+//Prefab = physicsEntities.prefab 0 0
+Brush = DYNAMIC gabenobedy.png 640 736 1 62 62 true 19 false MovingEntity
+Brush = DYNAMIC physicsblock.png 1408 890 1 64 64 true 5 true PhysicsBlock
+Brush = STATIC plank.png 1280 840 0 64 8 true
+Brush = STATIC plank.png 1344 848 0 64 8 true
+Brush = STATIC plank.png 1408 856 0 64 8 true
+Brush = STATIC plank.png 1472 848 0 64 8 true
+Brush = STATIC plank.png 1536 840 0 64 8 true
+Brush = STATIC plank.png 1600 832 0 64 8 true
+Brush = STATIC plank.png 1664 824 0 64 8 true
+Brush = STATIC plank.png 1728 816 0 64 8 true
+Brush = STATIC plank.png 1792 808 0 64 8 true
+//Entity = TRACK XPLANE 1 2 PhysicsBlock true
+
+Entity = TRACK XPLANE 0.2 1 MovingEntity true succ
+Trigger = STATIC TriggerToggleEntity true 64 436 64 64 succ false triggermap
+//Trigger = STATIC TriggerSound true 940 520 120 120 pop.wav EFFECT 1 0 10 MovingEntityTrigger
+
+Brush = STATIC brickside1080.png 0 0 0 64 1080 true
+Brush = STATIC brickside491.png 1856 0 0 64 491 true
+Brush = STATIC brickside491.png 1856 619 0 64 491 true
+TiledBrush = STATIC DirtFloor.png 64 960 120 64 64 true 28 1
+TiledBrush = STATIC DirtFloor.png 64 896 120 64 64 true 8 1
+//Trigger = STATIC TriggerHurt true 64 832 64 64 100
+Entity = PLAYER_START 1850 525
+Trigger = STATIC TriggerLoad true 1920 491 64 128 test.map 20 0 LoadTest
+ReflectiveBrush = water_murky.png 64 838 100 64 60 false 0.3 9 3
+ReflectiveBrush = water_murky.png 640 896 100 64 64 false 0.3 19 1
+TiledBrush = STATIC brick.png 640 832 120 64 64 true 10 1

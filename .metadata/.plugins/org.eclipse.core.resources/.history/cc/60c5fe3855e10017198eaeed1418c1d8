@@ -1,0 +1,35 @@
+package core.commands;
+
+import core.Command;
+import main.Main;
+
+public class Configuration
+	extends Command
+{
+	public Configuration()
+	{
+		super("config", "sets a program configuration setting");
+	}
+
+	@Override
+	public void execute(String[] args) 
+	{
+		if (args == null)
+		{
+			printUsage();
+			return;
+		}
+		
+		if (args[0].equals("*"))
+		{
+			Main.println("Keyvalues:");
+			Main.println("  usegui <true/false>");
+		}
+	}
+
+	@Override
+	public String help() 
+	{
+		return "config * or config <keyvalue name>";
+	}
+}

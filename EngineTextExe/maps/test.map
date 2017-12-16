@@ -1,0 +1,44 @@
+Map
+Name = test
+Background = 255 0 0
+// Brush = type texture x y z w h solid name 
+// TiledBrush = type texture x y z w h solid tx ty
+// Trigger = type triggerType once/continuous x y w h targetEntity triggerArgs...
+// Entity = entityType entityArgs...
+
+Entity = VARIABLE imagePos %Random:1:1000
+Entity = PLAYER_START 10 525
+Brush = STATIC brick.png 100 310 0 64 64 true
+Brush = STATIC IMG.png %Variable:imagePos %Variable:imagePos 1 192 108 true
+Prefab = walls.prefab 0 0
+Brush = STATIC brickside491.png 0 0 0 64 491 true
+Brush = STATIC brickside491.png 0 619 0 64 491 true
+Brush = STATIC brickside1080.png 1856 0 0 64 1080 true
+Prefab = physicsEntities.prefab 0 0
+Decal = STATIC arrowdown.png 960 450 64 64
+TiledBrush = STATIC gabenobedy.png 1280 720 0 32 32 false 8 8
+Trigger = STATIC TriggerLoad true -64 491 64 128 ripoffmario.map -20 0 LoadRipOffMario
+Logic = InvokeTrigger time:spawn:10 MovingEntityTrigger
+
+//                       onTrigger:[Trigger Name]
+//						 onMapLoad
+//                       onPlayerPos:exact:10:10
+//                       onPlayerPos:range:10:20:10:20
+//                       onGameEvent:[Game Event]
+// Trigger = STATIC TriggerText true -10 -10 1 1 "Some Text" 500 500 TextTrigger
+// Trigger = STATIC TriggerPos true 128 128 128 128 50 50 TriggerPosition
+// Trigger = STATIC TriggerGravity true 256 256 50 50 0.1
+// Trigger = STATIC TriggerFriction true 512 512 50 50 0.1
+
+//Trigger = STATIC TriggerGameEvent true 0 0 100 100 closeGame
+
+Brush = DYNAMIC physicsblock.png 64 992 1 64 32 true 50 false elevator
+Trigger = STATIC TriggerMove con 64 928 64 16 elevator 0 -1 10 moveElevator
+Trigger = STATIC TriggerMove con 192 998 64 8 elevator 0 1 10 moveElevatorDown
+
+Trigger = STATIC TriggerStopTrigger false 192 976 64 16 moveElevator
+Trigger = STATIC TriggerStopTrigger false 64 960 64 16 moveElevatorDown
+Trigger = STATIC TriggerStartTrigger false 64 944 64 16 moveElevator
+Trigger = STATIC TriggerStartTrigger false 192 948 64 32 moveElevatorDown
+
+TiledBrush = STATIC brick.png 128 491 1 64 64 true 2 6

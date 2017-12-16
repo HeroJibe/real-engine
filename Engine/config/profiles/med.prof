@@ -1,0 +1,5 @@
+mat_reflections static
+mat_animations true
+r_lod med
+r_particles half
+fps_max 0

@@ -1,0 +1,12 @@
+package core.commands;
+
+import core.Command;
+
+public class Echo 
+	extends Command
+{
+	public Echo()
+	{
+		super("echo");
+	}
+}

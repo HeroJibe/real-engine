@@ -1,0 +1,32 @@
+Real Engine version 1.2 build 33
+Patched 10/28/2017
+
+Additions:
+-Reflections
+-Settings menu
+-Particle effects
+-LOD brushes
+-Added blur effects
+-Added option for idependent entity physics
+-Frames per second can now be capped
+-Added ReflectiveBrush to instantiate reflective materials in maps
+-Added LowDetailBrush to instantiate LOD-reliant brushes
+-Added VERSION to specify minimum engine version in maps
+-Added map entity type PARTICLE_EFFECT to instantiate particle effects
+
+Improvements:
+-Further optimizations
+-Reflections optimizations:
+	-No reflections
+	-Static reflections
+	-Fast dynamic reflections
+	-Full dynamic reflections
+-Particle effects can be toggled in settings
+-Maps now contain version information to ensure compatability
+-Improved collision detection
+
+Fixes:
+-Fixed entity removal
+-Fixed "seizure" rendering
+-Fixed most NullPointerExceptions in the render loop
+-Fixed pressing buttons when they are not visible

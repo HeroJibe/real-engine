@@ -1,0 +1,16 @@
+0 resources\textures\arrowdown.png 64 64 false "Brush Decal" 960.0 450.0 -1 64.0 64.0 100 false true true 1 true
+0 resources\textures\brickside491.png 64 491 true "Brush Face" 0.0 619.0 0 64.0 491.0 100 false false false 1 true
+0 resources\textures\bricktop1920.png 1920 64 true "Brush Face" 0.0 0.0 0 1920.0 64.0 100 false false false 1 true
+0 resources\textures\brickside491.png 64 491 true "Brush Face" 0.0 0.0 0 64.0 491.0 100 false false false 1 true
+0 resources\textures\brick.png 64 16 true "Brush Face" 128.0 1008.0 0 64.0 16.0 100 false false false 1 true
+0 null 1024 64 true "Unnamed Static Entity" 164.0 374.0 0 1024.0 64.0 100 false true false 1 true
+0 null 1024 64 true "Unnamed Static Entity" 164.0 310.0 0 1024.0 64.0 100 false true false 1 true
+0 null 256 256 false "Unnamed Static Entity" 1280.0 720.0 0 256.0 256.0 100 false false false 1 true
+1 resources\textures\physicsblock.png 64 32 true "elevator" 64.0 992.0 1 64.0 32.0 100 false false false 50 true
+0 null 128 384 true "Unnamed Static Entity" 128.0 491.0 1 128.0 384.0 100 false false false 1 true
+1 resources\textures\physicsblock.png 64 64 true "PhysicsBlock" 1347.7999999999565 959.0 1 64.0 64.0 100 false false false 5 true
+1 resources\textures\Dance1.png 26 44 true "Player Entity" -1.375 575.0 10 26.0 44.0 100 false true false 10 true
+0 null 96 96 false "Brush Face" 500.0 964.0 11 96.0 96.0 100 false true false 1 true
+0 resources\textures\bricktop1920.png 1920 64 true "Brush Face" 0.0 1023.0 20 1920.0 64.0 100 false false false 1 true
+1 resources\textures\gabenobedy.png 64 64 true "MovingEntity" 960.0 959.0 100 64.0 64.0 100 false false false 19 true
+1 resources\textures\Yellow1.png 16 16 false "gemYellow" 340.0 912.0 1073741823 16.0 16.0 100 false false false 1 true

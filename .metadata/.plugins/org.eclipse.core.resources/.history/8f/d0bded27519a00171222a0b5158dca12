@@ -1,0 +1,142 @@
+package core;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import gui.GameWindow;
+import main.Main;
+
+public class InputListener
+	implements KeyListener
+{
+	public static final int MAX_KEYS = 16;
+	
+	private String keyPressed;
+	private String[] keysPressed = new String[MAX_KEYS];
+	private boolean[] pressed = new boolean[MAX_KEYS];
+	private String keyTyped = "";
+	private boolean wasKeyTyped =  false;
+	private boolean typed = false;
+	private int numKeysTyped = 0;
+	private int numKeysPressed = 0;
+	
+	public InputListener(GameWindow window)
+	{
+		window.addKeyListener(this);
+	}
+
+	public void keyPressed(KeyEvent e)
+	{
+		keyPressed = KeyEvent.getKeyText(e.getKeyCode());
+		addToKeys(keyPressed);
+	}
+
+	public void keyReleased(KeyEvent e)
+	{
+		removeFromKeys(KeyEvent.getKeyText(e.getKeyCode()));
+	}
+
+	public void keyTyped(KeyEvent e)
+	{
+		//Main.println(KeyEvent.getKeyText(e.getKeyCode()));
+		keyTyped = KeyEvent.getKeyText(e.getKeyCode());
+		wasKeyTyped = true;
+	}
+	
+	public boolean wasKeyTyped()
+	{
+		boolean returned = wasKeyTyped;
+		return wasKeyTyped;
+	}
+	
+	public String getKeyTyped()
+	{
+		return keyTyped;
+	}
+	
+	private void addToKeys(String toAdd)
+	{
+		for (int i = 0; i < MAX_KEYS; i++)
+		{
+			if (keysPressed[i] != null)
+			{
+				if (keysPressed[i].equals(toAdd) && pressed[i])
+					return;
+			}
+		}
+		
+		for (int i = 0; i < MAX_KEYS; i++)
+		{
+			if (! pressed[i])
+			{
+				numKeysPressed++;
+				keysPressed[i] = toAdd;
+				pressed[i] = true;
+				return;
+			}
+		}
+		Main.println("Too many keys pressed at a time.");
+	}
+	
+	private void removeFromKeys(String remove)
+	{
+		for (int i = 0; i < MAX_KEYS; i++)
+		{
+			if (keysPressed[i] != null)
+			{
+				if (keysPressed[i].equals(remove) && pressed[i])
+				{
+					pressed[i] = false;
+					numKeysPressed--;
+				}
+			}
+		}
+	}
+	
+	private boolean anyKeysPressed()
+	{
+		for (int i = 0; i < MAX_KEYS; i++)
+		{
+			if (pressed[i])
+				return true;
+		}
+		return false;
+	}
+	
+	public boolean isKeyPressed(String key)
+	{
+		for (int i = 0; i < MAX_KEYS; i++)
+		{
+			if (keysPressed[i] != null)
+			{
+				if (keysPressed[i].equals(key) && pressed[i])
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public String getKeyPressed()
+	{
+		return keysPressed[0];
+	}
+	
+	public String[] getKeysPressed()
+	{
+		return keysPressed;
+	}
+
+	public int keysPressed()
+	{
+		return numKeysPressed;
+	}
+	
+	public boolean isAKeyPressed()
+	{
+		return anyKeysPressed();
+	}
+}

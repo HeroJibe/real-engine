@@ -1,0 +1,20 @@
+Real Engine version 1.202 build 36
+Patched 11/14/2017
+
+Additions:
+-SeperateBrush for maps
+-SeperateTiledBrush for maps
+-ForcedSeperate identifier for maps
+-TriggerToggleMapEntity for maps to enable/disable map entities
+	
+Improvements:
+-Optimized levels with large entity counts
+-TRACK level entities will now move dynamic brushes with them
+-Minimalized logs
+-Dead screen reloads faster anda is more responsive
+
+Fixes:
+-Fixed TRACK level entity from not running sometimes
+-Fixed TRACK level entity from running very slowly after a death
+-Fixed tiled brushes on lower resolution
+-Fixed stairs on lower resolutions

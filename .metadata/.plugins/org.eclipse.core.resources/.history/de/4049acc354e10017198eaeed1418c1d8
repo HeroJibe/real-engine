@@ -1,0 +1,6 @@
+package core.commands;
+
+public class Configuration
+{
+
+}

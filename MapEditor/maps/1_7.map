@@ -1,0 +1,17 @@
+Map 
+Name = level8
+Background = 255 255 255
+Prefab = walls.prefab 0 0 
+
+Brush = STATIC brick.png 0 196 0 1724 64 true
+Brush = STATIC brick.png 1920 392 0 -1724 64 true
+Brush = STATIC brick.png 0 784 0 1724 64 true
+Brush = STATIC brick.png 1920 1176 0 -1724 64 true
+Brush = STATIC brick.png 0 1568 0 1724 64 true
+Brush = STATIC Green1.png 1920 1504 0 32 32 false
+Brush = STATIC brick.png 0 1920 0 -1724 64 true
+
+Trigger = STATIC TriggerGravity true 64 64 64 64 2
+Trigger = STATIC TriggerLoad true 1792 952 64 64 level9.map
+
+Entity = PLAYER_START 64 64

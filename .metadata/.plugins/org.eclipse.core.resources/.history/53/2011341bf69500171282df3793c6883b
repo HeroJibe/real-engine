@@ -1,0 +1,385 @@
+package main;
+
+import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+import core.Animation;
+import core.Entity;
+import core.EntityHandler;
+import core.GuiElementHandler;
+import core.InputListener;
+import core.MapLoader;
+import core.MouseInputListener;
+import core.Player;
+import core.RenderLoop;
+import core.ResourceHandler;
+import core.TriggerHandler;
+import core.guiElements.Button;
+import gamegui.Menu;
+import gui.GameWindow;
+import utilities.RenderMonitor;
+
+public class Main
+{
+	// Changing is a violation of copyright for this engine
+	public static final double ENGINE_VERSION = 0.10;
+	public static final String ENGINE_NAME = "Game Engine";
+	public static final String ENGINE_VERSION_NAME = "Game Engine 2017";
+	
+	public static final boolean DEBUG = true;					// Toggles debug mode
+	public static final boolean OCCLUSION = true;				// Toggles using occlusion to optimize rendering
+	
+	public static final int UPDATE_RATE = 1;					// Game update rate
+	public static final boolean DRAW_TRIGGERS = false;			// Toggles drawing trigger brushes
+	public static final double RENDER_REFRESH_RATE = 			// Maximum frames drawn per second
+								1000 / GameWindow.REFRESH_RATE;
+	public static final int TICK_RATE = 64;						// Game tick rate
+	public static double renderRefreshBias = 1;					// Scale for the RENDER_REFRESH_RATE (don't go below 0.5)
+	
+	// Not currently working:
+	public static double resolutionScaleX = 1;					// Scaling of the resolution for translating entities on the X axis
+	public static double resolutionScaleY = 1;					// Scaling of the resolution for translating entities on the Y axis
+	
+	public static final String NAME = "My Game";				// Game name
+	public static final double GAME_VERSION = 0.0;				// Game version
+	public static final boolean PLAYER_TRANSPARANCY = true;		// Toggles player transparency
+	public static final int PLAYER_W = 60;						// Player width
+	public static final int PLAYER_H = 60;						// Player height
+	public static final int PLAYER_MASS = 10;					// Player mass
+	
+	private static File logFile;
+	private static PrintStream out;
+	
+	public static String debugMessage = "";						// The debug message
+	public static String loadMessage = "";						// The load message
+	public static boolean loadingMap = false;					// Whether the game is loading a map or not
+	
+	public static boolean lossyRendering = false;				// Experimental rendering mode
+	
+	private static GameWindow window;							// The game window
+	private static EntityHandler entityHandler;					// The entity handler
+	private static InputListener listener;						// The key listener
+	private static Player player;								// The player
+	private static ResourceHandler resourceHandler;				// The resource handler
+	private static MapLoader mapLoader;							// The map loader
+	private static TriggerHandler triggerHandler;				// The trigger handler
+	private static Thread playerThread;							// The player thread
+	private static MouseInputListener mouseListener;			// The mouse listener
+	private static GuiElementHandler guiHandler;				// The GUI handler
+	private static Menu menu;									// The game menu
+	private static RenderMonitor rMonitor;						// The render monitor
+	
+	public static double player_x;
+	public static double player_y;
+	
+	public static boolean gamePaused = false;					// Whether the game is paused (implement where needed)
+	public static boolean isMultiplayer = false;				// Whether the game is multiplayer (implement where needed)
+	
+	public static void main(String[] args) throws InterruptedException, IOException
+	{		
+		loadingMap = true;
+		
+		logFile = new File(getNextLogName());
+		logFile.createNewFile();
+		out = new PrintStream(logFile);
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		println("Process started at: " + dtf.format(now));
+		println("Using: " + ENGINE_VERSION_NAME + " (" + ENGINE_VERSION + ")");
+		println("Running: " + GAME_NAME + "v." + GAME_VERSION);
+		
+		loadMessage = "Initializing handlers...";
+		int imageCache;
+		if (args.length >= 1)
+			imageCache = Integer.parseInt(args[0]);
+		else
+			imageCache = 1024;
+		
+		window = new GameWindow(NAME, GameWindow.XRES_GL, GameWindow.YRES_GL, true, imageCache);
+		entityHandler = new EntityHandler(1024);
+		resourceHandler = new ResourceHandler(64);
+		listener = new InputListener(window);
+		mouseListener = new MouseInputListener(window);
+		triggerHandler = new TriggerHandler(16);
+		guiHandler = new GuiElementHandler(16);
+		rMonitor = new RenderMonitor(window);
+		(new Thread(rMonitor)).start();
+		
+		resolutionScaleX = (double) GameWindow.XRES_GL / 1920.0;
+        resolutionScaleY = (double) GameWindow.YRES_GL / 1080.0;
+		
+		println("Monitor Resolution: " + GameWindow.XRES_GL + "x" + GameWindow.YRES_GL);
+		println("Local Resolution: " + window.getScreenResX() + "x" + window.getScreenResY());
+		println("Resolution Scale: " + resolutionScaleX + ", " + resolutionScaleY);
+		println("Monitor Refresh Rate: " + GameWindow.REFRESH_RATE);
+		println("Render FPS cap: " + GameWindow.REFRESH_RATE / renderRefreshBias);
+		
+		loadMessage = "Adding resources...";
+		resourceHandler.addResource("gabenobedy.png");
+		resourceHandler.addResource("player.png");
+		resourceHandler.addResource("brick.png");
+		resourceHandler.addResource("test.map");
+		resourceHandler.addResource("anotherTest.map");
+		resourceHandler.addResource("ripoffmario.map");
+		resourceHandler.addResource("IMG.png");
+		resourceHandler.addResource("brickside1080.png");
+		resourceHandler.addResource("bricktop1920.png");
+		resourceHandler.addResource("arrowdown.png");
+		resourceHandler.addResource("physicsblock.png");
+		resourceHandler.addResource("brickside1080hole.png");
+		resourceHandler.addResource("brickside491.png");
+		resourceHandler.addResource("concretefloor.png");
+		resourceHandler.addResource("pauseoverlay.png");
+		resourceHandler.addResource("resumeunselected.png");
+		resourceHandler.addResource("resumeselected.png");
+		if (resourceHandler.getTriedResources() != resourceHandler.getLoadedResources())
+		{
+			Main.println("Failed to load " + (resourceHandler.getTriedResources() - resourceHandler.getLoadedResources()) + 
+							" resources.", Color.RED);
+		}
+		else
+		{
+			Main.println("Loaded " + resourceHandler.getLoadedResources() + " resources!", Color.GREEN);
+		}
+		
+		loadMessage = "Converting resources...";
+		resourceHandler.autoConvertToImage();
+
+		player = new Player(listener);
+		mapLoader = new MapLoader();
+		
+		String mapname = "test.map";
+		int exitCode = loadMap(mapname, 0, 0);
+		
+		Thread triggerHandlerThread = new Thread(triggerHandler);
+		playerThread = new Thread(player);
+		
+		Button button = new Button("button", Entity.STATIC, new File("resources\\textures\\gui\\gabenobedy.png"), 500, 500, 1, 100, 100);
+		guiHandler.add(button);
+		
+		Button resumeButton = new Button("resume", Entity.STATIC, resourceHandler.getByName("resumeunselected.png"), 64, 256, 1, 400, 64);
+		Image[] resumeImages = {resourceHandler.getImage(resourceHandler.getIndexByName("resumeunselected.png", true)), resourceHandler.getImage(resourceHandler.getIndexByName("resumeselected.png", true))};
+		Animation resumeButtonAnim = new Animation(resumeButton, resumeImages, 1000);
+		guiHandler.add(resumeButton);
+		
+		entityHandler.invokeUpdate();
+		if (exitCode == 1 || exitCode == 2)
+		{
+			loadingMap = false;
+			
+			loadMessage = "Creating player...";
+			Entity playerEntity = new Entity(Entity.DYNAMIC, resourceHandler.getByName("player.png"), PLAYER_W, PLAYER_H, 
+					true, "Player", player_x, player_y, 10, 64, 64, 100, false);
+			playerEntity.setMass(PLAYER_MASS);
+			playerEntity.setTransparancy(PLAYER_TRANSPARANCY);
+			addPlayer(playerEntity);
+			entityHandler.addDynamicEntity(playerEntity);
+			player.getPlayerEntity().ignoreBounds(true);
+			
+			playerThread.start();			
+			triggerHandlerThread.start();
+			
+			entityHandler.invokeUpdate();
+			
+			RenderLoop renderLoop = new RenderLoop();
+			Thread renderThread = new Thread(renderLoop);
+			renderThread.start();
+			
+			Image[] images = {resourceHandler.getImage(resourceHandler.getIndexByName("player.png", true)).getScaledInstance((int) (100 * Main.resolutionScaleX), (int) (100 * Main.resolutionScaleY), Image.SCALE_DEFAULT), 
+					resourceHandler.getImage(resourceHandler.getIndexByName("gabenobedy.png", true)).getScaledInstance((int) (100 * Main.resolutionScaleX), (int) (100 * Main.resolutionScaleY), Image.SCALE_DEFAULT),
+					resourceHandler.getImage(resourceHandler.getIndexByName("brick.png", true)).getScaledInstance((int) (100 * Main.resolutionScaleX), (int) (100 * Main.resolutionScaleY), Image.SCALE_DEFAULT)};
+			Animation anim = new Animation(button, images, 1000);
+			Button[] buttons = {button, resumeButton};
+			menu = new Menu(buttons, true);
+			(new Thread(menu)).start();
+			while (true)
+			{
+				guiHandler.update();
+				if (button.isHovered())
+				{
+					if (button.isClicked())
+					{
+						anim.setFrame(2);
+					}
+					else
+						anim.setFrame(1);
+				}
+				else
+					anim.setFrame(0);
+				
+				if (resumeButton.isHovered())
+				{
+					resumeButtonAnim.setFrame(1);
+					if (resumeButton.isClicked())
+						menu.triggerToggle();
+				}
+				else
+					resumeButtonAnim.setFrame(0);
+				
+				anim.update(button);
+				resumeButtonAnim.update(resumeButton);
+			}
+		}
+	}
+	
+	// Handles map exit codes other than success
+	public static void mapExitCode(int exitCode)
+	{
+		if (exitCode == 0)
+		{
+			loadMessage = ("Error: exception while loading map: no map loaded");
+		}
+		else if (exitCode == -1)
+		{
+			loadMessage = ("Error: unknown exception while loading map: check console");
+		}
+	}
+
+	// Returns the game window
+	public static GameWindow getGameWindow()
+	{
+		return window;
+	}
+	
+	// Returns the input listener/key listener
+	public static InputListener getInputListener()
+	{
+		return listener;
+	}
+	
+	// Returns the entity handler
+	public static EntityHandler getEntityHandler()
+	{
+		return entityHandler;
+	}
+	
+	// Returns the resource handler
+	public static ResourceHandler getResourceHandler()
+	{
+		return resourceHandler;
+	}
+	
+	// Returns the trigger handler
+	public static TriggerHandler getTriggerHandler()
+	{
+		return triggerHandler;
+	}
+	
+	// Gets the name of the current loaded map
+	public static String getMapName()
+	{
+		return mapLoader.getMapName();
+	}
+	
+	// Gets the player
+	public static Player getPlayer()
+	{
+		return player;
+	}
+	
+	// Prints a line to the in-game console, log file, and the system console
+	public static void println(String str)
+	{
+		System.out.println(str);
+		if (window != null)
+			window.addToConsole(str, Color.WHITE);
+		out.println(str);
+	}
+	
+	// Prints a line to the in-game console with a color, log file, and the system console
+	public static void println(String str, Color c)
+	{
+		System.out.println(str);
+		if (window != null)
+			window.addToConsole(str, c);
+		out.println(str);
+	}
+	
+	// Gets prefix of a string
+	public static String getPrefix(String str)
+	{
+		Scanner in = new Scanner(str);
+		String nstr = in.next();
+		in.close();
+		return nstr;
+	}
+	
+	// Gets the name of the next log file
+	public static String getNextLogName()
+	{
+		int test = 0;
+		while (new File("logs//log" + test + ".log").exists())
+		{
+			test++;
+		}
+		return "logs//log" + test + ".log";
+	}
+	
+	// Sets the player's respective entity
+	public static void addPlayer(Entity playerEntity)
+	{
+		player.setPlayerEntity(playerEntity);
+	}
+	
+	// Loads a map from a file and the displacement of the player (xbias, ybias) on load
+	public static int loadMap(String mapname, double xbias, double ybias)
+	{
+		loadMessage = "Loading map \"" + mapname + "\"...";
+		loadingMap = true;
+		mapLoader.printToTemp();
+		mapLoader.readMap(resourceHandler.getByName(mapname), false);
+		int exitCode = mapLoader.loadMap(false, mapLoader.getLoadSaved());
+		if (exitCode == 1)
+		{
+			if (player.getPlayerEntity() != null)
+			{
+				entityHandler.addDynamicEntity(player.getPlayerEntity());
+				player.translate(xbias, ybias);
+			}
+			entityHandler.invokeUpdate();
+			loadingMap = false;
+		}
+		else if (exitCode == 2)
+		{
+			entityHandler.invokeUpdate();
+			loadingMap = false;
+		}
+		return exitCode;
+	}
+	
+	// Returns the player's thread
+	public static Thread getPlayerThread()
+	{
+		return playerThread;
+	}
+	
+	// Returns the GUI handler
+	public static GuiElementHandler getGuiHandler()
+	{
+		return guiHandler;
+	}
+	
+	// Returns the mouse listener
+	public static MouseInputListener getMouseListener()
+	{
+		return mouseListener;
+	}
+	
+	// Returns the menu
+	public static Menu getMenu()
+	{
+		return menu;
+	}
+	
+	public static RenderMonitor getRenderMonitor()
+	{
+		return rMonitor;
+	}
+}

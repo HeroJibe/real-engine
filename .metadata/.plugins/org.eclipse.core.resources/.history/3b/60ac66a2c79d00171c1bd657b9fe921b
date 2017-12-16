@@ -1,0 +1,15 @@
+package core;
+
+import java.io.File;
+
+public class AnimationLoader 
+{
+	private static String name = "";
+	private static File animFile;
+	
+	public static void loadFile(String animName)
+	{
+		name = animName;
+		animFile = new (File("resources\\animations\\" + name + ".anim"));'
+	}
+}

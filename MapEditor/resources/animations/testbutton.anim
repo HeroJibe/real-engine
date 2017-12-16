@@ -1,0 +1,6 @@
+Animation
+Type = raw
+Rate = 10
+Frames:
+resumeunselected.png
+resumeselected.png
