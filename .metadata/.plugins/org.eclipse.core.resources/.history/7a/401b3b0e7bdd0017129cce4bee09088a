@@ -1,6 +1,0 @@
-package core;
-
-public class MaterialHandler 
-{
-	public static final int MAX_MATERIALS = 8;
-}

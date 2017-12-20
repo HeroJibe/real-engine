@@ -30,7 +30,6 @@ public class Brush
 		int height;
 		int z;
 		boolean solid;
-		boolean renderInReflections;
 		int mass = 1;
 		boolean kinetic = true;
 	

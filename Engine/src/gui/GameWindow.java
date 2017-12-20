@@ -322,10 +322,6 @@ public class GameWindow
     {
 		private static final long serialVersionUID = -4256441938046104593L;
 		private Object rendering = RenderingHints.VALUE_RENDER_SPEED;
-    	private Object textAntialias = RenderingHints.VALUE_TEXT_ANTIALIAS_OFF;
-    	private Object antialias = RenderingHints.VALUE_ANTIALIAS_OFF;
-    	private Object interpolate = RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR;
-    	
     	private RenderingHints rh = new RenderingHints(
 	             RenderingHints.KEY_RENDERING, rendering);
     	
@@ -336,18 +332,6 @@ public class GameWindow
     	{
     		super(true);
     		setPreferredSize(new Dimension(XRES_GL, YRES_GL));
-    	}
-    	
-    	/**
-    	 * Updates the rendering hints
-    	 */
-    	public void updateRenderingHints()
-    	{
-    		rh.clear();
-    		rh.add(new RenderingHints(RenderingHints.KEY_RENDERING, rendering));
-    		rh.add(new RenderingHints(RenderingHints.KEY_TEXT_ANTIALIASING, textAntialias));
-    		rh.add(new RenderingHints(RenderingHints.KEY_ANTIALIASING, antialias));
-    		rh.add(new RenderingHints(RenderingHints.KEY_INTERPOLATION, interpolate));
     	}
     	
     	/**
@@ -376,7 +360,6 @@ public class GameWindow
 	    		if (Main.getShaderHandler().getNumEnabled() > 0)
 	    			bufferedRendering = true;
 
-    		int drawing = 0;
     		if (bufferedRendering)
     		{
     			if (render)
@@ -408,14 +391,12 @@ public class GameWindow
     											imgHandle.getY(i) + cameraY + imgHandle.getImage(i).getHeight(null) > clipY / 2)
     									{
     										g.drawImage(imgHandle.getImage(i), imgHandle.getX(i) + (int) cameraX, imgHandle.getY(i) + (int) cameraY, null);
-    										drawing++;
     									}
     								}
     							}
 								else
 								{
     								g.drawImage(imgHandle.getImage(i), imgHandle.getX(i), imgHandle.getY(i), null);
-    								drawing++;
 								}
     						}
     						else

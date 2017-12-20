@@ -2,7 +2,6 @@ package core.Triggers;
 
 import core.Entity;
 import core.GameAmbientSound;
-import core.GameSound;
 import core.Trigger;
 import main.Main;
 

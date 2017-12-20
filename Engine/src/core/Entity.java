@@ -13,10 +13,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -77,17 +75,12 @@ public class Entity
 	private double height = 0;						// The Entity's height
 	private boolean isImage = false;				// Whether the Entity is an Image
 	private BufferedImage image;					// The Entity's Image
-	private BufferedImage buffImage;				// The Entity's Image
 	private File imageFile;							// The Entity's image file
 	private int mass = 1;							// The Entity's mass
 	private int xs = 1;								// The Entity's x scale
 	private int ys = 1;								// The Entity's y scale
 	private String text = "";						// The Entity's text
 	private boolean isText = false;					// Whether the Entity is text
-	@Deprecated
-	private int physicsTried = 1;
-	@Deprecated
-	private boolean tryingPhysics = false;
 	private Entity collisionEntity;					// The Entity's collided Entity
 	private boolean isKinetic = true;				// Whether the Entity is kinetic
 	private boolean canPush = false;				// Whether the Entity can push other entities

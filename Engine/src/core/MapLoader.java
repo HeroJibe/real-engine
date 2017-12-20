@@ -242,6 +242,7 @@ public class MapLoader
 	 * @return
 	 */
 	private long start;
+	@SuppressWarnings({ "unused", "deprecation" })
 	public int loadMap(boolean prefab, boolean loadsaved)
 	{
 		Main.getGameWindow().lighting = null;
@@ -376,7 +377,6 @@ public class MapLoader
 						int height;
 						int z;
 						boolean solid;
-						boolean renderInReflections;
 						int mass = 1;
 						boolean kinetic = true;
 					
@@ -503,7 +503,6 @@ public class MapLoader
 						int height;
 						int z;
 						boolean solid;
-						boolean renderInReflections;
 						int mass = 1;
 						boolean kinetic = true;
 					
@@ -639,15 +638,12 @@ public class MapLoader
 						tokens = args.split(delims);
 					
 						String texture;
-						String name = "Reflective Brush Face";
 						double x;
 						double y;
 						int width;
 						int height;
 						int z;
 						boolean solid;
-						int mass = 1;
-						boolean kinetic = true;
 						double reflectivity;
 						int tileX;
 						int tileY;
@@ -708,7 +704,6 @@ public class MapLoader
 						tokens = args.split(delims);
 						
 						int type = -1;
-						String texture;
 						String name = "Brush Face";
 						double x;
 						double y;
@@ -788,9 +783,6 @@ public class MapLoader
 						int tileH = 1;
 						int z;
 						boolean solid;
-						int mass = 1;
-					
-					
 						if (tokens[0].equals("STATIC"))
 						{
 							type = Entity.STATIC;
@@ -812,7 +804,7 @@ public class MapLoader
 						tileH = (int) getEntityReplacement(tokens[9]);
 						if (type == Entity.DYNAMIC)
 						{
-							mass = Integer.parseInt(tokens[10]);
+							Integer.parseInt(tokens[10]);
 							name = tokens[11];
 						}
 						
@@ -829,14 +821,12 @@ public class MapLoader
 						BufferedImage img = new BufferedImage((int) (width * tileW),
 								(int) (height * tileH), BufferedImage.TYPE_INT_ARGB);
 						Graphics g = img.getGraphics();
-						int l = 0;
 						for (int j = 0; j < tileH; j++)
 						{
 							for (int k = 0; k < tileW; k++)
 							{
 								g.drawImage(rawImg, (int) (k * width), 
 										(int) (j * height), null);
-								l++;
 							}
 						}
 						
@@ -873,7 +863,6 @@ public class MapLoader
 						tokens = args.split(delims);
 						
 						int type = -1;
-						String name = "Seperate Tiled Brush Face";
 						String texture;
 						double x;
 						double y;
@@ -883,9 +872,6 @@ public class MapLoader
 						int tileH = 1;
 						int z;
 						boolean solid;
-						int mass = 1;
-					
-					
 						if (tokens[0].equals("STATIC"))
 						{
 							type = Entity.STATIC;
@@ -907,8 +893,7 @@ public class MapLoader
 						tileH = (int) getEntityReplacement(tokens[9]);
 						if (type == Entity.DYNAMIC)
 						{
-							mass = Integer.parseInt(tokens[10]);
-							name = tokens[11];
+							Integer.parseInt(tokens[10]);
 						}
 						
 						//(Entity.DYNAMIC, resourceHandler.getImage(resourceHandler.getIndexByName("player.png")), true, "Player Entity", 640, 360, 10, 64, 64, 100, false);
@@ -922,13 +907,11 @@ public class MapLoader
 						
 						BufferedImage img = new BufferedImage(width * tileW, height * tileH, BufferedImage.TYPE_INT_ARGB);
 						Graphics g = img.getGraphics();
-						int l = 0;
 						for (int j = 0; j < tileH; j++)
 						{
 							for (int k = 0; k < tileW; k++)
 							{
 								g.drawImage(rawImg, (int) k * width, (int) j * height, null);
-								l++;
 							}
 						}
 						
@@ -973,11 +956,9 @@ public class MapLoader
 								Main.println("Error at " + prefabFile.toString() + ":" + (i + 1) + ": unkown logic argument: " + tokens2[0], Color.RED);		
 						}
 						
-						String timerStart = null;
 						Trigger recievedTrigger = null;
 						if (type == MapEntity.TIMER)
 						{
-							timerStart = tokens2[1];
 							time = Integer.parseInt(tokens2[2]);
 						}
 						else if (type == MapEntity.ON_TRIGGER)
@@ -1170,8 +1151,6 @@ public class MapLoader
 						}
 						else if (triggerType.equals("TriggerStopTrigger"))
 						{
-							int mx;
-							int my;
 							if (tokens[2].equals("con"))
 								con = true;
 							else
@@ -1252,8 +1231,6 @@ public class MapLoader
 						}
 						else if (triggerType.equals("TriggerBreak"))
 						{
-							int mx;
-							int my;
 							if (tokens[2].equals("con"))
 								con = true;
 							else
@@ -1296,8 +1273,6 @@ public class MapLoader
 						}
 						else if (triggerType.equals("TriggerGravityDecay"))
 						{
-							int mx;
-							int my;
 							if (tokens[2].equals("con"))
 								con = true;
 							else

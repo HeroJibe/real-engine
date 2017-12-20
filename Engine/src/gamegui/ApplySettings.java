@@ -1,15 +1,19 @@
 	package gamegui;
 
+import java.awt.Color;
+import java.io.IOException;
+
 import core.GameSound;
 import core.ReflectiveEntityHandler;
 import core.RenderLoop;
 import main.Main;
+import utilities.GraphicsConfig;
 import utilities.KeyBinds;
 
 public class ApplySettings
 {
 	public static void applySettings(Settings settings)
-	{
+	{		
 		String lod = settings.getVideoSettings().lod.getSelectedItem().toString();
 		if (lod.equals("Low"))
 		{
@@ -113,6 +117,16 @@ public class ApplySettings
 		KeyBinds.UP = settings.getControlSettings().jumpKey.getText();
 		KeyBinds.LEFT = settings.getControlSettings().leftKey.getText();
 		KeyBinds.RIGHT = settings.getControlSettings().rightKey.getText();
+	
+		try 
+		{
+			KeyBinds.generateFile();
+			GraphicsConfig.generateFile();
+		} 
+		catch (IOException e) 
+		{
+			Main.println("Failed exporting configuration files.", Color.RED);
+		}
 	}
 	
 	public static void loadSettings(Settings settings)
@@ -195,6 +209,8 @@ public class ApplySettings
 			settings.getGeneralSettings().debug.setSelectedItem("Yes");
 		else
 			settings.getGeneralSettings().debug.setSelectedItem("No");
+		
+		
 		
 		settings.getControlSettings().jumpKey.setText(KeyBinds.UP);
 		settings.getControlSettings().leftKey.setText(KeyBinds.LEFT);

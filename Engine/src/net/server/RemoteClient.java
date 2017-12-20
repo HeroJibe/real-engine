@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -84,6 +83,7 @@ public class RemoteClient
 			send("reqeust map");
 			String curr = in.readLine();
 			File map = new File("maps\\" + NetMain.serverMain.getMapName() + ".map");
+			@SuppressWarnings("resource")
 			Scanner fileIn = new Scanner(map);
 			while (! curr.equals("file end"))
 			{
