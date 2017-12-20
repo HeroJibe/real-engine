@@ -10,8 +10,6 @@ import java.awt.Color;
 import java.awt.Point;
 import java.io.File;
 
-import javax.sound.sampled.Clip;
-
 import core.Animation;
 import core.Entity;
 import core.GameAmbientSound;

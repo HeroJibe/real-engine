@@ -1,8 +1,6 @@
 package game.gameevents;
 
 import core.GameEvent;
-import core.GameRunnable;
-import core.GameThread;
 import core.NodeTranslator;
 import main.Main;
 
@@ -15,9 +13,6 @@ public class GameEventPerformanceTest
 	private NodeTranslator first;
 	private NodeTranslator second;
 	private NodeTranslator third;
-	private NodeTranslator fourth;
-	private NodeTranslator fifth;
-	
 	private boolean started;
 	
 	public GameEventPerformanceTest()

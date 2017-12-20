@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="core.guiElements.GuiImage"/>
-<fullyQualifiedTypeName name="core.guiElements.GuiElement.GuiAction"/>
-<fullyQualifiedTypeName name="utilities.AdvancedFilters"/>
 <fullyQualifiedTypeName name="java.awt.Graphics"/>
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="net.core.CommandHandler"/>
 <fullyQualifiedTypeName name="net.server.ServerConsole"/>
-<fullyQualifiedTypeName name="java.io.PrintStream"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
 <fullyQualifiedTypeName name="java.net.Socket"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="net.server.ServerMain"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="javax.naming.Context"/>
@@ -29,7 +24,6 @@
 <fullyQualifiedTypeName name="core.GameThread"/>
 <fullyQualifiedTypeName name="core.NodeTranslator"/>
 <fullyQualifiedTypeName name="game.gameevents.GameEventPerformanceTest"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="core.Trigger"/>
 <fullyQualifiedTypeName name="core.Triggers.TriggerBreak"/>
 <fullyQualifiedTypeName name="core.Triggers.TriggerGravityDecay"/>
@@ -39,7 +33,6 @@
 <fullyQualifiedTypeName name="java.awt.image.BufferStrategy"/>
 <fullyQualifiedTypeName name="java.awt.Point"/>
 <fullyQualifiedTypeName name="javax.sound.sampled.FloatControl.Type"/>
-<fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="gui.GameWindow"/>
 <fullyQualifiedTypeName name="java.util.List"/>
@@ -60,4 +53,11 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="utilities.KeyBinds"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="gamegui.ApplySettings"/>
+<fullyQualifiedTypeName name="java.io.PrintStream"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="utilities.GraphicsConfig"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
 </qualifiedTypeNameHistroy>

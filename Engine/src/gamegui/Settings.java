@@ -174,7 +174,7 @@ public class Settings
 		}
 	}
 
-	class General
+	public class General
 		extends JPanel
 	{
 		private static final long serialVersionUID = 1540254458915240967L;
@@ -216,7 +216,7 @@ public class Settings
 		}
 	}
 	
-	class Control
+	public class Control
 		extends JPanel
 	{
 		private static final long serialVersionUID = 6550254493215240967L;
@@ -272,7 +272,7 @@ public class Settings
 		}
 	}
 	
-	class Video
+	public class Video
 		extends JPanel
 	{
 		private static final long serialVersionUID = 6550254493215240967L;
@@ -362,7 +362,7 @@ public class Settings
 		}
 	}
 	
-	class Audio
+	public class Audio
 		extends JPanel
 	{
 		private static final long serialVersionUID = 6550254493215240967L;

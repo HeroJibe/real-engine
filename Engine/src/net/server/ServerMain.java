@@ -1,11 +1,6 @@
 package net.server;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -19,11 +14,8 @@ public class ServerMain
 	private ServerSocket server;
 	private Socket socket;
 	private boolean run;
-	private PrintWriter out;
-	private BufferedReader in;
 	private RemoteClientHandler clientHandler;
 	private String serverVersion;
-	private int maxUsers;
 	private String mapName;
 	public volatile boolean settingUp;
 	
@@ -31,7 +23,6 @@ public class ServerMain
 	{
 		this.port = port;
 		run = false;
-		maxUsers = 20;
 		mapName = "test";
 		serverVersion = Main.ENGINE_VERSION_NAME;
 	}
@@ -103,9 +94,8 @@ public class ServerMain
 			return;
 		}
 		
-		if (! run)
-			this.maxUsers = maxUsers;
-		else
+		if (! run) {
+		} else
 			NetMain.println("Server is already running!");
 	}
 	

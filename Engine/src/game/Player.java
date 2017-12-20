@@ -8,8 +8,6 @@
 package game;
 
 import java.awt.Image;
-import java.util.Random;
-
 import core.Animation;
 import core.Entity;
 import core.GameAmbientSound;
@@ -18,7 +16,6 @@ import core.GameSound;
 import core.InputListener;
 import core.NavigationMesh;
 import core.guiElements.GuiImage;
-import gui.GameWindow;
 import main.Main;
 import utilities.KeyBinds;
 
@@ -110,17 +107,12 @@ public class Player
 	private int jumpedFrom = 0;
 	private int timesJumped = 0;
 	private GameSound mat1;
-	private GameSound mat2;
-	private GameSound mat3;
-	private GameSound mat4;
 	private Animation jump;
 	private Animation fall;
 	private Animation left;
 	private Animation right;
 	private Animation idle;
 	private Thread deadThread;
-	private boolean moving;
-	
 	/**
 	 * The navigation mesh
 	 */
@@ -157,12 +149,6 @@ public class Player
 		navMesh.buildNavMesh();
 		
 		mat1 = new GameAmbientSound("jump", Main.getResourceHandler().getByName("pop.wav"), GameSound.EFFECT);
-		
-		mat2 = new GameAmbientSound("walk", Main.getResourceHandler().getByName("walk2.wav"), GameSound.EFFECT);
-		
-		mat3 = new GameAmbientSound("walk2", Main.getResourceHandler().getByName("walk1.wav"), GameSound.EFFECT);
-		
-		mat4 = new GameAmbientSound("walk3", Main.getResourceHandler().getByName("walk3.wav"), GameSound.EFFECT);
 		
 		Main.getGameWindow().focusEntity = playerEntity;
 		
@@ -208,7 +194,6 @@ public class Player
 
 	private void detectMotion()
 	{
-		moving = false;
 		try
 		{
 			isOnGround = false;
@@ -333,7 +318,6 @@ public class Player
 				}
 				if (inputListener.isKeyPressed(KeyBinds.LEFT))
 				{
-					moving = true;
 					if (inputListener.isKeyPressed(KeyBinds.UP) && isOnLeft && jumpedFrom != JUMPED_FROM_LEFT)
 					{
 						jumpedFrom = JUMPED_FROM_LEFT;
@@ -363,7 +347,6 @@ public class Player
 				}
 				if (inputListener.isKeyPressed(KeyBinds.RIGHT))
 				{
-					moving = true;
 					if (inputListener.isKeyPressed(KeyBinds.UP) && isOnRight && jumpedFrom != JUMPED_FROM_RIGHT)
 					{
 						jumpedFrom = JUMPED_FROM_RIGHT;

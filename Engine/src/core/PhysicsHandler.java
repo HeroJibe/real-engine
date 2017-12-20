@@ -10,7 +10,6 @@ package core;
 import java.awt.Color;
 
 import main.Main;
-import utilities.ResourceMonitor;
 
 public class PhysicsHandler
 	implements Runnable

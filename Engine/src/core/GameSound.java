@@ -8,7 +8,6 @@
 package core;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 
@@ -247,7 +246,6 @@ public class GameSound
 		//audioClip.stop();
 		FloatControl gainControl = (FloatControl) audioClip.getControl(FloatControl.Type.MASTER_GAIN);
 		float range = gainControl.getMaximum() - gainControl.getMinimum();
-		float old = gainControl.getValue();
 		float gain;
 		float mult = getDistanceMultiplier();
 		

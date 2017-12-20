@@ -8,14 +8,10 @@
 
 package game;
 
-import java.io.File;
-
 import core.GameEventHandler;
 import core.GameRunnable;
-import core.GameSound;
 import core.ParticleArguments;
 import core.ParticleEffect;
-import core.SoundSource;
 import core.guiElements.GuiButton;
 import game.gameevents.GameEventClose;
 import game.gameevents.GameEventPerformanceTest;
@@ -103,8 +99,6 @@ public class GameMain
 		lastGravity = Main.getPhysicsHandler().getGravity();
 		paused = false;
 		
-		SoundSource p = new SoundSource(0, 0);
-		GameSound sound = new GameSound("water", new File("resources\\sound\\water.wav"), GameSound.EFFECT, p, 500);
 		ParticleArguments arg = new ParticleArguments(0, 0, 0, 50, 50, 15, 0, 0.9, -1, false, 10, 5000, null, 1, true, ParticleArguments.SpatialRelation.BOX, ParticleArguments.StopType.COLLISION);
 		ParticleEffect effect = new ParticleEffect("WaterBottom", Main.getResourceHandler().getImage(Main.getResourceHandler().getIndexByName("waterParticle.png", true)), arg);
 		Main.getParticleEffectHandler().addToBuffer(effect);

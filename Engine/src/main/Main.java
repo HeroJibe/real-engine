@@ -12,7 +12,6 @@ import java.awt.DisplayMode;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.ServerSocket;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -24,6 +23,7 @@ import core.MapElements.Brush;
 import core.guiElements.ButtonHandlers.ButtonAnimationHandler;
 import game.GameMain;
 import game.Player;
+import gamegui.ApplySettings;
 import gamegui.Menu;
 import gamegui.Settings;
 import gui.DebugWindow;
@@ -33,6 +33,8 @@ import shaders.Jitter;
 import utilities.ClockTimer;
 import utilities.ClockTimerHandler;
 import utilities.FramesCounter;
+import utilities.GraphicsConfig;
+import utilities.KeyBinds;
 import utilities.RenderMonitor;
 import utilities.ResourceMonitor;
 
@@ -42,12 +44,12 @@ public final class Main
 	/**
 	 * The numerical version of the engine
 	 */
-	public static final int ENGINE_VERSION = 13100;
+	public static final int ENGINE_VERSION = 13102;
 	
 	/**
 	 * The build of the engine
 	 */
-	public static final int ENGINE_BUILD = 39;
+	public static final int ENGINE_BUILD = 41;
 	
 	/**
 	 * The name of the engine
@@ -57,7 +59,7 @@ public final class Main
 	/**
 	 * The String version of the engine
 	 */
-	public static final String ENGINE_VERSION_NAME = "1.3.1.00";
+	public static final String ENGINE_VERSION_NAME = "1.3.1.01";
 	
 	/**
 	 * Whether the engine is in debug mode
@@ -396,11 +398,39 @@ public final class Main
 		println("Done.");
 		
 		loadMessage = "Creating materials...";
-		println("Creating materials");
+		println("Creating materials...");
 		new Material("Stone");
 		new Material("Dirt");
 		new Material("Grass");
 		new Material("Water");
+		
+		println("Done.");
+		
+		loadMessage = "Loading configuration...";
+		println("Loading configurations...");
+		File keys = new File("config\\keyconfig.config");
+		if (keys.exists())
+		{
+			KeyBinds.loadKeys(keys);
+		}
+		else
+		{
+			println("Error finding key binding configuration", Color.RED);
+			println("Generating...");
+			KeyBinds.generateDefault();
+		}
+		
+		File video = new File("config\\graphics.config");
+		if (video.exists())
+		{
+			GraphicsConfig.loadGraphics(video);
+		}
+		else
+		{
+			println("Error finding graphics configuration", Color.RED);
+			println("Generating...");
+			GraphicsConfig.generateFile();
+		}
 		
 		println("Done.");
 		
@@ -444,6 +474,8 @@ public final class Main
 		//window.setLocation((GameWindow.XRES_GL / 2) - (window.getWidth() / 4), 
 		//		(GameWindow.YRES_GL / 2) - (window.getHeight() / 4));
 		
+		ApplySettings.loadSettings(settingsWindow);
+		
 		if (exitCode == 1 || exitCode == 2)
 		{
 			loadingMap = false;
@@ -461,15 +493,6 @@ public final class Main
 			
 			playerThread.start();
 			triggerHandlerThread.start();
-			SoundSource p = new SoundSource(0, 0);
-			GameSound testSong = new GameSound("water", 
-					resourceHandler.getByName("prettyMami.wav"), GameSound.EFFECT, p, 100);
-			//(new Thread(testSong)).start();
-		//	testSong.playSound();
-		//	gameSoundHandler.addMaterial(testSong);
-		//	testSong.playSound();
-		//	(new Thread(gameSoundHandler)).start();
-			
 			RenderLoop renderLoop = new RenderLoop();
 			Thread renderThread = new Thread(renderLoop);
 			renderThread.setPriority(Thread.MAX_PRIORITY);
