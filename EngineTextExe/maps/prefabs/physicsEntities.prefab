@@ -1,5 +1,0 @@
-Prefab
-Brush = DYNAMIC gabenobedy.png 960 540 100 64 64 true 19 true MovingEntity
-Brush = DYNAMIC physicsblock.png 1300 800 1 64 64 true 5 true PhysicsBlock
-
-Trigger = STATIC TriggerMove con 940 520 120 120 MovingEntity 1 0 10 MovingEntityTrigger

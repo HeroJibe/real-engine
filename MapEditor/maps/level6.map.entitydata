@@ -1,7 +1,0 @@
-0 resources\textures\bricktop1920.png 1920 64 true "Brush Face" 0.0 1023.0 0 1920.0 64.0 100 false false false 1 true
-0 resources\textures\bricktop1920.png 1920 64 true "Brush Face" 0.0 0.0 0 1920.0 64.0 100 false false false 1 true
-0 resources\textures\brickside1080.png 64 1080 true "Brush Face" 640.0 0.0 0 64.0 1080.0 100 false false false 1 true
-0 resources\textures\brick.png 128 64 true "Brush Face" 704.0 150.0 0 128.0 64.0 100 false false false 1 true
-0 resources\textures\brick.png 196 64 true "Brush Face" 1152.0 959.0 0 196.0 64.0 100 false false false 1 true
-0 resources\textures\Green1.png 32 32 false "Brush Face" 1152.0 895.0 0 32.0 32.0 100 false true false 1 true
-0 resources\textures\brickside1080.png 64 1080 true "Brush Face" 1216.0 0.0 0 64.0 1080.0 100 false false false 1 true
