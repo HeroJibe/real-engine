@@ -94,7 +94,7 @@ public class KeyBinds
 	{
 		File f = new File("config\\keyconfig.config");
 		PrintStream out = new PrintStream(f);
-		
+
 		out.println("UP = " + UP);
 		out.println("DOWN = " + DOWN);
 		out.println("LEFT = " + LEFT);

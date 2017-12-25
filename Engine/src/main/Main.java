@@ -43,7 +43,7 @@ public final class Main
 	/**
 	 * The numerical version of the engine
 	 */
-	public static final int ENGINE_VERSION = 13200;
+	public static final int ENGINE_VERSION = 13201;
 	
 	/**
 	 * The build of the engine
@@ -58,7 +58,7 @@ public final class Main
 	/**
 	 * The String version of the engine
 	 */
-	public static final String ENGINE_VERSION_NAME = "1.3.2.00";
+	public static final String ENGINE_VERSION_NAME = "1.3.2.01";
 	
 	/**
 	 * Whether the engine is in debug mode
@@ -462,6 +462,7 @@ public final class Main
 				Main.println("Failed to generate graphics configuration!", Color.RED);
 			}
 		}
+		ApplySettings.loadSettings(settingsWindow);
 		
 		println("Done.");
 		
@@ -477,11 +478,6 @@ public final class Main
 		Death death = new Death("death");
 		shaderHandler.addShader(jitter);
 		shaderHandler.addShader(death);
-		Main.println("Done.");
-		
-		Main.println("Applying settings...");
-		ApplySettings.applySettings(settingsWindow);
-		ApplySettings.loadSettings(settingsWindow);
 		Main.println("Done.");
 		
 		//Thread.sleep(1000);
@@ -514,6 +510,9 @@ public final class Main
 		}
 		
 		playerThread = new GameThread(player, 1);
+		
+		//ApplySettings.applySettings(settingsWindow);
+		//ApplySettings.loadSettings(settingsWindow);
 		
 		//window.setLocation((GameWindow.XRES_GL / 2) - (window.getWidth() / 4), 
 		//		(GameWindow.YRES_GL / 2) - (window.getHeight() / 4));

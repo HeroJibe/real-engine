@@ -12,6 +12,8 @@
 
 # javadocs
 .html
+.htm
+.css
 
 # Package Files #
 *.jar
