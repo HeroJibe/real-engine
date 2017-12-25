@@ -1,7 +1,7 @@
 Map
 ForceSeperate
 Name = test
-Version = 13102
+Version = 13103
 //Background = 255 122 50
 
 Entity = VARIABLE imagePos %Random:64:1500

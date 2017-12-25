@@ -10,6 +10,7 @@ package utilities;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -89,7 +90,7 @@ public class KeyBinds
 	 * @throws FileNotFoundException
 	 */
 	public static void generateFile()
-		throws FileNotFoundException
+		throws IOException
 	{
 		File f = new File("config\\keyconfig.config");
 		PrintStream out = new PrintStream(f);
@@ -102,9 +103,6 @@ public class KeyBinds
 		out.println("PAUSE_MENU = " + PAUSE_MENU);
 		out.println("CONSOLE = " + CONSOLE);
 		
-		System.out.println("exported key binds");
-		System.out.println(UP + " " + DOWN + " " + LEFT + " " + RIGHT);
-		
 		out.close();
 	}
 	
@@ -114,7 +112,7 @@ public class KeyBinds
 	 * @throws FileNotFoundException
 	 */
 	public static void generateDefault()
-		throws FileNotFoundException
+		throws IOException
 	{
 		setDefaultKeys();
 		generateFile();

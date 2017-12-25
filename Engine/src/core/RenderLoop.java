@@ -1,11 +1,8 @@
 package core;
 
-import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.PointerInfo;
-
 import core.guiElements.ButtonHandlers.ButtonAnimationHandler;
 import game.Player;
+import gui.GameWindow;
 import main.Main;
 
 public class RenderLoop 
@@ -23,6 +20,8 @@ public class RenderLoop
 	private static int sv;
 	private int tick;
 	
+	private static Entity cameraEntity;
+	
 	public RenderLoop()
 	{
 		entityHandler = Main.getEntityHandler();
@@ -31,6 +30,7 @@ public class RenderLoop
 		guiHandler = Main.getGuiHandler();
 		bAnimationHandler = Main.getButtonAnimationHandler();
 		reflectionHandler = Main.getReflectionHandler();
+		cameraEntity = null;
 	}
 	
 	public void run()
@@ -44,16 +44,14 @@ public class RenderLoop
 			{
 				if (Main.DEBUG)
 				{
-					PointerInfo mouseInfo = MouseInfo.getPointerInfo();
-					Point mousePos = mouseInfo.getLocation();
 					//mousePos.getX() - Main.getGameWindow().getX(), mousePos.getY() - Main.getGameWindow().getY()
 					numEntities = entityHandler.getNumEntities();
 					Main.debugMessage = ("Player (" + Math.round(player.getPlayerEntity().getX() / Main.resolutionScaleX) 
 							+ ", " + Math.round(player.getPlayerEntity().getY() / Main.resolutionScaleY) 
 							+ ", " +  Math.round(player.getPlayerEntity().getXVel()) 
 							+ ", " + Math.round(player.getPlayerEntity().getYVel()) + ")"
-							+ "   Mouse (" + (mousePos.getX() - Main.getGameWindow().getX()) / Main.resolutionScaleX
-							+ ", " + (mousePos.getY() - Main.getGameWindow().getY()) / Main.resolutionScaleY + ")"
+							+ "   Camera (" + Main.getGameWindow().getCameraX()
+							+ ", " + Main.getGameWindow().getCameraY() + ")"
 							+ "   processing: " + Math.round(numEntities / (double) entityHandler.getDynEntities() * 100) + "%"
 							//+ "   memory: " + Math.round((Runtime.getRuntime().maxMemory() - Runtime.getRuntime().freeMemory()) / (double) Runtime.getRuntime().maxMemory() * 100) + "% used"
 							//+ "   threads: " + Main.getThreadsRunning()
@@ -61,6 +59,36 @@ public class RenderLoop
 							);
 				}
 				
+				/*
+				 * cameraX = -1 * (int) Math.ceil(focusEntity.getX() - (GameWindow.XRES_GL / 2));
+				cameraY = -1 * (int) Math.ceil(focusEntity.getY() - (GameWindow.YRES_GL / 2));
+
+				 */
+				if (cameraEntity != null)
+				{
+					Main.getGameWindow().setCameraX(-1 * (int) Math.ceil(cameraEntity.getX() - (GameWindow.XRES_GL / 2)));
+					Main.getGameWindow().setCameraY( -1 * (int) Math.ceil(cameraEntity.getY() - (GameWindow.YRES_GL / 2)));
+				}
+				
+				if (Main.getGameWindow().getCameraX() > Main.getGameWindow().cameraXBounds[1])
+				{
+					Main.getGameWindow().setCameraX(Main.getGameWindow().cameraXBounds[1]);
+				}
+				
+				if (Main.getGameWindow().getCameraX() < Main.getGameWindow().cameraXBounds[0])
+				{
+					Main.getGameWindow().setCameraX(Main.getGameWindow().cameraXBounds[0]);
+				}
+				
+				if (Main.getGameWindow().getCameraY() > Main.getGameWindow().cameraYBounds[1])
+				{
+					Main.getGameWindow().setCameraY(Main.getGameWindow().cameraYBounds[1]);
+				}
+				
+				if (Main.getGameWindow().getCameraY() < Main.getGameWindow().cameraYBounds[0])
+				{
+					Main.getGameWindow().setCameraY(Main.getGameWindow().cameraYBounds[0]);
+				}
 				
 				try
 				{
@@ -108,6 +136,11 @@ public class RenderLoop
 				e.printStackTrace(System.out);
 			}
 		}
+	}
+	
+	public static void setCameraEntity(Entity e)
+	{
+		cameraEntity = e;
 	}
 	
 	public static int getSV()

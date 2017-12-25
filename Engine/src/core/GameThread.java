@@ -1,14 +1,16 @@
+package core;
+
+import main.Main;
+
 /**
  * The GameThread is a way of making virtual
  * threads in the game.
  * 
  * @author Ethan Vrhel
+ * @see GameRunnable
+ * @see GameThreadHandler
+ * @see DelayedGameThreadHandler
  */
-
-package core;
-
-import main.Main;
-
 public class GameThread 
 {
 	private GameRunnable r;
@@ -28,9 +30,9 @@ public class GameThread
 	}
 	
 	/**
-	 * Returns the GameRunnable
+	 * Returns the <code>GameRunnable</code>
 	 * 
-	 * @return
+	 * @return The <code>GameRunnable</code>
 	 */
 	public GameRunnable getRunnable()
 	{
@@ -40,7 +42,7 @@ public class GameThread
 	/**
 	 * Returns the thread's delay
 	 * 
-	 * @return
+	 * @return The thread's delay
 	 */
 	public int getDelay()
 	{
@@ -49,7 +51,7 @@ public class GameThread
 	
 	/**
 	 * Returns the thread's tick
-	 * @return
+	 * @return the thread's tick
 	 */
 	public int getTick()
 	{
@@ -59,7 +61,7 @@ public class GameThread
 	/**
 	 * Increments the thread's tick
 	 */
-	public void incrementTick()
+	void incrementTick()
 	{
 		tick++;
 	}
@@ -67,7 +69,7 @@ public class GameThread
 	/**
 	 * Resets the thread's tick
 	 */
-	public void resetTick()
+	void resetTick()
 	{
 		tick = 0;
 	}
@@ -75,7 +77,7 @@ public class GameThread
 	/**
 	 * Returns whether the thread is running
 	 * 
-	 * @return
+	 * @return The running state of the thread
 	 */
 	public boolean running()
 	{

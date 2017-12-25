@@ -233,7 +233,6 @@ public class MapLoader
 	}
 	
 	int entities = 0;
-	@SuppressWarnings("unused")
 	/**
 	 * Loads the map
 	 * 
@@ -257,6 +256,11 @@ public class MapLoader
 			Main.getMapEntityHandler().stopAll();
 			Main.getMapEntityHandler().removeAll();
 			Main.getNodeHandler().clearAll();
+			
+			Main.getGameWindow().cameraXBounds[0] = Integer.MIN_VALUE;
+			Main.getGameWindow().cameraXBounds[1] = Integer.MAX_VALUE;
+			Main.getGameWindow().cameraYBounds[0] = Integer.MIN_VALUE;
+			Main.getGameWindow().cameraYBounds[1] = Integer.MAX_VALUE;
 			
 			staticEntityCache = new Entity[Main.getEntityHandler().getMaxEntities()];
 			staticEntityIndex = 0;
@@ -668,7 +672,7 @@ public class MapLoader
 						Image img = Main.getResourceHandler().getImage(
 								Main.getResourceHandler().getIndexByName(texture, true)).getScaledInstance(
 										width, height, Image.SCALE_AREA_AVERAGING);
-						if (tileX == 1 && tileY == 1)
+						if (false && tileX == 1 && tileY == 1)
 						{
 							se = new ReflectiveEntity(img, width, height,
 									solid, x, y, z, 100, true, ReflectiveEntity.Plane.NEGATIVE_Y, reflectivity);
@@ -830,7 +834,7 @@ public class MapLoader
 							}
 						}
 						
-
+						
 						Entity e = new Entity(type, img, width * tileW, 
 								height * tileH, solid, x, y, z, 100, false);
 						e.setVisible(true);
@@ -1606,6 +1610,19 @@ public class MapLoader
 							
 							Main.player_x = Double.parseDouble(tokens[1]);
 							Main.player_y = Double.parseDouble(tokens[2]);
+						}
+						else if (entityType.equals("CAMERA"))
+						{
+							if (fileType == 1)
+							{
+								Main.println("Error at " + prefabFile.toString() + ":" + (i + 1) + ": prefabs cannot set global map attributes", Color.RED);
+								return -1;
+							}
+							
+							Main.getGameWindow().cameraXBounds[0] = Integer.parseInt(tokens[1]);
+							Main.getGameWindow().cameraXBounds[1] = Integer.parseInt(tokens[2]);
+							Main.getGameWindow().cameraYBounds[0] = Integer.parseInt(tokens[3]);
+							Main.getGameWindow().cameraYBounds[1] = Integer.parseInt(tokens[4]);
 						}
 						else if (entityType.equals("VARIABLE"))
 						{

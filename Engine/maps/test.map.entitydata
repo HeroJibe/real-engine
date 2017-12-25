@@ -13,21 +13,19 @@
 0 resources\textures\brickside491.png 42 327 true "Brush Face" 0.0 0.0 0 42.666666666666664 327.3333333333333 100 false false false 1 true
 0 resources\textures\brickside491.png 42 327 true "Brush Face" 0.0 619.0 0 42.666666666666664 327.3333333333333 100 false false false 1 true
 0 resources\textures\DirtFloor.png 42 42 true "floor" 1610.0 960.0 0 42.666666666666664 42.666666666666664 100 false true false 1 true
+1 null 11 11 false "Unnamed Dynamic Entity" 1301.698233985 390.5 0 10.666666666666666 10.666666666666666 100 false false false 1 true
 0 null 43 1366 true "Unnamed Static Entity" 960.0 -2048.0 0 42.666666666666664 1365.3333333333333 100 false false false 1 true
 0 resources\textures\brick.png 5 16 true "Brush Face" 128.0 1000.0 0 5.333333333333333 16.0 100 false false false 1 true
 0 resources\textures\brick.png 5 10 true "Brush Face" 136.0 1008.0 0 5.333333333333333 10.666666666666666 100 false false false 1 true
 0 resources\textures\brick.png 5 5 true "Brush Face" 144.0 1015.9999999999999 0 5.333333333333333 5.333333333333333 100 false false false 1 true
-1 null 11 11 false "Unnamed Dynamic Entity" 1332.9842274505 413.0 0 10.666666666666666 10.666666666666666 100 false false false 1 true
 0 null 1238 43 false "Unnamed Static Entity" 64.0 1023.0 1 1237.3333333333333 42.666666666666664 100 false true false 1 true
 0 null 86 256 true "Unnamed Static Entity" 128.0 491.0 1 85.33333333333333 256.0 100 false false false 1 true
-1 resources\textures\gabenobedy.png 42 42 true "MovingEntity" 1000.0 958.9375000000001 1 42.666666666666664 42.666666666666664 100 false false false 19 true
-1 resources\textures\physicsblock.png 42 42 true "PhysicsBlock" 1300.0 895.875 1 42.666666666666664 42.666666666666664 100 false false false 5 true
+1 resources\textures\gabenobedy.png 42 42 true "MovingEntity" 1000.0 958.9375000000003 1 42.666666666666664 42.666666666666664 100 false false false 19 true
+1 resources\textures\physicsblock.png 42 42 true "PhysicsBlock" 1311.5982865302237 895.8750000000002 1 42.666666666666664 42.666666666666664 100 false false false 5 true
 0 resources\textures\CenterSegment1.png 42 42 false "Brush Face" 1290.0 960.0 1 42.666666666666664 42.666666666666664 100 false true false 1 true
 0 resources\textures\CenterSegment1.png 42 42 false "Brush Face" 1610.0 960.0 1 42.666666666666664 42.666666666666664 100 false true false 1 true
-1 resources\textures\metal.png 42 21 true "elevator" 64.0 991.0 1 42.666666666666664 21.333333333333332 100 false false false 50 true
+1 resources\textures\metal.png 42 21 true "elevator" 64.0 991.9999999999999 1 42.666666666666664 21.333333333333332 100 false false false 50 true
 0 null 64 64 false "Brush Face" 500.0 964.0 2 64.0 64.0 100 false true false 1 true
-1 resources\textures\Dance1.png 21 42 true "Player Entity" 502.46770177057454 978.8750000000002 10 17.333333333333332 29.333333333333332 100 false true false 10 true
+1 resources\textures\Dance1.png 17 29 true "Player Entity" 590.8776785609235 978.8749999999999 10 17.333333333333332 29.333333333333332 100 false true false 10 true
 0 null 342 36 true "Reflective entity" 676.0 320.0 50 342.0 36.0 100 false true false 1 true
 0 null 171 43 false "Reflective entity" 1354.0 960.0 100 171.0 43.0 100 false true false 1 true
-1 resources\textures\Blue1.png 10 10 false "gemBlue" 96.0 447.0 536870911 10.666666666666666 10.666666666666666 100 false false false 1 true
-1 resources\textures\Green1.png 10 10 false "gem" 540.0 900.0 536870911 10.666666666666666 10.666666666666666 100 false false false 1 true

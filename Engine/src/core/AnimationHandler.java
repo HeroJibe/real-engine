@@ -1,16 +1,16 @@
-/**
- * The AnimationHandler class provides refrences to
- * all of the active Animations
- * 
- * @author 	Ethan Vrhel
- */
-
 package core;
 
 import java.awt.Color;
 
 import main.Main;
 
+/**
+ * The AnimationHandler class provides refrences to
+ * all of the active Animations
+ * 
+ * @author 	Ethan Vrhel
+ * @see Animation
+ */
 public class AnimationHandler 
 	implements Runnable
 {
@@ -86,9 +86,9 @@ public class AnimationHandler
 	}
 	
 	/**
-	 * Adds an Animation
+	 * Adds an <code>Animation</code>
 	 * 
-	 * @param anim
+	 * @param anim The <code>Animation</code> 
 	 */
 	public void addAnimation(Animation anim)
 	{
@@ -109,10 +109,10 @@ public class AnimationHandler
 	}
 	
 	/**
-	 * Returns an Animation by its name
+	 * Returns an <code>Animation</code> by its name
 	 * 
-	 * @param name
-	 * @return
+	 * @param name The name
+	 * @return The <code>Animation</code>
 	 */
 	public Animation getByName(String name)
 	{
@@ -133,7 +133,7 @@ public class AnimationHandler
 	/**
 	 * Sets all of the Animations to a frame
 	 * 
-	 * @param frame
+	 * @param frame The frame
 	 */
 	public void setAllToFrame(int frame)
 	{
@@ -149,7 +149,7 @@ public class AnimationHandler
 	/**
 	 * Increments the amount of Animations running
 	 */
-	public void incrementRunning()
+	synchronized void incrementRunning()
 	{
 		animationsRunning++;
 	}
@@ -157,7 +157,7 @@ public class AnimationHandler
 	/**
 	 * Decrements the amount of Animation running
 	 */
-	public void decrementRunning()
+	synchronized void decrementRunning()
 	{
 		animationsRunning--;
 	}
@@ -165,7 +165,7 @@ public class AnimationHandler
 	/**
 	 * Returns the amount of Animations running
 	 * 
-	 * @return
+	 * @return The number of Animations running
 	 */
 	public int getAnimationsRunning()
 	{
@@ -175,7 +175,7 @@ public class AnimationHandler
 	/**
 	 * Returns the number of Animations
 	 * 
-	 * @return
+	 * @return The number of Animations
 	 */
 	public int getNumAnimations()
 	{

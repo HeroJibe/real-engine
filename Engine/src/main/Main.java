@@ -1,15 +1,9 @@
-/**
- * This class is the startup class and
- * initializes the engine.
- * 
- * @author Ethan Vrhel
- */
-
 package main;
 
 import java.awt.Color;
 import java.awt.DisplayMode;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.time.LocalDateTime;
@@ -37,19 +31,24 @@ import utilities.GraphicsConfig;
 import utilities.KeyBinds;
 import utilities.RenderMonitor;
 import utilities.ResourceMonitor;
-
+/**
+ * This class is the startup class and
+ * initializes the engine.
+ * 
+ * @author Ethan Vrhel
+ */
 @SuppressWarnings("deprecation")
 public final class Main
 {
 	/**
 	 * The numerical version of the engine
 	 */
-	public static final int ENGINE_VERSION = 13102;
+	public static final int ENGINE_VERSION = 13200;
 	
 	/**
 	 * The build of the engine
 	 */
-	public static final int ENGINE_BUILD = 41;
+	public static final int ENGINE_BUILD = 42;
 	
 	/**
 	 * The name of the engine
@@ -59,7 +58,7 @@ public final class Main
 	/**
 	 * The String version of the engine
 	 */
-	public static final String ENGINE_VERSION_NAME = "1.3.1.01";
+	public static final String ENGINE_VERSION_NAME = "1.3.2.00";
 	
 	/**
 	 * Whether the engine is in debug mode
@@ -220,7 +219,10 @@ public final class Main
 	
 	private Main() {}	
 	
-	public static void main(String[] args) throws InterruptedException, IOException
+	/**
+	 * The main method (duh.)
+	 */
+	public static void main(String[] args)
 	{
 		ClockTimer t = new ClockTimer();
 		t.startTimer();
@@ -239,8 +241,23 @@ public final class Main
 		loadingMap = true;
 		
 		logFile = new File(getNextLogName());
-		logFile.createNewFile();
-		out = new PrintStream(logFile);
+		try 
+		{
+			logFile.createNewFile();
+		}
+		catch (IOException e1) 
+		{
+			Main.println("Failed to create log file!", Color.RED);
+		}
+		
+		try 
+		{
+			out = new PrintStream(logFile);
+		}
+		catch (FileNotFoundException e1) 
+		{
+			Main.println("Failed to find log file!", Color.RED);
+		}
 		
 		int imageCache = 512;
 		window = new GameWindow(GameMain.NAME, GameWindow.XRES_GL, GameWindow.YRES_GL, true, imageCache);
@@ -303,7 +320,7 @@ public final class Main
 		println("Intializing...");
 		
 		println("Constructing handlers...");
-		entityHandler = new EntityHandler(256);
+		entityHandler = new EntityHandler(2048);
 		resourceHandler = new ResourceHandler(256);
 		listener = new InputListener(window);
 		mouseListener = new MouseInputListener(window);
@@ -417,7 +434,14 @@ public final class Main
 		{
 			println("Error finding key binding configuration", Color.RED);
 			println("Generating...");
-			KeyBinds.generateDefault();
+			try 
+			{
+				KeyBinds.generateDefault();
+			}
+			catch (IOException e) 
+			{
+				Main.println("Failed to generate key binding configurations!", Color.RED);
+			}
 		}
 		
 		File video = new File("config\\graphics.config");
@@ -429,7 +453,14 @@ public final class Main
 		{
 			println("Error finding graphics configuration", Color.RED);
 			println("Generating...");
-			GraphicsConfig.generateFile();
+			try
+			{
+				GraphicsConfig.generateFile();
+			}
+			catch (IOException e) 
+			{
+				Main.println("Failed to generate graphics configuration!", Color.RED);
+			}
 		}
 		
 		println("Done.");
@@ -446,6 +477,11 @@ public final class Main
 		Death death = new Death("death");
 		shaderHandler.addShader(jitter);
 		shaderHandler.addShader(death);
+		Main.println("Done.");
+		
+		Main.println("Applying settings...");
+		ApplySettings.applySettings(settingsWindow);
+		ApplySettings.loadSettings(settingsWindow);
 		Main.println("Done.");
 		
 		//Thread.sleep(1000);
@@ -465,7 +501,15 @@ public final class Main
 		}
 		catch (Exception e)
 		{
-			Thread.sleep(5000);
+			e.printStackTrace(System.out);
+			try
+			{
+				Thread.sleep(5000);
+			}
+			catch (InterruptedException e2)
+			{
+				e.printStackTrace(System.out);
+			}
 			Main.exit(1);
 		}
 		
@@ -474,7 +518,7 @@ public final class Main
 		//window.setLocation((GameWindow.XRES_GL / 2) - (window.getWidth() / 4), 
 		//		(GameWindow.YRES_GL / 2) - (window.getHeight() / 4));
 		
-		ApplySettings.loadSettings(settingsWindow);
+		//ApplySettings.loadSettings(settingsWindow);
 		
 		if (exitCode == 1 || exitCode == 2)
 		{
@@ -507,7 +551,14 @@ public final class Main
 		}
 		else
 		{
-			Thread.sleep(2500);
+			try
+			{
+				Thread.sleep(2500);
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace(System.out);
+			}
 			Main.exit(1);
 		}
 	}

@@ -1,5 +1,13 @@
 package core;
 
+/**
+ * The <code>DecalHandler</code> class handles
+ * all of the <code>Decal</code> objects in
+ * the map
+ * 
+ * @author Ethan Vrhel
+ * @see Decal
+ */
 public class DecalHandler 
 {
 	private Decal[] decals;
@@ -11,6 +19,9 @@ public class DecalHandler
 		this.maxDecals = maxDecals;
 	}
 	
+	/**
+	 * Applies all decals
+	 */
 	public void applyDecals()
 	{
 		for (int i = 0; i < maxDecals; i++)
@@ -22,6 +33,10 @@ public class DecalHandler
 		}
 	}
 	
+	/**
+	 * Adds a decal
+	 * @param decal A decal
+	 */
 	public void addDecal(Decal decal)
 	{
 		for (int i = 0; i < maxDecals; i++)

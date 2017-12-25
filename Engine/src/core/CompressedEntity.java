@@ -6,6 +6,13 @@ import java.awt.Image;
 import main.Main;
 import net.NetMain;
 
+/**
+ * The <code>CompressedEntity</code> class provides
+ * a way to compress an Entity into a <code>String</code>
+ * 
+ * @author Ethan Vrhel
+ * @see Entity
+ */
 public class CompressedEntity 
 {
 	private Entity e;
@@ -15,6 +22,11 @@ public class CompressedEntity
 		this.e = e;
 	}
 	
+	/**
+	 * Converts the <code>CompressedEntity</code> into
+	 * an Entity
+	 * @return The decompressed <code>Entity</code>
+	 */
 	public Entity toEntity()
 	{
 		String compress = toString();
@@ -99,6 +111,13 @@ public class CompressedEntity
 		return e;
 	}
 	
+	/**
+	 * Converts the <code>CompressedEntity</code> 
+	 * into a <code>String</code>
+	 * 
+	 * @return The String representation of the <code>CompressedEntity</code>
+	 */
+	@Override
 	public String toString()
 	{
 		if (e == null)
@@ -143,6 +162,11 @@ public class CompressedEntity
 		return compressed;
 	}
 	
+	/**
+	 * Assigns the <code>Entity</code> to a <code>CompressedEntity</code>
+	 * @param e The <code>Entity</code>
+	 * @param ce The <code>CompressedEntity</code>
+	 */
 	public static void assign(Entity e, CompressedEntity ce)
 	{
 		e = ce.toEntity();

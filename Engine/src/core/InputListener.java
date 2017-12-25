@@ -58,7 +58,7 @@ public class InputListener
 		{
 			if (keysPressed[i] != null)
 			{
-				if (keysPressed[i].equals(toAdd) && pressed[i])
+				if (keysPressed[i].equalsIgnoreCase(toAdd) && pressed[i])
 					return;
 			}
 		}
@@ -82,7 +82,7 @@ public class InputListener
 		{
 			if (keysPressed[i] != null)
 			{
-				if (keysPressed[i].equals(remove) && pressed[i])
+				if (keysPressed[i].equalsIgnoreCase(remove) && pressed[i])
 				{
 					pressed[i] = false;
 					numKeysPressed--;
@@ -107,7 +107,7 @@ public class InputListener
 		{
 			if (keysPressed[i] != null)
 			{
-				if (keysPressed[i].equals(key) && pressed[i])
+				if (keysPressed[i].equalsIgnoreCase(key) && pressed[i])
 				{
 					return true;
 				}

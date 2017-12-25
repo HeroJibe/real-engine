@@ -230,6 +230,9 @@ public class Settings
 		public JLabel right;
 		public JTextField rightKey;
 		
+		public JLabel pause;
+		public JTextField pauseKey;
+		
 		public Control()
 		{
 			jump = new JLabel("Jump");
@@ -243,6 +246,10 @@ public class Settings
 			right = new JLabel("Right");
 			rightKey = new JTextField(5);
 			rightKey.setText(KeyBinds.RIGHT);
+			
+			pause = new JLabel("Pause");
+			pauseKey = new JTextField(5);
+			pauseKey.setText(KeyBinds.PAUSE_MENU);
 			
 			GridBagConstraints g = new GridBagConstraints();
 			GridBagLayout layout = new GridBagLayout();
@@ -269,6 +276,13 @@ public class Settings
 			g.gridx = 1;
 			g.gridy = 1;
 			add(rightKey, g);
+			
+			g.gridx = 2;
+			g.gridy = 1;
+			add(pause, g);
+			g.gridx = 3;
+			g.gridy = 1;
+			add(pauseKey, g);
 		}
 	}
 	

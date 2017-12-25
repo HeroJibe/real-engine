@@ -1,4 +1,10 @@
-	package gamegui;
+/**
+ * Applies and loads settings
+ * 
+ * @author Ethan Vrhel
+ */
+
+package gamegui;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -12,6 +18,12 @@ import utilities.KeyBinds;
 
 public class ApplySettings
 {
+	/**
+	 * Applies the settings from the settings window to
+	 * the actual in-game settings
+	 * 
+	 * @param settings
+	 */
 	public static void applySettings(Settings settings)
 	{		
 		String lod = settings.getVideoSettings().lod.getSelectedItem().toString();
@@ -117,6 +129,7 @@ public class ApplySettings
 		KeyBinds.UP = settings.getControlSettings().jumpKey.getText();
 		KeyBinds.LEFT = settings.getControlSettings().leftKey.getText();
 		KeyBinds.RIGHT = settings.getControlSettings().rightKey.getText();
+		KeyBinds.PAUSE_MENU = settings.getControlSettings().pauseKey.getText();
 	
 		try 
 		{
@@ -129,6 +142,11 @@ public class ApplySettings
 		}
 	}
 	
+	/**
+	 * Loads the game settings into the settings window
+	 * 
+	 * @param settings
+	 */
 	public static void loadSettings(Settings settings)
 	{
 		if (Main.getReflectionHandler().getReflectionType() == ReflectiveEntityHandler.FAST_DYNAMIC_REFLECTIONS)
@@ -215,5 +233,6 @@ public class ApplySettings
 		settings.getControlSettings().jumpKey.setText(KeyBinds.UP);
 		settings.getControlSettings().leftKey.setText(KeyBinds.LEFT);
 		settings.getControlSettings().rightKey.setText(KeyBinds.RIGHT);
+		settings.getControlSettings().pauseKey.setText(KeyBinds.PAUSE_MENU);
 	}
 }

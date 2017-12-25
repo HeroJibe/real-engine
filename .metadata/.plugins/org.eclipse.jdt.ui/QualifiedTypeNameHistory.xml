@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.awt.Graphics"/>
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="net.core.CommandHandler"/>
 <fullyQualifiedTypeName name="net.server.ServerConsole"/>
@@ -48,16 +47,17 @@
 <fullyQualifiedTypeName name="core.commands.Echo"/>
 <fullyQualifiedTypeName name="gui.SystemConsole"/>
 <fullyQualifiedTypeName name="core.Command"/>
-<fullyQualifiedTypeName name="main.Main"/>
 <fullyQualifiedTypeName name="java.net.ServerSocket"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="utilities.KeyBinds"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
-<fullyQualifiedTypeName name="gamegui.ApplySettings"/>
 <fullyQualifiedTypeName name="java.io.PrintStream"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="main.Main"/>
+<fullyQualifiedTypeName name="utilities.LoadConfigurations"/>
 <fullyQualifiedTypeName name="utilities.GraphicsConfig"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="gamegui.ApplySettings"/>
 </qualifiedTypeNameHistroy>

@@ -27,7 +27,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import core.Entity;
 import core.NavigationMesh;
 import core.ResourceHandler;
 import main.Main;
@@ -51,12 +50,12 @@ public class GameWindow
 	/**
 	 * The x resolution
 	 */
-	public static int XRES_GL = (int) (gd.getDisplayMode().getWidth() / 3 * 2);
+	public static int XRES_GL = (int) (gd.getDisplayMode().getWidth() / 1 * 1);
 	
 	/**
 	 * The y resolution
 	 */
-	public static int YRES_GL = (int) (gd.getDisplayMode().getHeight() / 3 * 2);
+	public static int YRES_GL = (int) (gd.getDisplayMode().getHeight() / 1 * 1);
 	
 	/**
 	 * Using fast text rendering
@@ -189,6 +188,20 @@ public class GameWindow
 	private double cameraY = 0;
 	
 	/**
+	 * The camera's x bounds
+	 * (max, min)
+	 * 
+	 */
+	public volatile int[] cameraXBounds = {Integer.MIN_VALUE, Integer.MAX_VALUE};
+	
+	/**
+	 * The camera's y bounds
+	 * (max, min)
+	 * 
+	 */
+	public volatile int[] cameraYBounds = {Integer.MIN_VALUE, Integer.MAX_VALUE};
+	
+	/**
 	 * The renderer's x clip
 	 */
 	public volatile int clipX = 0;
@@ -198,7 +211,7 @@ public class GameWindow
 	 */
 	public volatile int clipY = 0;
 	
-	public volatile Entity focusEntity = null;
+	//public volatile Entity focusEntity = null;
 	
 	public GameWindow(String name, int x, int y, boolean borderless, int cacheSize)
 	{
@@ -227,7 +240,7 @@ public class GameWindow
 
         toFront();
         if (borderless)
-        	setUndecorated(false);
+        	setUndecorated(true);
         
         try
         {
@@ -345,11 +358,13 @@ public class GameWindow
     		renderUpdates++;
     		renderTime++;
     		
+    		/*
     		if (focusEntity != null)
     		{
 	    		cameraX = -1 * (int) Math.ceil(focusEntity.getX() - (GameWindow.XRES_GL / 2));
 				cameraY = -1 * (int) Math.ceil(focusEntity.getY() - (GameWindow.YRES_GL / 2));
     		}
+    		*/
     		
     	    currentFont = g.getFont();
     	    newFont = currentFont.deriveFont(currentFont.getSize() * fontSize);
@@ -806,6 +821,24 @@ public class GameWindow
     public double getCameraY()
     {
     	return cameraY;
+    }
+    
+    /**
+     * Sets the camera's x position
+     * @param x The x position
+     */
+    public synchronized void setCameraX(double x)
+    {
+    	cameraX = x;
+    }
+    
+    /**
+     * Sets the camera's y position
+     * @param y The y position
+     */
+    public synchronized void setCameraY(double y)
+    {
+    	cameraY = y;
     }
 
 	@Override

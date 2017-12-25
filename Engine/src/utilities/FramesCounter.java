@@ -1,8 +1,14 @@
+/**
+ * Calculates the FPS
+ * 
+ * @author Ethan Vrhel
+ */
+
 package utilities;
 
 import main.Main;
 
-public class FramesCounter 
+public final class FramesCounter 
 {
 	private int currentFPS = 0;
 	private int FPS = 0;
@@ -19,6 +25,9 @@ public class FramesCounter
 		average = 0;
 	}
 	
+	/**
+	 * Tick each frame (call from RenderLoop)
+	 */
 	public void tick()
 	{		
 		currentFPS++;
@@ -49,16 +58,31 @@ public class FramesCounter
 		}
 	}
 	
+	/**
+	 * Gets the fps
+	 * 
+	 * @return The FPS
+	 */
 	public int getFps()
 	{
 		return FPS;
 	}
 	
+	/**
+	 * Gets the average FPS
+	 * 
+	 * @return The average FPS
+	 */
 	public int getAverage()
 	{
 		return average;
 	}
 	
+	/**
+	 * Gets the sv value
+	 * 
+	 * @return sv
+	 */
 	public int getSv()
 	{
 		return sv;

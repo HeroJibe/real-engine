@@ -15,6 +15,7 @@ import core.GameRunnable;
 import core.GameSound;
 import core.InputListener;
 import core.NavigationMesh;
+import core.RenderLoop;
 import core.guiElements.GuiImage;
 import main.Main;
 import utilities.KeyBinds;
@@ -150,7 +151,8 @@ public class Player
 		
 		mat1 = new GameAmbientSound("jump", Main.getResourceHandler().getByName("pop.wav"), GameSound.EFFECT);
 		
-		Main.getGameWindow().focusEntity = playerEntity;
+		//Main.getGameWindow().focusEntity = playerEntity;
+		RenderLoop.setCameraEntity(playerEntity);
 		
 		jump = Main.getAnimationHandler().getByName("playerJump.anim");
 		fall = Main.getAnimationHandler().getByName("playerFall.anim");

@@ -1,12 +1,14 @@
+package core;
+
 /**
- * The DelayedGameThreadHandler handles all game
+ * The <code>DelayedGameThreadHandler handles</code> all game
  * threads with delays.
  * 
  * @author 	Ethan Vrhel
+ * @see GameThread
+ * @see GameThreadHandler
+ * @see GameRunnable
  */
-
-package core;
-
 public class DelayedGameThreadHandler 
 	implements Runnable
 {
@@ -68,9 +70,9 @@ public class DelayedGameThreadHandler
 	}
 	
 	/**
-	 * Adds a GameThread to the cache
+	 * Adds a <code>GameThread</code> to the cache
 	 * 
-	 * @param r
+	 * @param r The <code>GameThread</code>
 	 */
 	public void addThread(GameThread r)
 	{
@@ -87,7 +89,7 @@ public class DelayedGameThreadHandler
 	/**
 	 * Returns the current tick
 	 * 
-	 * @return
+	 * @return The current tick
 	 */
 	public long getTick()
 	{

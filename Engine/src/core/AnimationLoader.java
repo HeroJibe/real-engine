@@ -1,11 +1,3 @@
-/**
- * The AnimationLoader class provides a way
- * of reading .anim files and translating them
- * into Animation objects.
- * 	
- * @author 	Ethan Vrhel
- */
-
 package core;
 
 import java.awt.Color;
@@ -15,6 +7,15 @@ import java.util.Scanner;
 
 import main.Main;
 
+/**
+ * The <code>AnimationLoader</code> class provides a way
+ * of reading .anim files and translating them
+ * into <code>Animation</code> objects.
+ * 	
+ * @author 	Ethan Vrhel
+ * @see Animation
+ * @see AnimationHandler
+ */
 public class AnimationLoader 
 {
 	public static final int ENTITY_ANIM = 0;	// Constant for an Entity Animation
@@ -27,7 +28,7 @@ public class AnimationLoader
 	private static File animFile;				// The .anim file
 	
 	/**
-	 * Loads a file into the AnimationLoader memory
+	 * Loads a file into the <code>AnimationLoader</code> memory
 	 * 
 	 * @param animName
 	 */
@@ -41,8 +42,9 @@ public class AnimationLoader
 	}
 	
 	/**
-	 * Loads the Animation from the cached file and nulls
-	 * it when completed.
+	 * Loads the <code>Animation</code> from the cached file and adds
+	 * it to the <code>AnimationHandler</code>'s cache.  Nulls the
+	 * file when completed.
 	 */
 	public static void load()
 	{

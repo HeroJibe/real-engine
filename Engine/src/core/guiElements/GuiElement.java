@@ -79,6 +79,18 @@ public abstract class GuiElement
 		}
 	}
 	
+	public GuiElement(String name, int type, BufferedImage image, double x, double y, int z, int w, int h)
+	{
+		isAlive = true;
+		isVisible = true;
+		this.name = name;
+		this.x = x * Main.resolutionScaleX;
+		this.y = y * Main.resolutionScaleY;
+		this.width = w * Main.resolutionScaleX;
+		this.height = h * Main.resolutionScaleY;
+		this.image = image;
+	}
+	
 	public void update()
 	{
 		MouseInputListener mouseListener = Main.getMouseListener();

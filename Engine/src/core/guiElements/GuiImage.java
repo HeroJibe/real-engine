@@ -1,5 +1,6 @@
 package core.guiElements;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 import core.InputListener;
@@ -7,10 +8,14 @@ import core.InputListener;
 public class GuiImage 
 	extends GuiElement
 {
-
-	public GuiImage(String name, int type, File imageFile, double x, double y, int z, int w, int h) 
+	public GuiImage(String name, int type, File image, double x, double y, int z, int w, int h) 
 	{
-		super(name, type, imageFile, x, y, z, w, h);
+		super(name, type, image, x, y, z, w, h);
+	}
+
+	public GuiImage(String name, int type, BufferedImage image, double x, double y, int z, int w, int h) 
+	{
+		super(name, type, image, x, y, z, w, h);
 	}
 
 	void onAction(GuiAction a) 

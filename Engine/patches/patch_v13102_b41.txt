@@ -1,9 +1,0 @@
-Real Engine version 1.3.1.02 build 41
-Patched 12/20/2017
-
-Additions:
-	
-Improvements:
-
-Fixes:
--Fixed problems with saving/loading configurations

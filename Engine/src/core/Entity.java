@@ -1,10 +1,3 @@
-/**
- * The Entity class is the base for all renderable
- * objects along with non-renderable ones.
- * 
- * @author Ethan Vrhel
- */
-
 package core;
 
 import java.awt.Color;
@@ -23,8 +16,13 @@ import gui.GameWindow;
 import main.Main;
 import utilities.AdvancedFilters;
 
+/**
+ * The Entity class is the base for all renderable
+ * objects along with non-renderable ones.
+ * 
+ * @author Ethan Vrhel
+ */
 public class Entity
-	extends Object
 	implements Comparable<Entity>
 {
 	/**

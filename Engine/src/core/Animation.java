@@ -1,10 +1,3 @@
-/**
- * The Animation class provides tools for animating
- * entities and gui elements.
- * 
- * @author	Ethan Vrhel
- */
-
 package core;
 
 import java.awt.Color;
@@ -17,6 +10,16 @@ import core.guiElements.GuiElement;
 import main.Main;
 import utilities.AdvancedFilters;
 
+/**
+ * The <code>Animation</code> class provides tools for animating
+ * entities and GUI elements.
+ * 
+ * @author	Ethan Vrhel
+ * @see AnimationHandler
+ * @see AnimationLoader
+ * @see Entity
+ * @see GuiElement
+ */
 public class Animation
 {
 	private String name;					// The name of the Animation
@@ -68,9 +71,9 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the next frame of the Animation
-	 * as a BufferedImage
-	 * @return
+	 * Returns the next frame of the <code>Animation</code>
+	 * as a <code>BufferedImage</code>
+	 * @return The next frame
 	 */
 	public BufferedImage nextFrame()
 	{
@@ -89,9 +92,9 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the next frame of the Animation
-	 * as a plain Image
-	 * @return
+	 * Returns the next frame of the <code>Animation</code>
+	 * as a plain <code>Image</code>
+	 * @return The next frame
 	 */
 	public Image nextFrameImage()
 	{
@@ -110,9 +113,9 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the BufferedImage at a frame
-	 * @param frame
-	 * @return
+	 * Returns the <code>BufferedImage</code> at a frame
+	 * @param frame The frame number
+	 * @return The <code>BufferedImage</code> at a frame
 	 */
 	public BufferedImage frame(int frame)
 	{
@@ -126,8 +129,8 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the current frame of the Animation
-	 * @return
+	 * Returns the current frame of the <code>Animation</code>
+	 * @return The current frame
 	 */
 	public Image currFrame()
 	{
@@ -135,8 +138,8 @@ public class Animation
 	}
 	
 	/**
-	 * Sets the Animation's frame
-	 * @param frame
+	 * Sets the frame of an <code>Animation</code>
+	 * @param frame The frame number
 	 */
 	public void setFrame(int frame)
 	{
@@ -147,8 +150,9 @@ public class Animation
 	}
 	
 	/**
-	 * Updates the tied Entity with the Animation
-	 * @param e
+	 * Updates the tied <code>Entity</code> 
+	 * with the <code>Animation</code>
+	 * @param e The <code>Entity</code>
 	 */
 	public void update(Entity e)
 	{
@@ -156,8 +160,9 @@ public class Animation
 	}
 	
 	/**
-	 * Updates the tied GuiElement with the Animation
-	 * @param g
+	 * Updates the tied <code>GuiElement</code> 
+	 * with the <code>Animation</code>
+	 * @param g The <code>GuiElement</code>
 	 */
 	public void update(GuiElement g)
 	{
@@ -165,8 +170,8 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the tied Entity
-	 * @return
+	 * Returns the tied <code>Entity</code>
+	 * @return the tied <code>Entity</code>
 	 */
 	public Entity getEntity()
 	{
@@ -174,8 +179,8 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the tied GuiElement
-	 * @return
+	 * Returns the tied <code>GuiElement</code>
+	 * @return the <code>GuiElement</code> tied to the <code>Animation</code>
 	 */
 	public GuiElement getGuiElement()
 	{
@@ -184,7 +189,7 @@ public class Animation
 	
 	/**
 	 * Returns the current frame
-	 * @return
+	 * @return The current frame of the <code>Animation</code>
 	 */
 	public int getFrame()
 	{
@@ -192,8 +197,8 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the rate of the Animation
-	 * @return
+	 * Returns the rate of the <code>Animation</code>
+	 * @return The rate
 	 */
 	public int getRate()
 	{
@@ -201,8 +206,8 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the number of frames in the Animation
-	 * @return
+	 * Returns the number of frames in the <code>Animation</code>
+	 * @return The number of frames
 	 */
 	public int getNumFrames()
 	{
@@ -210,8 +215,8 @@ public class Animation
 	}
 	
 	/**
-	 * Sets the Animation's rate
-	 * @param rate
+	 * Sets the rate
+	 * @param rate The new rate
 	 */
 	public void setRate(int rate)
 	{
@@ -219,8 +224,8 @@ public class Animation
 	}
 	
 	/**
-	 * Returns whether the Animation is animating or not
-	 * @return
+	 * Returns whether the <code>Animation</code> is animating or not
+	 * @return Whether the <code>Animation</code> is animating
 	 */
 	public boolean isAnimating()
 	{
@@ -228,8 +233,8 @@ public class Animation
 	}
 	
 	/**
-	 * Sets whether the Animation should run or not
-	 * @param runAnimation
+	 * Sets whether the <code>Animation</code> should run or not
+	 * @param runAnimation Whether the <code>Animation</code> should run or not
 	 */
 	public void shouldRun(boolean runAnimation)
 	{
@@ -237,8 +242,8 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the Animation's name
-	 * @return
+	 * Returns the name of the <code>Animation</code>
+	 * @return The name of the <code>Animation</code>
 	 */
 	public String getName()
 	{
@@ -252,8 +257,8 @@ public class Animation
 	}
 	
 	/**
-	 * Sets the Animation's tied Entity
-	 * @param e
+	 * Sets the tied <code>Entity</code>
+	 * @param e The <code>Entity</code>
 	 */
 	public void setEntity(Entity e)
 	{
@@ -262,8 +267,8 @@ public class Animation
 	}
 	
 	/**
-	 * Sets the Animation tied GuiElement
-	 * @param g
+	 * Sets the tied <code>GuiElement</code>
+	 * @param g The <code>GuiElement</code>
 	 */
 	public void setGuiElement(GuiElement g)
 	{
@@ -272,8 +277,9 @@ public class Animation
 	}
 	
 	/**
-	 * Sets whether the Animation should limit itself
-	 * @param limitAnimation
+	 * Sets whether the <code>Animation</code> should limit itself
+	 * @param limitAnimation Whether the <code>Animation</code> should
+	 * limit itself
 	 */
 	public void limitAnimation(boolean limitAnimation)
 	{
@@ -281,9 +287,9 @@ public class Animation
 	}
 	
 	/**
-	 * Sets the orientation of the Animation
-	 * @param xOr
-	 * @param yOr
+	 * Sets the orientation of the <code>Animation</code>
+	 * @param xOr x orientation
+	 * @param yOr y orientation
 	 */
 	public void setOrientation(boolean xOr, boolean yOr)
 	{
@@ -292,8 +298,8 @@ public class Animation
 	}
 	
 	/**
-	 * Returns if the Animation is flipped horizontally
-	 * @return
+	 * Returns if the <code>Animation</code> is flipped horizontally
+	 * @return Whether the <code>Animation</code> is flipped horizontally
 	 */
 	public boolean flipHorizontal()
 	{
@@ -301,8 +307,8 @@ public class Animation
 	}
 	
 	/**
-	 * Returns if the Animation is flipped vertically
-	 * @return
+	 * Returns if the <code>Animation</code> is flipped vertically
+	 * @return Whether the <code>Animation</code> is flipped vertically
 	 */
 	public boolean flipVertical()
 	{
@@ -310,7 +316,7 @@ public class Animation
 	}
 	
 	/**
-	 * Updates the images of the Animation
+	 * Updates the frames of the <code>Animation</code>
 	 */
 	public void updateImages()
 	{
@@ -327,34 +333,34 @@ public class Animation
 	}
 	
 	/**
-	 * Increments the Animation's tick
+	 * Increments the tick
 	 */
-	public void tick()
+	synchronized void tick()
 	{
 		tick++;
 	}
 	
 	/**
-	 * Sets the Animation's tick
-	 * @param tick
+	 * Sets the tick
+	 * @param tick The tick
 	 */
-	public void setTick(long tick)
+	synchronized void setTick(long tick)
 	{
 		this.tick = tick;
 	}
 	
 	/**
 	 * Returns the current tick
-	 * @return
+	 * @return Current tick
 	 */
-	public long getTick()
+	synchronized long getTick()
 	{
 		return tick;
 	}
 	
 	/**
-	 * Returns whether the Animation limits itself
-	 * @return
+	 * Returns whether the <code>Animation</code> limits itself
+	 * @return Whether the <code>Animation</code> limits itself
 	 */
 	public boolean limitingAnimation()
 	{
@@ -363,7 +369,7 @@ public class Animation
 	
 	/**
 	 * Returns the image cache
-	 * @return
+	 * @return The frames of the <code>Animation</code>
 	 */
 	public BufferedImage[] getImages()
 	{
@@ -371,9 +377,9 @@ public class Animation
 	}
 	
 	/**
-	 * Returns the BufferedImage at a frame
-	 * @param frame
-	 * @return
+	 * Returns the <code>BufferedImage</code> at a frame
+	 * @param frame The frame
+	 * @return The <code>BufferedImage</code> at a frame
 	 */
 	public BufferedImage getImageAtFrame(int frame)
 	{
@@ -381,9 +387,9 @@ public class Animation
 	}
 	
 	/**
-	 * Animates an Entity with an Animation
-	 * @param e
-	 * @param a
+	 * Animates an <code>Entity</code> with an <code>Animation</code>
+	 * @param e The <code>Entity</code>
+	 * @param a The <code>Animation</code>
 	 */
 	public static void animate(Entity e, Animation a)
 	{
@@ -398,9 +404,9 @@ public class Animation
 	}	
 	
 	/**
-	 * Animates a GuiElement with an Animation
-	 * @param g
-	 * @param a
+	 * Animates a <code>GuiElement</code> with an <code>Animation</code>
+	 * @param g The <code>GuiElement</code>
+	 * @param a The <code>Animation</code>
 	 */
 	public static void animate(GuiElement g, Animation a)
 	{

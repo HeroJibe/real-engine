@@ -1,3 +1,9 @@
+/**
+ * Handles graphics configurations
+ * 
+ * @author Ethan Vrhel
+ */
+
 package utilities;
 
 import java.awt.Color;
@@ -17,7 +23,7 @@ public class GraphicsConfig
 	 * @param graphics
 	 */
 	public static void loadGraphics(File graphics)
-	{
+	{		
 		try 
 		{
 			Scanner in = new Scanner(graphics);

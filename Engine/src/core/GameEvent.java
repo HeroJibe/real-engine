@@ -1,15 +1,12 @@
+package core;
+
 /**
  * The GameEvent abstract class provides a
  * framework for programmable events which 
  * can be called in .map or .prefab files.
  * 
  * @author Ethan Vrhel
- * @version 1.0
- * @since 2017-09-01
  */
-
-package core;
-
 public abstract class GameEvent
 {
 	private String name;		// The GameEvent's name
@@ -26,7 +23,7 @@ public abstract class GameEvent
 	 * 
 	 * @return
 	 */
-	public String getName()
+	public final String getName()
 	{
 		return name;
 	}
@@ -34,7 +31,7 @@ public abstract class GameEvent
 	/**
 	 * Enables the GameEvent
 	 */
-	public void enable()
+	public final synchronized void enable()
 	{
 		run = true;
 	}
@@ -42,7 +39,7 @@ public abstract class GameEvent
 	/**
 	 * Disables the GameEvent
 	 */
-	public void disable()
+	public final synchronized void disable()
 	{
 		run = false;
 	}
@@ -52,7 +49,7 @@ public abstract class GameEvent
 	 * 
 	 * @return
 	 */
-	public boolean shouldRun()
+	public final synchronized boolean shouldRun()
 	{
 		return run;
 	}

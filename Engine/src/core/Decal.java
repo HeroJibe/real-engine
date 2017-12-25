@@ -5,6 +5,14 @@ import java.awt.image.BufferedImage;
 
 import main.Main;
 
+/**
+ * The <code>Decal</code> class applies a
+ * <code>BufferedImage</code> to an <code>Entity</code>
+ * 
+ * @author Ethan Vrhel
+ * @see DecalHandler
+ * @see Entity
+ */
 public class Decal 
 {
 	public static final int APPLY_SUCCESS = 0;
@@ -23,14 +31,17 @@ public class Decal
 		this.offY = offY;
 	}
 	
+	/**
+	 * Applies the <code>Decal</code>
+	 * 
+	 * @return The return state
+	 */
 	public int update()
 	{
-		System.out.println("updating bound entity...");
 		try
 		{
 			if (entityFace == null)
 			{
-				System.out.println("failed (entity is null)");
 				return APPLY_FAIL;
 			}
 			
@@ -39,32 +50,30 @@ public class Decal
 			{
 				Graphics g = entityFace.getBufferedImage().getGraphics();
 				g.drawImage(img, offX, offY, null);
-				System.out.println("success");
 				return APPLY_SUCCESS;
 			}	
-			if (entityFace.getBufferedImage() == null)
-				System.out.println("failed (entity is missing an image)");
-			else
-				System.out.println("failed (entity uses an animation)");
+
 			return APPLY_FAIL;
 		}
 		catch (Exception e)
 		{
-			System.out.println("failed (unhandled exception)");
 			e.printStackTrace(System.out);
 			return APPLY_FAIL;
 		}
 	}
 	
+	/**
+	 * Applies the <code>Decal</code> to an external <code>Entity</code>
+	 * 
+	 * @param e The <code>Entity</code>
+	 * @return The return state
+	 */
 	public int update(Entity e)
 	{
-		System.out.println("updating external entity...");
-		
 		try
 		{
 			if (e == null)
 			{
-				System.out.println("failed (entity is null)");
 				return APPLY_FAIL;
 			}
 			
@@ -72,18 +81,13 @@ public class Decal
 			{
 				Graphics g = e.getBufferedImage().getGraphics();
 				g.drawImage(img, offX, offY, null);
-				System.out.println("success");
 				return APPLY_SUCCESS;
 			}	
-			if (entityFace.getBufferedImage() == null)
-				System.out.println("failed (entity is missing an image)");
-			else
-				System.out.println("failed (entity uses an animation)");		
+		
 			return APPLY_FAIL;
 		}
 		catch (Exception e1)
 		{
-			System.out.println("failed (unhandled exception)");
 			return APPLY_FAIL;
 		}
 	}

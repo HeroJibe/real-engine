@@ -24,8 +24,8 @@
             <Keywords name="Folders in comment, open"></Keywords>
             <Keywords name="Folders in comment, middle"></Keywords>
             <Keywords name="Folders in comment, close"></Keywords>
-            <Keywords name="Keywords1">Brush&#x000D;&#x000A;Entity&#x000D;&#x000A;Prefab&#x000D;&#x000A;Decal&#x000D;&#x000A;TiledBrush&#x000D;&#x000A;Trigger&#x000D;&#x000A;Logic&#x000D;&#x000A;Name&#x000D;&#x000A;Background&#x000D;&#x000A;Map</Keywords>
-            <Keywords name="Keywords2">VARIABLE&#x000D;&#x000A;PLAYER_START&#x000D;&#x000A;STATIC&#x000D;&#x000A;DYNAMIC&#x000D;&#x000A;GEM&#x000D;&#x000A;true&#x000D;&#x000A;false&#x000D;&#x000A;</Keywords>
+            <Keywords name="Keywords1">Brush&#x000D;&#x000A;Entity&#x000D;&#x000A;Prefab&#x000D;&#x000A;Decal&#x000D;&#x000A;TiledBrush&#x000D;&#x000A;LowDetailBrush&#x000D;&#x000A;Version&#x000D;&#x000A;ReflectiveBrush&#x000D;&#x000A;AnimatedBrush&#x000D;&#x000A;Trigger&#x000D;&#x000A;Logic&#x000D;&#x000A;Name&#x000D;&#x000A;Background&#x000D;&#x000A;Map&#x000D;&#x000A;ForceSeperate</Keywords>
+            <Keywords name="Keywords2">VARIABLE&#x000D;&#x000A;PLAYER_START&#x000D;&#x000A;STATIC&#x000D;&#x000A;DYNAMIC&#x000D;&#x000A;GEM&#x000D;&#x000A;PARTICLE_EFFECT&#x000D;&#x000A;NODE&#x000D;&#x000A;TRACK&#x000D;&#x000A;XPLANE&#x000D;&#x000A;YPLANE&#x000D;&#x000A;true&#x000D;&#x000A;false&#x000D;&#x000A;</Keywords>
             <Keywords name="Keywords3">%&#x000D;&#x000A;time:</Keywords>
             <Keywords name="Keywords4">InvokeTrigger&#x000D;&#x000A;TriggerMove&#x000D;&#x000A;TriggerStartTrigger&#x000D;&#x000A;TriggerStopTrigger&#x000D;&#x000A;TriggerGameEvent&#x000D;&#x000A;TriggerHurt&#x000D;&#x000A;TriggerShader&#x000D;&#x000A;TriggerSound&#x000D;&#x000A;TriggerGravity&#x000D;&#x000A;TriggerLoad</Keywords>
             <Keywords name="Keywords5"></Keywords>

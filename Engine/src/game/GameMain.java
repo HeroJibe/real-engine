@@ -14,6 +14,7 @@ import core.ParticleArguments;
 import core.ParticleEffect;
 import core.guiElements.GuiButton;
 import game.gameevents.GameEventClose;
+import game.gameevents.GameEventInstruct;
 import game.gameevents.GameEventPerformanceTest;
 import gamegui.Menu;
 import gamegui.Settings;
@@ -98,6 +99,9 @@ public class GameMain
 		gems = 0;
 		lastGravity = Main.getPhysicsHandler().getGravity();
 		paused = false;
+		
+		GameEventInstruct event3 = new GameEventInstruct();
+		gameEventHandler.addEvent(event3);
 		
 		ParticleArguments arg = new ParticleArguments(0, 0, 0, 50, 50, 15, 0, 0.9, -1, false, 10, 5000, null, 1, true, ParticleArguments.SpatialRelation.BOX, ParticleArguments.StopType.COLLISION);
 		ParticleEffect effect = new ParticleEffect("WaterBottom", Main.getResourceHandler().getImage(Main.getResourceHandler().getIndexByName("waterParticle.png", true)), arg);
