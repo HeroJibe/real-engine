@@ -15,16 +15,40 @@ import gui.GameWindow;
 import main.Main;
 import utilities.ClockTimer;
 	
-@Deprecated
+/**
+ * The <code>LightHandler</code> class handles
+ * all the lights within a map.  Lighting has
+ * been broken in the engine, so it is not
+ * used, making the class effectively useless.
+ * 
+ * @author Ethan Vrhel
+ * @see Light
+ * @see Luxel
+ */
 public class LightHandler 
 	implements Runnable
 {
 	public static final boolean DEBUG_LUXELS = false;
 	public static final int LIGHT_QUAL = 1;
 	
+	/**
+	 * Full resolution lighting
+	 */
 	public static final int CALCULATE_FRL = 0;
+	
+	/**
+	 * Low resolution lighting
+	 */
 	public static final int CALCULATE_LRL = 1;
+	
+	/**
+	 * Fast approximate lighting
+	 */
 	public static final int CALCULATE_FXDL = 2;
+	
+	/**
+	 * Full Distance-Based Dynamic Lighting
+	 */
 	public static final int CALCULATE_FDDL = 3;
 	
 	private int maxLights;
@@ -36,16 +60,28 @@ public class LightHandler
 	private int illuminated = 0;
 	private double ambient;
 	
+	/**
+	 * Maximum shadow distance
+	 */
 	public static int maxShadowsDist = -1;						// Maximum shadows distance
 	
 	// FRL (Full Resolution Lighting)	
 	// LRL (Low Resolution Lighting)
+	/**
+	 * Quality scale
+	 */
 	public static int qualityScale = 64;						// Quality scale for lighting
 	
 	// FXDL (Fast Approximate Dynamic Lighting)
+	/**
+	 * Dynamic lighting update frequency
+	 */
 	public static int dynamicLightingUpdateFreq = 2;			// Value for determining dynamic lighting updates
 	
 	// FDDL (Fast Distance-Based Dynamic Lighting)
+	/**
+	 * Distance
+	 */
 	public static double dist = 1000;							// Value for determining shadow distances
 	
 	public LightHandler(int maxLights, double luxelSize, double ambient)
@@ -57,6 +93,7 @@ public class LightHandler
 		this.ambient = ambient;
 	}
 	
+	@Override
 	public void run()
 	{
 		while (GameMain.gameRunning)
@@ -76,6 +113,10 @@ public class LightHandler
 		}
 	}
 	
+	/**
+	 * Adds a <code>Light</code>
+	 * @param light A <code>Light</code>
+	 */
 	public void addLight(Light light)
 	{
 		for (int i = 0; i < maxLights; i++)
@@ -90,11 +131,22 @@ public class LightHandler
 		Main.println("Failed to add light.  Light cache not big enough.", Color.RED);
 	}
 	
+	/**
+	 * Gets the brightness at a location
+	 * @param x The x position
+	 * @param y The y position
+	 * @return The brightness
+	 */
 	public double getBrightnessAt(int x, int y)
 	{
 		return lightMap[x][y];
 	}
 	
+	/**
+	 * Updates the brightness
+	 * @param baked Whether it's baked
+	 * @param calculationType The calculation type
+	 */
 	public void updateBrightness(boolean baked, int calculationType)
 	{
 		int scale = 1;
@@ -144,6 +196,15 @@ public class LightHandler
 		dispProgress = false;
 	}
 	
+	/**
+	 * Updates the brightness
+	 * 
+	 * @param x The x position
+	 * @param y The y position
+	 * @param baked Whether it's baked
+	 * @param calculationType The calculation type
+	 * @return The brightness
+	 */
 	public double updateBrightnessAt(int x, int y, boolean baked, int calculationType)
 	{		
 		double brightness = ambient;
@@ -217,6 +278,12 @@ public class LightHandler
 	}
 	
 	private Entity[] entities = Main.getEntityHandler().getEntities();
+	/**
+	 * Calculates the brightness
+	 * @param x The x position
+	 * @param y The y position
+	 * @return The brightness
+	 */
 	public double calculateAt(int x, int y)
 	{
 		double brightness = ambient;
@@ -259,6 +326,9 @@ public class LightHandler
 		return brightness;
 	}
 	
+	/**
+	 * Builds lighting
+	 */
 	public void buildLighting()
 	{
 		Main.println("Building lighting...");

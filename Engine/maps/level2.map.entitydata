@@ -1,0 +1,20 @@
+0 null 1664 1216 true "Unnamed Static Entity" -1856.0 -256.0 0 1664.0 1216.0 100 false false false 1 true
+0 null 64 1536 true "Unnamed Static Entity" 0.0 64.0 0 64.0 1536.0 100 false false false 1 true
+0 null 192 64 true "Unnamed Static Entity" -128.0 -256.0 0 192.0 64.0 100 false true false 1 true
+0 null 64 1152 true "Unnamed Static Entity" -192.0 -192.0 0 64.0 1152.0 100 false true false 1 true
+0 null 64 960 true "Unnamed Static Entity" -64.0 64.0 0 64.0 960.0 100 false true false 1 true
+0 null 64 512 true "Unnamed Static Entity" -64.0 1024.0 0 64.0 512.0 100 false true false 1 true
+0 null 1792 64 true "Unnamed Static Entity" -1856.0 1536.0 0 1792.0 64.0 100 false true false 1 true
+0 null 1664 64 true "Unnamed Static Entity" -1856.0 960.0 0 1664.0 64.0 100 false true false 1 true
+0 null 1792 8 true "Unnamed Static Entity" -1856.0 1392.0 0 1792.0 8.0 100 false false false 1 true
+0 null 1792 128 false "Reflective entity" -1856.0 1408.0 0 1792.0 128.0 100 false true false 1 true
+0 resources\textures\BlueStoneFloor.png 64 64 true "Brush Face" 0.0 0.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexTL.png 64 64 true "Brush Face" -64.0 0.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerCL.png 64 64 true "Brush Face" -192.0 -256.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBR.png 64 64 true "Brush Face" -192.0 960.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerFR.png 64 64 true "Brush Face" -64.0 1536.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\crate.png 64 64 true "Brush Face" -128.0 1328.0 0 64.0 64.0 100 false false false 1 true
+0 resources\textures\crate.png 64 64 true "Brush Face" -1564.0 1264.0 0 64.0 64.0 100 false false false 1 true
+0 resources\textures\crate.png 64 64 true "Brush Face" -1564.0 1328.0 0 64.0 64.0 100 false false false 1 true
+0 resources\textures\crate.png 64 64 true "Brush Face" -1500.0 1328.0 0 64.0 64.0 100 false false false 1 true
+1 resources\textures\Dance1.png 26 44 true "Player Entity" -1793.853170023109 1348.0 10 26.0 44.0 100 false true false 10 true

@@ -31,7 +31,7 @@ public class GameMain
 	/**
 	 * The version of the game
 	 */
-	public static final double GAME_VERSION = 1.0;
+	public static final String GAME_VERSION = "1.0a";
 	
 	/**
 	 * Whether the player is transparent

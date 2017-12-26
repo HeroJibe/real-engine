@@ -1,10 +1,3 @@
-/**
- * The EntityHandler class handles all of the Entities
- * inside the world.
- * 
- * @author Ethan Vrhel
- */
-
 package core;
 
 import java.awt.Color;
@@ -14,6 +7,14 @@ import java.util.Arrays;
 import core.guiElements.GuiElement;
 import main.Main;
 
+/**
+ * The EntityHandler class handles all of the Entities
+ * inside the world.
+ * 
+ * @author Ethan Vrhel
+ * @see Entity
+ * @see GuiElement
+ */
 public final class EntityHandler
 {	
 	/**
@@ -57,7 +58,7 @@ public final class EntityHandler
 	 * Updates the renderer
 	 */
 	@SuppressWarnings({ "deprecation", "unused" })
-	public synchronized void update()
+	synchronized void update()
 	{
 		calculationTime++;
 		updating = true;
@@ -141,7 +142,9 @@ public final class EntityHandler
 			}
 		}
 		catch (Exception e)
-		{}
+		{
+			Main.println("Error in render updator! " + e);
+		}
 	}
 	
 	/**
@@ -153,9 +156,26 @@ public final class EntityHandler
 	}
 	
 	/**
-	 * Returns the small Entities
+	 * Returns the number of visible entities
 	 * 
-	 * @return
+	 * @return The visible entities
+	 */
+	public int getVisibleEntities()
+	{
+		int num = 0;
+		for (int i = 0; i < entitiesDyn; i++)
+		{
+			if (entities[i] != null)
+				if (entities[i].isVisible() && entities[i].isOnScreen())
+					num++;
+		}
+		return num;
+	}
+	
+	/**
+	 * Returns the small entities
+	 * 
+	 * @return the small entities
 	 */
 	@Deprecated
 	public Entity[] getSmallEntities()
@@ -173,11 +193,11 @@ public final class EntityHandler
 	}
 	
 	/**
-	 * Adds a static Entity and returns the added index
+	 * Adds a static <code>Entity</code> and returns the added index
 	 * -1 indicates a failure
 	 * 
-	 * @param entity
-	 * @return
+	 * @param entity The <code>Entity</code>
+	 * @return Return status
 	 */
 	public int addStaticEntity(Entity entity)
 	{
@@ -205,11 +225,11 @@ public final class EntityHandler
 	}
 	
 	/**
-	 * Adds a dynamic Entity and returns the added index
+	 * Adds a dynamic <code>Entity</code> and returns the added index
 	 * -1 indicates a failure
 	 * 
-	 * @param entity
-	 * @return
+	 * @param entity The <code>Entity</code>
+	 * @return Return status
 	 */
 	public int addDynamicEntity(Entity entity)
 	{
@@ -238,10 +258,10 @@ public final class EntityHandler
 	}
 	
 	/**
-	 * Returns whether an Entity exists
+	 * Returns whether an <code>Entity</code> exists
 	 * 
-	 * @param e
-	 * @return
+	 * @param e An <code>Entity</code>
+	 * @return Whether the <code>Entity</code> exists
 	 */
 	public boolean exists(Entity e)
 	{
@@ -262,20 +282,20 @@ public final class EntityHandler
 	}
 	
 	/**
-	 * Removes an Entity from the cache
+	 * Removes an <code>Entity</code> from the cache
 	 * 
-	 * @param i
+	 * @param i The index
 	 */
-	public void removeEntity(int i)
+	void removeEntity(int i)
 	{
 		entities[i] = null;
 		numEntities--;
 	}
 	
 	/**
-	 * Removes an Entity from the cache
+	 * Removes an <code>Entity</code> from the cache
 	 * 
-	 * @param e
+	 * @param e The <code>Entity</code>
 	 */
 	public void removeEntity(Entity e)
 	{
@@ -300,7 +320,7 @@ public final class EntityHandler
 	/**
 	 * Removes all Entities
 	 */
-	public void removeAllEntities()
+	void removeAllEntities()
 	{
 		for (int i = 0; i < entities.length; i++)
 		{
@@ -312,11 +332,11 @@ public final class EntityHandler
 	}
 	
 	/**
-	 * Removes all Entities excluding an Entity
+	 * Removes all Entities excluding an <code>Entity</code>
 	 * 
-	 * @param e
+	 * @param e The excluded <code>Entity</code>
 	 */
-	public void removeAllEntitiesExclude(Entity e)
+	void removeAllEntitiesExclude(Entity e)
 	{
 		int num = 0;
 		int indexHigh = 0;
@@ -340,48 +360,49 @@ public final class EntityHandler
 	/**
 	 * Returns the dynamic array size of the cache
 	 * 
-	 * @return
+	 * @return The dynamic array size
 	 */
-	public int getDynEntities()
+	int getDynEntities()
 	{
 		return entitiesDyn;
 	}
 	
 	/**
-	 * Returns the number of Entities
+	 * Returns the number of entities
 	 * 
-	 * @return
+	 * @return The number of entities
 	 */
-	public int getNumEntities()
+	int getNumEntities()
 	{
 		return numEntities;
 	}
 	
 	/**
-	 * Returns the array of Entities
+	 * Returns the array of entities
 	 * 
-	 * @return
+	 * @return All of the entities
 	 */
-	public Entity[] getEntities()
+	Entity[] getEntities()
 	{
 		return entities;
 	}
 	
 	/**
-	 * Returns the maximum Entities
+	 * Returns the maximum number of entities
 	 * 
-	 * @return
+	 * @return The maximum number of entities
 	 */
-	public int getMaxEntities()
+	int getMaxEntities()
 	{
 		return maxEntities;
 	}
 	
 	/**
-	 * Returns an Entity by its name
+	 * Returns an <code>Entity</code> by its name
 	 * 
-	 * @param name
-	 * @return
+	 * @param name The name of the <code>Entity</code>
+	 * @return The respective <code>Entity</code>, returns
+	 * <code>null</code> if it does not exist
 	 */
 	public Entity getEntityByName(String name)
 	{
@@ -399,18 +420,18 @@ public final class EntityHandler
 	}
 	
 	/**
-	 * Gets an Entity from the cache
+	 * Gets an <code>Entity</code> from the cache
 	 * 
-	 * @param i
-	 * @return
+	 * @param i The index
+	 * @return The respective <code>Entity</code>
 	 */
-	public Entity getEntity(int i)
+	Entity getEntity(int i)
 	{
 		return entities[i];
 	}
 	
 	/**
-	 * Prints all Entities
+	 * Prints all entities
 	 */
 	public void printAllEntities()
 	{
@@ -425,10 +446,10 @@ public final class EntityHandler
 	}
 	
 	/**
-	 * Returns if the Entity is occluded by another
+	 * Returns if the <code>Entity</code> is occluded by another
 	 * 
-	 * @param entity
-	 * @return
+	 * @param entity The <code>Entity</code> to test
+	 * @return The occlusion state of the <code>Entity</code>
 	 */
 	public boolean occludedByAny(Entity entity)
 	{
@@ -454,13 +475,6 @@ public final class EntityHandler
 		return false;
 	}
 	
-	/**
-	 * Returns whether an Entity is occluded by another
-	 * 
-	 * @param e1
-	 * @param e2
-	 * @return
-	 */
 	private boolean occludedBy(Entity e1, Entity e2)
 	{
 		if (e1.getZBuffer() < e2.getZBuffer())

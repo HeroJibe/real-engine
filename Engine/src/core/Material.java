@@ -5,7 +5,16 @@ import java.util.Scanner;
 
 import main.Main;
 
-public final class Material 
+/**
+ * Materials can provide translation
+ * from textures to a sound file for
+ * the player to play when it is walked
+ * on
+ * 
+ * @author Ethan Vrhel
+ * @see MaterialHandler
+ */
+public class Material 
 {
 	private String name;
 	private GameSound sound;
@@ -31,16 +40,28 @@ public final class Material
 		this.textures = textures;
 	}
 	
+	/**
+	 * Returns the sound
+	 * @return The sound
+	 */
 	public GameSound getSound()
 	{
 		return sound;
 	}
 	
+	/**
+	 * Returns the name
+	 * @return The name
+	 */
 	public String getName()
 	{
 		return name;
 	}
 	
+	/**
+	 * Returns the textures
+	 * @return The textures
+	 */
 	public String[] getTextures()
 	{
 		return textures;
@@ -60,6 +81,13 @@ public final class Material
 		return "[Material]: " + name;
 	}
 	
+	/**
+	 * Loads a <code>Material</code> from a
+	 * .mat file
+	 * 
+	 * @param file The .mat file
+	 * @return The loaded <code>Material</code>
+	 */
 	public static Material load(File file)
 	{
 		try

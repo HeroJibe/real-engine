@@ -37,18 +37,17 @@ import utilities.ResourceMonitor;
  * 
  * @author Ethan Vrhel
  */
-@SuppressWarnings("deprecation")
 public final class Main
 {
 	/**
 	 * The numerical version of the engine
 	 */
-	public static final int ENGINE_VERSION = 13201;
+	public static final int ENGINE_VERSION = 13202;
 	
 	/**
 	 * The build of the engine
 	 */
-	public static final int ENGINE_BUILD = 42;
+	public static final int ENGINE_BUILD = 43;
 	
 	/**
 	 * The name of the engine
@@ -58,12 +57,12 @@ public final class Main
 	/**
 	 * The String version of the engine
 	 */
-	public static final String ENGINE_VERSION_NAME = "1.3.2.01";
+	public static final String ENGINE_VERSION_NAME = "1.3.2.02";
 	
 	/**
 	 * Whether the engine is in debug mode
 	 */
-	public static boolean DEBUG = true;
+	public static boolean DEBUG = false;
 	
 	/**
 	 * Toggles occlusion to optimize rendering

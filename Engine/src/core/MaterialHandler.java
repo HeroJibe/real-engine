@@ -1,8 +1,16 @@
 package core;
 
+/**
+ * The <code>MaterialHandler</code> class
+ * stores all of the <code>Material</code>'s
+ * in the game.
+ * 
+ * @author Ethan Vrhel
+ * @see Material
+ */
 public class MaterialHandler 
 {
-	public static final int MAX_MATERIALS = 8;
+	private static final int MAX_MATERIALS = 8;
 	
 	private Material[] materials;
 	
@@ -11,6 +19,11 @@ public class MaterialHandler
 		materials = new Material[MAX_MATERIALS];
 	}
 	
+	/**
+	 * Adds a <code>Material</code>
+	 * 
+	 * @param mat The <code>Material</code>
+	 */
 	public void addMaterial(Material mat)
 	{
 		for (int i = 0; i < MAX_MATERIALS; i++)
@@ -23,6 +36,15 @@ public class MaterialHandler
 		}
 	}
 	
+	/**
+	 * Returns a <code>Material</code> by
+	 * its name
+	 * 
+	 * @param mat The name
+	 * @return The respective <code>Material</code>,
+	 * returns <code>null</code> if there is no such
+	 * <code>Material</code>
+	 */
 	public Material getMaterial(String mat)
 	{
 		for (int i = 0; i < MAX_MATERIALS; i++)
@@ -41,6 +63,15 @@ public class MaterialHandler
 		return null;
 	}
 	
+	/**
+	 * Returns a <code>Material</code> by the
+	 * name of a texture
+	 * 
+	 * @param texture The texture's name
+	 * @return The respective <code>Material</code>,
+	 * returns <code>null</code> if there is no
+	 * <code>Material</code> associated with the texture
+	 */
 	public Material getMaterialByTexture(String texture)
 	{
 		for (int i = 0; i < MAX_MATERIALS; i++)

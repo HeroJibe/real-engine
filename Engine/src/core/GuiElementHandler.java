@@ -1,10 +1,3 @@
-/**
- * The GuiElementHandler class handles all 
- * GuiElements.
- * 
- * @author Ethan Vrhel
- */
-
 package core;
 
 import java.awt.Color;
@@ -12,6 +5,13 @@ import java.awt.Color;
 import core.guiElements.GuiElement;
 import main.Main;
 
+/**
+ * The GuiElementHandler class handles all 
+ * GuiElements.
+ * 
+ * @author Ethan Vrhel
+ * @see GuiElement
+ */
 public class GuiElementHandler 
 {
 	private GuiElement elements[];
@@ -65,6 +65,11 @@ public class GuiElementHandler
 		Main.println("Gui cache not big enough!", Color.RED);
 	}
 	
+	/**
+	 * Removes an <code>GuiElement</code> by its name
+	 * 
+	 * @param name The name
+	 */
 	public void remove(String name)
 	{
 		for (int i = 0; i < maxElements; i++)
@@ -81,10 +86,11 @@ public class GuiElementHandler
 	}
 	
 	/**
-	 * Returns a GuiElement by its name
+	 * Returns a <code>GuiElement</code> by its name
 	 * 
 	 * @param name
-	 * @return
+	 * @return A <code>GuiElement</code> and <code>null</code>
+	 * if it doesn't exist
 	 */
 	public GuiElement getElementByName(String name)
 	{
@@ -102,9 +108,9 @@ public class GuiElementHandler
 	}
 	
 	/**
-	 * Returns the number of GuiElements
+	 * Returns the number of elements
 	 * 
-	 * @return
+	 * @return The number of elements
 	 */
 	public int getNumElements()
 	{
@@ -113,9 +119,9 @@ public class GuiElementHandler
 	
 	/**
 	 * Returns the dynamic size of the
-	 * GuiElement cache
+	 * <code>GuiElement</code> cache
 	 * 
-	 * @return
+	 * @return The dynamic size
 	 */
 	public int getElementsDyn()
 	{
@@ -123,9 +129,9 @@ public class GuiElementHandler
 	}
 	
 	/**
-	 * Returns all of the GuiElements
+	 * Returns all of the <code>GuiElement</code>'s
 	 * 
-	 * @return
+	 * @return All of the <code>GuiElement</code>'s
 	 */
 	public GuiElement[] getGuiElements()
 	{

@@ -1,5 +1,6 @@
 Name grass
-Sound grass.wav
+Sounds:
+grass.wav
 Textures:
 CenterSegment1.png
 CenterSegment2.png

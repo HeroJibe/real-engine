@@ -46,13 +46,14 @@ public class RenderLoop
 				{
 					//mousePos.getX() - Main.getGameWindow().getX(), mousePos.getY() - Main.getGameWindow().getY()
 					numEntities = entityHandler.getNumEntities();
+					
 					Main.debugMessage = ("Player (" + Math.round(player.getPlayerEntity().getX() / Main.resolutionScaleX) 
 							+ ", " + Math.round(player.getPlayerEntity().getY() / Main.resolutionScaleY) 
 							+ ", " +  Math.round(player.getPlayerEntity().getXVel()) 
 							+ ", " + Math.round(player.getPlayerEntity().getYVel()) + ")"
 							+ "   Camera (" + Main.getGameWindow().getCameraX()
 							+ ", " + Main.getGameWindow().getCameraY() + ")"
-							+ "   processing: " + Math.round(numEntities / (double) entityHandler.getDynEntities() * 100) + "%"
+							+ "   rendering: " + Math.round(entityHandler.getVisibleEntities() / (double) numEntities * 100) + "%"
 							//+ "   memory: " + Math.round((Runtime.getRuntime().maxMemory() - Runtime.getRuntime().freeMemory()) / (double) Runtime.getRuntime().maxMemory() * 100) + "% used"
 							//+ "   threads: " + Main.getThreadsRunning()
 							+ "   fps: " + Main.getFpsCounter().getFps()

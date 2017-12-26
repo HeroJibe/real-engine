@@ -29,10 +29,22 @@ import core.Triggers.TriggerSound;
 import core.Triggers.TriggerStartTrigger;
 import core.Triggers.TriggerStopTrigger;
 import core.Triggers.TriggerToggleMapEntity;
+import core.Triggers.TriggerToggleSolid;
 import gui.GameWindow;
 import main.Main;
 import utilities.ResourceMonitor;
 
+/**
+ * The <code>MapLoader</code> class is
+ * responsible for loading .map files into
+ * the game to be played on.
+ * 
+ * @author Ethan Vrhel
+ * @see Entity
+ * @see Trigger
+ * @see MapEntity
+ * @see Node
+ */
 public class MapLoader
 {
 	/**
@@ -68,8 +80,9 @@ public class MapLoader
 	/**
 	 * Loads a map into memory
 	 * 
-	 * @param mapFile
-	 * @param ignoreDataFile
+	 * @param mapFile The map file
+	 * @param ignoreDataFile Whether the .dat file
+	 * should be ignored
 	 */
 	public void readMap(File mapFile, boolean ignoreDataFile)
 	{		
@@ -198,9 +211,9 @@ public class MapLoader
 	}
 	
 	/**
-	 * Loads a prefab into memory
+	 * Loads a .prefab file into memory
 	 * 
-	 * @param prefabFile
+	 * @param prefabFile The .prefab file
 	 */
 	public void readPrefab(File prefabFile)
 	{		
@@ -233,15 +246,18 @@ public class MapLoader
 	}
 	
 	int entities = 0;
+
+	private long start;
 	/**
 	 * Loads the map
 	 * 
-	 * @param prefab
-	 * @param loadsaved
-	 * @return
+	 * @param prefab Whether the map should load
+	 * as a .prefab
+	 * @param loadsaved Whether the map should load
+	 * from a .entitydata file
+	 * @return The return status
 	 */
-	private long start;
-	@SuppressWarnings({ "unused", "deprecation" })
+	@SuppressWarnings("unused")
 	public int loadMap(boolean prefab, boolean loadsaved)
 	{
 		Main.getGameWindow().lighting = null;
@@ -454,6 +470,39 @@ public class MapLoader
 						{
 							Main.getEntityHandler().addDynamicEntity(se);
 						}
+					}
+					else if (tokens[0].equals("Clip") && ! loadsaved)
+					{
+						tokens = args.split(delims);
+					
+						String name = "Clip Face";
+						double x;
+						double y;
+						int width;
+						int height;
+						boolean solid;
+						int mass = 1;
+
+						x = getEntityReplacement(tokens[0]) + prefabOffsetX;
+						y = getEntityReplacement(tokens[1]) + prefabOffsetY;
+						width = (int) getEntityReplacement(tokens[2]);
+						height = (int) getEntityReplacement(tokens[3]);
+						solid = Boolean.parseBoolean(tokens[4]);
+						try
+						{
+							name = tokens[5];
+						}
+						catch (Exception e) {}
+						
+						//Entity se = new Entity(Entity.STATIC, Main.getResourceHandler().getByName(texture), width, height,
+							//	solid, name, x, y, z, width, height, 100, false);
+						Entity se = new Entity(Entity.STATIC, solid, x, y, width, height, 100);
+						se.setName(name);
+						se.setKinetic(false);				
+						se.setTransparancy(true);
+						
+						entities++;
+						Main.getEntityHandler().addStaticEntity(se);
 					}
 					else if (tokens[0].equals("BreakableBrush") && ! loadsaved)
 					{
@@ -1233,7 +1282,7 @@ public class MapLoader
 							else if (type == Entity.DYNAMIC)
 								Main.getEntityHandler().addDynamicEntity(te);
 						}
-						else if (triggerType.equals("TriggerBreak"))
+						else if (triggerType.equals("TriggerGravityDecay"))
 						{
 							if (tokens[2].equals("con"))
 								con = true;
@@ -1275,7 +1324,7 @@ public class MapLoader
 							else if (type == Entity.DYNAMIC)
 								Main.getEntityHandler().addDynamicEntity(te);
 						}
-						else if (triggerType.equals("TriggerGravityDecay"))
+						else if (triggerType.equals("TriggerBreak"))
 						{
 							if (tokens[2].equals("con"))
 								con = true;
@@ -1528,6 +1577,47 @@ public class MapLoader
 								Main.getEntityHandler().addStaticEntity(te);
 							else if (type == Entity.DYNAMIC)
 								Main.getEntityHandler().addDynamicEntity(te);
+						}
+						else if (triggerType.equals("TriggerToggleSolid"))
+						{
+							String entityName = "";
+							
+							if (tokens[0].equals("STATIC"))
+							{
+								type = Entity.STATIC;
+							} 
+							else if (tokens[0].equals("DYNAMIC"))
+							{
+								type = Entity.DYNAMIC;
+							}
+							
+							if (tokens[2].equals("con"))
+							{
+								con = true;
+							}
+							else
+							{
+								once = Boolean.parseBoolean(tokens[2]);
+							}
+							
+							x = getEntityReplacement(tokens[3]) + prefabOffsetX;
+							y = getEntityReplacement(tokens[4]) + prefabOffsetY;
+							w = (int) getEntityReplacement(tokens[5]);
+							h = (int) getEntityReplacement(tokens[6]);
+							entityName = tokens[7];
+							
+							Entity te = new Entity(type, false, "Trigger Game Event", x, y, w, h, 100);
+							TriggerToggleSolid triggerSolid = new TriggerToggleSolid(te, "Trigger Game Event", entityName);
+							if (con)
+								triggerSolid.setContinue(con);
+							
+							Main.getTriggerHandler().addTrigger(triggerSolid);
+							
+							if (type == Entity.STATIC)
+								Main.getEntityHandler().addStaticEntity(te);
+							else if (type == Entity.DYNAMIC)
+								Main.getEntityHandler().addDynamicEntity(te);
+							
 						}
 					}
 					else if (tokens[0].equals("Background"))
@@ -1877,7 +1967,7 @@ public class MapLoader
 	/**
 	 * Returns the current map name
 	 * 
-	 * @return
+	 * @return The current map name
 	 */
 	public String getMapName()
 	{
@@ -1894,8 +1984,10 @@ public class MapLoader
 	/**
 	 * Returns a map variable by its name
 	 * 
-	 * @param name
-	 * @return
+	 * @param name The name of the variable
+	 * @return The value of the variable, returns
+	 * <code>Integer.MAX_VALUE</code> if it does
+	 * not exist
 	 */
 	public int getVariableByName(String name)
 	{
@@ -1928,7 +2020,7 @@ public class MapLoader
 	/**
 	 * Loads from a save file
 	 * 
-	 * @return
+	 * @return The return status
 	 */
 	public int loadSaved()
 	{
@@ -1994,7 +2086,8 @@ public class MapLoader
 	/**
 	 * Updates the map's load state
 	 * 
-	 * @param loadsaved
+	 * @param loadsaved Whether the map loads
+	 * from .entitydata file
 	 */
 	public void updateState(boolean loadsaved)
 	{
@@ -2057,7 +2150,8 @@ public class MapLoader
 	/**
 	 * Returns whether the loader will load from a save file
 	 * 
-	 * @return
+	 * @return Whether the <code>MapLoader</code> will load
+	 * from a save file
 	 */
 	public boolean getLoadSaved()
 	{

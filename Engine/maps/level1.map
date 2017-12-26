@@ -1,7 +1,7 @@
 Map
 ForceSeperate
 Name = level1
-Version = 13201
+Version = 13202
 
 Entity = PLAYER_START 0 -8
 Entity = CAMERA -39 64 960 1352
@@ -11,6 +11,8 @@ TiledBrush = STATIC Nothing.png -64 -768 -32 64 64 true 17 8
 TiledBrush = STATIC Nothing.png -64 -1408 -32 64 64 true 32 5
 TiledBrush = STATIC Nothing.png 1280 -1088 -32 64 64 true 11 19
 TiledBrush = STATIC Nothing.png 1088 64 0 64 64 true 3 1
+
+Trigger = STATIC TriggerLoad true -64 -960 64 128 level2.map -20 10 LoadLevel2
 
 // Start of the level
 TiledBrush = STATIC BlueStoneFloor.png 0 64 0 64 64 true 16 1
@@ -32,6 +34,8 @@ TiledBrush = STATIC BlueStoneCeiling.png 0 -256 0 64 64 true 16 1
 
 
 // After start
+Clip = 1024 -256 64 256 false clip
+Trigger = STATIC TriggerToggleSolid false 1152 -64 64 64 clip
 Brush = STATIC BlueStoneConvexBR.png 1024 -256 0 64 64 true
 Brush = STATIC BlueStoneConvexTL.png 1024 0 0 64 64 true 
 Brush = STATIC BlueStoneCornerFR.png 1024 64 0 64 64 true
@@ -44,6 +48,8 @@ Brush = DYNAMIC elev.png 1088 -8 0 128 8 true 50 false elevator
 TiledBrush = STATIC BlueStoneFloor.png -64 -832 0 64 64 true 17 1
 TiledBrush = STATIC BlueStoneCeiling.png -64 -1088 0 64 64 true 20 1
 TiledBrush = STATIC BlueStoneRightWall.png 1216 -1024 0 64 64 true 1 3
+Clip = 1213 -832 3 1 true
+//Clip = 1088 -832 128 8 true
 Brush = STATIC BlueStoneCornerCR.png 1216 -1088 0 64 64 true
 
 Trigger = STATIC TriggerMove con 1152 -64 64 64 elevator 0 -1 10 moveElevator

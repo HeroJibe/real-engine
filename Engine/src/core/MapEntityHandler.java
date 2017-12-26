@@ -1,10 +1,3 @@
-/**
- * The MapEntityHandler stores all map entities
- * and executes their threads.
- * 
- * @author Ethan Vrhel
- */
-
 package core;
 
 import java.awt.Color;
@@ -12,6 +5,13 @@ import java.awt.Color;
 import core.MapEntities.MapEntity;
 import main.Main;
 
+/**
+ * The MapEntityHandler stores all map entities
+ * and executes their threads.
+ * 
+ * @author Ethan Vrhel
+ * @see MapEntity
+ */
 public class MapEntityHandler 
 {
 	private MapEntity[] entities;
@@ -28,7 +28,7 @@ public class MapEntityHandler
 	/**
 	 * Adds an entity to the cache
 	 * 
-	 * @param entity
+	 * @param entity A <code>MapEntity</code>
 	 */
 	public void addEntity(MapEntity entity)
 	{
@@ -89,8 +89,9 @@ public class MapEntityHandler
 	/**
 	 * Returns a map entity by its name
 	 * 
-	 * @param name
-	 * @return
+	 * @param name The name of the <code>MapEntity</code>
+	 * @return The respective <code>MapEntity</code>, returns
+	 * <code>null</code> if it does not exist
 	 */
 	public MapEntity getByName(String name)
 	{
@@ -143,9 +144,10 @@ public class MapEntityHandler
 	}
 	
 	/**
-	 * Returns the number of map entities
+	 * Returns the number of
+	 * <code>MapEntitiy</code>'s
 	 * 
-	 * @return
+	 * @return The number of <code>MapEntity</code>'s
 	 */
 	public int getNumEntities()
 	{

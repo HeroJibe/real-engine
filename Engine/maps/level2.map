@@ -1,0 +1,38 @@
+Map
+ForceSeperate
+Name = level2
+Version = 13202
+
+Entity = PLAYER_START 0 -64
+Entity = CAMERA 1856 1856 -520 256
+
+Trigger = STATIC TriggerLoad true 64 0 64 128 level1.map 20 -870 LoadLevel1
+Trigger = STATIC TriggerLoad true -1856 960 64 512 level3.map -20 10 LoadLevel3
+
+TiledBrush = STATIC Nothing.png -1856 -256 0 64 64 true 26 19
+TiledBrush = STATIC Nothing.png 0 64 0 64 64 true 1 24
+
+Brush = STATIC BlueStoneFloor.png 0 0 0 64 64 true
+Brush = STATIC BlueStoneConvexTL.png -64 0 0 64 64 true
+TiledBrush = STATIC BlueStoneCeiling.png -128 -256 0 64 64 true 3 1
+Brush = STATIC BlueStoneCornerCL.png -192 -256 0 64 64 true
+
+TiledBrush = STATIC BlueStoneLeftWall.png -192 -192 0 64 64 true 1 18
+TiledBrush = STATIC BlueStoneRightWall.png -64 64 0 64 64 true 1 15
+
+Brush = STATIC BlueStoneConvexBR.png -192 960 0 64 64 true
+TiledBrush = STATIC BlueStoneRightWall.png -64 1024 0 64 64 true 1 8
+TiledBrush = STATIC BlueStoneFloor.png -1856 1536 0 64 64 true 28 1
+Brush = STATIC BlueStoneCornerFR.png -64 1536 0 64 64 true
+TiledBrush = STATIC BlueStoneCeiling.png -1856 960 0 64 64 true 26 1
+
+ReflectiveBrush = water.png -1856 1408 0 64 64 false 0.6 28 2
+TiledBrush = STATIC plank.png -1856 1392 0 64 8 true 28 1
+
+Brush = STATIC crate.png -128 1328 0 64 64 true
+
+Brush = STATIC crate.png -1564 1264 0 64 64 true
+Brush = STATIC crate.png -1564 1328 0 64 64 true
+Brush = STATIC crate.png -1500 1328 0 64 64 true
+
+//1408

@@ -1,10 +1,3 @@
-/**
- * The GameSound class stores information
- * about sound which can be played.
- * 
- * @author Ethan Vrhel
- */
-
 package core;
 
 import java.awt.Color;
@@ -21,6 +14,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import main.Main;
 import utilities.ResourceMonitor;
 
+/**
+ * The <code>GameSound</code> class stores information
+ * about sound which can be played.
+ * 
+ * @author Ethan Vrhel
+ * @see GameSoundHandler
+ * @see GameAmbientSound
+ */
 public class GameSound
 	implements Runnable
 {
@@ -55,7 +56,7 @@ public class GameSound
 	public static float effectVolume = 1.0f;
 	
 	private String name;
-	protected Clip audioClip;
+	Clip audioClip;
 	private AudioInputStream audioInputStream;
 	private int type;
 	private SoundSource src;

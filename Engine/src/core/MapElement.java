@@ -4,12 +4,29 @@ import java.awt.Color;
 
 import main.Main;
 
+/**
+ * The <code>MapElement</code> class was intended
+ * to make the <code>MapLoader</code> class more
+ * readable and reduce messiness of the map loading.
+ * However, it never really got implemented so this
+ * class is not very useful.
+ * 
+ * @author Ethan Vrhel
+ * @see MapLoader
+ */
 public abstract class MapElement 
 {
+	/**
+	 * The <code>MapElement</code> successfully loaded
+	 */
 	public static final int SUCCESS = 0;
+	
+	/**
+	 * The <code>MapElement</code> failed to load
+	 */
 	public static final int FAIL = 1;
 	
-	protected String name;
+	private String name;
 	protected int prefX;
 	protected int prefY;
 	
@@ -22,23 +39,32 @@ public abstract class MapElement
 			Main.println("Failed to add MapElement: " + name, Color.RED);
 	}
 	
-	public String getName()
+	/**
+	 * Gets the name of the <code>MapElement</code>
+	 * 
+	 * @return The name
+	 */
+	public final String getName()
 	{
 		return name;
 	}
 	
-	public void setOffset(int x, int y)
+	/**
+	 * Sets the offset
+	 * 
+	 * @param x The x position
+	 * @param y The y position
+	 */
+	public final void setOffset(int x, int y)
 	{
 		
 	}
 	
-	public int load(String[] args)
-	{
-		int succ = loadMe(args);
-		prefX = 0;
-		prefY = 0;
-		return succ;
-	}
-	
+	/**
+	 * Loads the <code>MapElement</code>
+	 * 
+	 * @param args The arguments of the <code>MapElement</code>
+	 * @return The return state (specified in <code>MapElement</code>)
+	 */
 	protected abstract int loadMe(String[] args);
 }

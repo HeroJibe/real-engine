@@ -4,6 +4,15 @@ import java.io.File;
 
 import javax.sound.sampled.Clip;
 
+/**
+ * A <code>GameSound</code>, but it has
+ * no origin and therefore plays at the same
+ * volume regardless of its position.
+ * 
+ * @author Ethan Vrhel
+ * @see GameSound
+ * @see GameSoundHandler
+ */
 public class GameAmbientSound 
 	extends GameSound
 	implements Runnable

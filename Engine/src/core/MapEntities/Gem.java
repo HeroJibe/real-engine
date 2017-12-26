@@ -1,9 +1,3 @@
-/**
- * Gems are the collectibles in-game
- * 
- * @author Ethan Vrhel
- */
-
 package core.MapEntities;
 
 import java.awt.Color;
@@ -18,6 +12,12 @@ import core.ResourceHandler;
 import game.GameMain;
 import main.Main;
 
+/**
+ * Gems are the collectibles in-game
+ * 
+ * @author Ethan Vrhel
+ * @see MapEntity
+ */
 public class Gem
 	extends MapEntity
 {	

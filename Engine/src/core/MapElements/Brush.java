@@ -11,8 +11,7 @@ import main.Main;
 
 public class Brush 
 	extends MapElement
-{
-
+{	
 	public Brush() 
 	{
 		super("Brush");

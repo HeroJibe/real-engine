@@ -1,0 +1,41 @@
+Map
+ForceSeperate
+Name = level3
+Version = 13202
+
+Entity = PLAYER_START 0 -64
+Entity = CAMERA 1856 1856 1016 1016
+
+// Nothing
+TiledBrush = STATIC Nothing.png -1856 -1024 0 64 64 true 30 4
+
+// Death zone
+Trigger = STATIC TriggerHurt true -2048 128 2048 54 100 kill
+
+// Start
+TiledBrush = STATIC BlueStoneFloor.png -256 0 0 64 64 true 5 1
+Brush = STATIC BlueStoneConvexTL.png -320 0 0 64 64 true
+Brush = STATIC warningSign.png -256 -64 0 64 64 false
+
+// Roof
+TiledBrush = STATIC BlueStoneCeiling.png -1856 -768 0 64 64 true 30 1
+
+
+// Platforms
+TiledBrush = STATIC plank.png -448 -64 0 64 8 true 2 1
+TiledBrush = STATIC plankvert.png -388 -64 -1 8 64 false 1 2
+
+TiledBrush = STATIC plank.png -704 -128 0 64 8 true 2 1
+TiledBrush = STATIC plankvert.png -644 -128 -1 8 64 false 1 3	
+
+Brush = STATIC plank.png -896 -256 0 64 8 true
+TiledBrush = STATIC plankvert.png -868 -256 -1 8 64 false 1 5	
+
+//Trigger = STATIC TriggerBreak true -960 -512 64 512 breakable
+
+TiledBrush = STATIC plank.png -1216 -128 0 64 8 true 2 1
+TiledBrush = STATIC plankvert.png -1156 -128 -1 8 64 false 1 3	
+
+// End
+TiledBrush = STATIC BlueStoneFloor.png -1856 0 0 64 64 true 5 1
+Brush = STATIC BlueStoneConvexTR.png -1536 0 0 64 64 true 

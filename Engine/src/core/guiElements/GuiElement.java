@@ -20,6 +20,16 @@ import core.MouseInputListener.Action;
 import main.Main;
 import utilities.AdvancedFilters;
 
+/**
+ * A <code>GuiElement</code> is almost the
+ * same as an <code>Entity</code>, except its
+ * position is static, has no player interaction,
+ * and is always on top.
+ * 
+ * @author Ethan Vrhel
+ * @see GuiElementHandler
+ * @see Entity
+ */
 public abstract class GuiElement 
 {
 	protected String name;
@@ -39,14 +49,25 @@ public abstract class GuiElement
 	private Point mousePos = mouseInfo.getLocation();
 	protected String keyPressed;
 	
-	
+	/**
+	 * Actions passed through <code>onAction(GuiAction a)</code>
+	 * and <code>onAction(GuiAction a, InputListener inp)</code>
+	 * to specify the action that has happened to the
+	 * <code>GuiElement</code>
+	 * 
+	 * @author Ethan Vrhel
+	 */
 	public enum GuiAction
 	{
 		MOUSE_HOVER, MOUSE_DOWN, MOUSE_UP, MOUSE_CLICK, MOUSE_ENTERED, MOUSE_EXITED, KEYPRESS
 	};
 	
-	public static Comparator<GuiElement> GuiElementZComparator = new Comparator<GuiElement>()
+	/**
+	 * The comparator for the <code>GuiElement</code>
+	 */
+	public static final Comparator<GuiElement> GuiElementZComparator = new Comparator<GuiElement>()
 	{
+		@Override
 		public int compare(GuiElement entity1, GuiElement entity2)
 		{
 			if (entity1 != null && entity2 != null)
@@ -91,7 +112,10 @@ public abstract class GuiElement
 		this.image = image;
 	}
 	
-	public void update()
+	/**
+	 * Updates the <code>GuiElement</code>
+	 */
+	public final void update()
 	{
 		MouseInputListener mouseListener = Main.getMouseListener();
 		mouseInfo = MouseInfo.getPointerInfo();
@@ -113,72 +137,129 @@ public abstract class GuiElement
 			onAction(GuiAction.KEYPRESS, Main.getInputListener());
 	}
 	
-	public String getName()
+	/**
+	 * Returns the name
+	 * @return The name
+	 */
+	public final String getName()
 	{
 		return name;
 	}
 	
-	public void translate(int x, int y)
+	/**
+	 * Translates the <code>GuiElement</code>
+	 * @param x The x translation
+	 * @param y The y translation
+	 */
+	public final void translate(int x, int y)
 	{
 		translateX(x);
 		translateY(y);
 	}
 	
-	public void translateX(int x)
+	/**
+	 * Translates the x position
+	 * @param x The x translation
+	 */
+	public final void translateX(int x)
 	{
 		this.x = x * Main.resolutionScaleX;
 	}
 	
-	public void translateY(int y)
+	/**
+	 * Translates the y position
+	 * @param y The y translation
+	 */
+	public final void translateY(int y)
 	{
 		this.y = y * Main.resolutionScaleY;
 	}
 	
-	public double getX()
+	/**
+	 * Returns the x position
+	 * @return The x position
+	 */
+	public final double getX()
 	{
 		return x;
 	}
 	
-	public double getY()
+	/**
+	 * Returns the y position
+	 * @return The y position
+	 */
+	public final double getY()
 	{
 		return y;
 	}
 	
-	public double getX2()
+	/**
+	 * Returns the secondary x position <code>(x + width)</code>
+	 * @return The secondary x position
+	 */
+	public final double getX2()
 	{
 		return x + width;
 	}
 	
-	public double getY2()
+	/**
+	 * Returns the secondary y position <code>(y + height)</code>
+	 * @return The secondary y position
+	 */
+	public final double getY2()
 	{
 		return y + height;
 	}
 	
-	public Image getImage()
+	/**
+	 * Returns the <code>Image</code>
+	 * @return The <code>Image</code>
+	 */
+	public final Image getImage()
 	{
 		return image.getScaledInstance((int) width, (int) height, Image.SCALE_DEFAULT);
 	}
 	
-	public double getWidth()
+	/**
+	 * Returns the width
+	 * @return The width
+	 */
+	public final double getWidth()
 	{
 		return width;
 	}
 	
-	public double getHeight()
+	/**
+	 * Returns the height
+	 * @return The height
+	 */
+	public final double getHeight()
 	{
 		return height;
 	}
 	
-	public double getActualWidth()
+	/**
+	 * Returns the actual width
+	 * @return The actual width
+	 */
+	public final double getActualWidth()
 	{
 		return width / Main.resolutionScaleX;
 	}
 	
-	public double getActualHeight()
+	/**
+	 * Returns the actual height
+	 * @return The actual height
+	 */
+	public final double getActualHeight()
 	{
 		return height / Main.resolutionScaleY;
 	}
 	
+	/**
+	 * Whether the mouse collided
+	 * @return Whether the mouse has collided
+	 */
 	private boolean hasMouseCollided()
 	{
 		if (this.getY2() < mousePos.getY() || y > mousePos.getY())
@@ -189,11 +270,22 @@ public abstract class GuiElement
 			return true;
 	}
 	
-	public int getZBuffer()
+	/**
+	 * Returns the z-buffer
+	 * @return The z-buffer
+	 */
+	public final int getZBuffer()
 	{
 		return z;
 	}
 	
+	/**
+	 * Compares this <code>GuiElement</code> to another
+	 * along its z-buffer.
+	 * @param compareElement The <code>GuiElement</code> to be
+	 * compared
+	 * @return The difference between the two elements
+	 */
 	public int compareTo(GuiElement compareElement) 
 	{
 		int compareZVal = compareElement.getZBuffer();
@@ -215,32 +307,72 @@ public abstract class GuiElement
 		return  this.z - compareZVal;
 	}
 	
+	/**
+	 * Whether the <code>GuiElement</code> is visible
+	 * @return Whether the <code>GuiElement</code> is visible
+	 */
 	public boolean isVisible()
 	{
 		return isVisible;
 	}
 	
+	/**
+	 * Sets whether the <code>GuiElement</code> is visible
+	 * @param isVisible The visibility
+	 */
 	public void setVisible(boolean isVisible)
 	{
 		this.isVisible = isVisible;
 	}
 	
+	/**
+	 * Returns whether the <code>GuiElement</code> is alive
+	 * @return Whether the <code>GuiElement</code> is alive
+	 */
 	public boolean isAlive()
 	{
 		return isAlive;
 	}
 	
+	/**
+	 * Sets the <code>Image</code>
+	 * @param img The <code>Image</code>
+	 */
 	public void setImage(Image img)
 	{
 		image = img;
 	}
 	
+	/**
+	 * Whether the <code>GuiElement</code> is only
+	 * text
+	 * @return Whether the <code>GuiElement</code>
+	 * is only text
+	 */
 	public boolean isText()
 	{
 		return isText;
 	}
 	
+	/**
+	 * Called on an an action
+	 * @param a the <code>GuiAction</code> that
+	 * happened causing this method to be called.
+	 */
 	abstract void onAction(GuiAction a);
+	
+	/**
+	 * The same as <code>onAction(GuiAction a)</code>, but
+	 * includes an <code>InputListener</code> to view
+	 * keys pressed.
+	 * @param a The <code>GuiAction</code> that happened
+	 * causing this method to be called
+	 * @param inp The <code>InputListener</code>
+	 */
 	abstract void onAction(GuiAction a, InputListener inp);
+	
+	/**
+	 * Resets the <code>GuiElement</code>
+	 */
 	abstract void reset();
 }

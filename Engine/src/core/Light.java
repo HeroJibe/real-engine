@@ -4,6 +4,15 @@ import java.io.File;
 
 import main.Main;
 
+/**
+ * The <code>Light</code> class casts
+ * light across the map which is handled
+ * by the <code>LightHandler</code>
+ * 
+ * @author Ethan Vrhel
+ * @see LightHandler
+ * @see Luxel
+ */
 public class Light 
 {
 	public static final boolean DEBUG_LIGHTS = false;
@@ -35,42 +44,76 @@ public class Light
 		}
 	}
 	
+	/**
+	 * Returns the x position
+	 * @return The x position
+	 */
 	public double getX()
 	{
 		return x;
 	}
 	
+	/**
+	 * Returns the y position
+	 * @return The y position
+	 */
 	public double getY()
 	{
 		return y;
 	}
 	
+	/**
+	 * Returns the brightness
+	 * @return The brightness
+	 */
 	public double getBrightness()
 	{
 		return brightness;
 	}
 	
+	/**
+	 * Returns the type
+	 * @return The type
+	 */
 	public int getType()
 	{
 		return type;
 	}
 	
+	/**
+	 * Returns the 100% drop-off
+	 * @return The 100% drop-off
+	 */
 	public double getDropOff100()
 	{
 		return dropOff100;
 	}
 	
+	/**
+	 * Returns the 50% drop-off
+	 * @return The 50% drop-off
+	 */
 	public double dropOff50()
 	{
 		return dropOff50;
 	}
 	
+	/**
+	 * Translates the <code>Light</code>
+	 * @param x X translation
+	 * @param y Y translation
+	 */
 	public void translate(double x, double y)
 	{
 		this.x += x;
 		this.y += y;
 	}
 	
+	/**
+	 * Sets the position of the <code>Light</code>
+	 * @param x The x position
+	 * @param y The y position
+	 */
 	public void setPos(double x, double y)
 	{
 		this.x = x;
