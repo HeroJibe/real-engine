@@ -1,0 +1,5 @@
+Map
+ForceSeperate
+Name = menu
+
+Entity = PLAYER_START 0 0

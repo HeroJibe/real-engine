@@ -62,7 +62,6 @@ public final class EntityHandler
 	{
 		calculationTime++;
 		updating = true;
-		//Main.println("updating...");
 		
 		if (Z_SORT)
 		{
@@ -113,6 +112,7 @@ public final class EntityHandler
 				}
 			}
 		}
+		
 		if (Main.getGuiHandler().getNumElements() > 0)
 		{
 			GuiElement elements[] = Main.getGuiHandler().getGuiElements();
@@ -134,16 +134,10 @@ public final class EntityHandler
 		}
 		Main.getGameWindow().paint();
 		
-		try
+		// Wait until the GameWindow is done updating to avoid flickering
+		while (Main.getGameWindow().updating) 
 		{
-			while (Main.getGameWindow().updating) 
-			{
-				Thread.yield();
-			}
-		}
-		catch (Exception e)
-		{
-			Main.println("Error in render updator! " + e);
+			Thread.yield();
 		}
 	}
 	

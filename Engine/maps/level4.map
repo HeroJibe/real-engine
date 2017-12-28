@@ -1,0 +1,68 @@
+Map
+ForceSeperate
+Name = level4
+Version = 13302
+
+Entity = PLAYER_START -64 -64
+Entity = CAMERA 1856 2112 584 732
+
+Trigger = STATIC TriggerLoad true 0 -256 64 512 level3.map -1700 0 LoadLevel3
+
+// Nothing
+TiledBrush = STATIC Nothing.png -2112 -768 0 64 64 true 26 8
+TiledBrush = STATIC Nothing.png -1280 64 0 64 64 true 21 6
+TiledBrush = STATIC Nothing.png -1472 448 0 64 64 true 25 1
+TiledBrush = STATIC Nothing.png -2112 64 0 64 64 true 4 3
+TiledBrush = STATIC Nothing.png -2112 256 0 64 64 true 5 3
+TiledBrush = STATIC Nothing.png -2112 448 0 64 64 true 7 1
+
+TiledBrush = STATIC BlueStoneFloor.png -1024 0 0 64 64 true 17 1
+TiledBrush = STATIC BlueStoneFloor.png -1280 0 0 64 64 true 4 1
+Brush = STATIC BlueStoneConvexTL.png -1344 0 0 64 64 true
+
+//TiledBrush = STATIC ladder.png -1408 0 0 64 64 false 1 8
+TiledBrush = STATIC plankvert.png -1424 0 -1 8 64 false 1 6
+TiledBrush = STATIC plankvert.png -1784 0 -1 8 64 false 1 3
+
+TiledBrush = STATIC Spike1.png -1344 -64 0 64 64 false 4 1
+Trigger = STATIC TriggerHurt true -1344 -48 256 48 100
+
+// First up
+Brush = STATIC Up.png -1024 -64 0 64 64 false 
+Trigger = STATIC TriggerGravity true -1024 -64 64 64 -0.5 up1
+
+TiledBrush = STATIC BlueStoneCeiling.png -2048 -256 0 64 64 true 25 1
+Brush = STATIC BlueStoneConvexBR.png -448 -256 0 64 64 true
+//Brush = STATIC BlueStoneConvexBL.png 0 -256 0 64 64 true
+TiledBrush = STATIC BlueStoneLeftWall.png -448 -768 0 64 64 true 1 8
+//TiledBrush = STATIC BlueStoneRightWall.png 0 -768 0 64 64 true 1 8
+Trigger = STATIC TriggerHurt true -448 -768 512 64 100
+
+
+TiledBrush = STATIC BlueStoneFloor.png -2048 0 0 64 64 true 3 1
+Brush = STATIC BlueStoneConvexTR.png -1856 0 0 64 64 true
+TiledBrush = STATIC plank.png -1792 0 0 64 8 true 6 1
+
+// First down
+Brush = STATIC Down.png -1920 -192 0 64 64 false
+Trigger = STATIC TriggerGravity true -1920 -192 64 64 0.5 down1
+
+TiledBrush = STATIC BlueStoneRightWall.png -1344 64 0 64 64 true 1 5
+Brush = STATIC BlueStoneCornerFR.png -1344 384 0 64 64 true
+
+TiledBrush = STATIC BlueStoneLeftWall.png -2112 -192 0 64 64 true 1 3
+Brush = STATIC BlueStoneCornerCL.png -2112 -256 0 64 64 true
+Brush = STATIC BlueStoneCornerFL.png -2112 0 0 64 64 true 
+
+TiledBrush = STATIC BlueStoneLeftWall.png -1856 64 0 64 64 true 1 2
+Brush = STATIC BlueStoneConvexTR.png -1792 192 0 64 64 true 
+Brush = STATIC BlueStoneCornerFL.png -1856 192 0 64 64 true
+TiledBrush = STATIC BlueStoneLeftWall.png -1792 256 0 64 64 true 1 2
+TiledBrush = STATIC BlueStoneFloor.png -1728 384 0 64 64 true 1 1
+Brush = STATIC BlueStoneConvexTR.png -1664 384 0 64 64 true 
+Brush = STATIC BlueStoneCornerFL.png -1792 384 0 64 64 true
+TiledBrush = STATIC BlueStoneFloor.png -1472 384 0 64 64 true 2 1
+Brush = STATIC BlueStoneConvexTL.png -1536 384 0 64 64 true 
+
+Brush = STATIC BlueStoneLeftWall.png -1664 448 0 64 64 true
+Brush = STATIC BlueStoneRightWall.png -1536 448 0 64 64 true 

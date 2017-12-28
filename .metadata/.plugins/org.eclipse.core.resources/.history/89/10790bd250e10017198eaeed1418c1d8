@@ -1,7 +1,0 @@
-package core.commands;
-
-public class Echo 
-	extends Command
-{
-
-}

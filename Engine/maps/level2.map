@@ -1,7 +1,7 @@
 Map
 ForceSeperate
 Name = level2
-Version = 13202
+Version = 13302
 
 Entity = PLAYER_START 0 -64
 Entity = CAMERA 1856 1856 -520 256

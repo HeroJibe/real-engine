@@ -5,12 +5,12 @@ public class CannotAcceptException
 {
 	private static final long serialVersionUID = 411817066209934849L;
 	
-	public CannotAcceptException()
+	CannotAcceptException()
 	{
-		
+		super();
 	}
 	
-	public CannotAcceptException(String msg)
+	CannotAcceptException(String msg)
 	{
 		super(msg);
 	}

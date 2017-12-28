@@ -16,6 +16,12 @@ public class MapReturn
 		this.messageType = messageType;
 	}
 	
+	public MapReturn(int messageType) 
+	{
+		this.message = "unspecified";
+		this.messageType = messageType;
+	}
+
 	public String getMessage()
 	{
 		return message;

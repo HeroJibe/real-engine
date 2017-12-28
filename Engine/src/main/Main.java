@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
-
 import core.*;
 import core.MapElements.Brush;
 import core.guiElements.ButtonHandlers.ButtonAnimationHandler;
@@ -31,23 +29,25 @@ import utilities.GraphicsConfig;
 import utilities.KeyBinds;
 import utilities.RenderMonitor;
 import utilities.ResourceMonitor;
+
 /**
  * This class is the startup class and
  * initializes the engine.
  * 
  * @author Ethan Vrhel
+ * @see GameMain
  */
 public final class Main
 {
 	/**
 	 * The numerical version of the engine
 	 */
-	public static final int ENGINE_VERSION = 13202;
+	public static final int ENGINE_VERSION = 13302;
 	
 	/**
 	 * The build of the engine
 	 */
-	public static final int ENGINE_BUILD = 43;
+	public static final int ENGINE_BUILD = 46;
 	
 	/**
 	 * The name of the engine
@@ -57,12 +57,12 @@ public final class Main
 	/**
 	 * The String version of the engine
 	 */
-	public static final String ENGINE_VERSION_NAME = "1.3.2.02";
+	public static final String ENGINE_VERSION_NAME = "1.3.3.02";
 	
 	/**
 	 * Whether the engine is in debug mode
 	 */
-	public static boolean DEBUG = false;
+	public static boolean DEBUG = true;
 	
 	/**
 	 * Toggles occlusion to optimize rendering
@@ -91,8 +91,8 @@ public final class Main
 	
 	/**
 	 * Whether the engine should draw the navigation mesh
-	 * @deprecated
 	 */
+	@Deprecated
 	public static final boolean DRAW_NAVMESH = false;
 	
 	/**
@@ -120,6 +120,7 @@ public final class Main
 	
 	/**
 	 * Whether the engine will run in a window
+	 * @deprecated
 	 */
 	@Deprecated
 	public static boolean runInWindow = false;
@@ -210,12 +211,6 @@ public final class Main
 	 */
 	public static boolean isMultiplayer = false;
 	
-	//private native static void registerNatives();
-//	/s/tatic
-//	/{
-//	/	registerNatives();
-//	}
-	
 	private Main() {}	
 	
 	/**
@@ -226,16 +221,10 @@ public final class Main
 		ClockTimer t = new ClockTimer();
 		t.startTimer();
 		
-		System.setProperty("sun.java2d.opengl", "true");
-		//System.loadLibrary("collisions");
-		//System.loadLibrary("collisions");
-		
-		//collided(0, 0, 10, 10, 5, 5, 10, 10);
-		
+		System.setProperty("sun.java2d.opengl", "true");		
 		
 		if (DEBUG)
 			WRITE_TO_LOG = true;
-		
 		
 		loadingMap = true;
 		
@@ -343,6 +332,12 @@ public final class Main
 		mapElementHandler = new MapElementHandler(32);
 		nodeHandler = new NodeHandler(32);
 		materialHandler = new MaterialHandler();
+		
+		RenderLoop renderLoop = new RenderLoop();
+		Thread renderThread = new Thread(renderLoop);
+		renderThread.setPriority(Thread.MAX_PRIORITY);
+		renderThread.start();
+		
 		//(new Thread(lightHandler)).start();
 		GameThread rMonitorThread = new GameThread(rMonitor, 1000 / RenderMonitor.R_UPDATE_FACTOR);
 		rMonitorThread.start();
@@ -486,10 +481,10 @@ public final class Main
 		window.setLocationRelativeTo(null);
 		Thread.yield();
 		
-		String mapname; 
-		mapname = JOptionPane.showInputDialog(window, "Map name:");
+		//mapname = JOptionPane.showInputDialog(window, "Map name:");
 		//String mapname = "test.map";
 		int exitCode = -1;
+		/*
 		try
 		{
 			exitCode = loadMap(mapname, 0, 0);
@@ -507,8 +502,20 @@ public final class Main
 			}
 			Main.exit(1);
 		}
-		
+		*/
+		loadingMap = false;
+		game.MainMenu mainMenu = new game.MainMenu();
+		Thread mainMenuThread = new Thread(mainMenu);
+		mainMenuThread.setPriority(Thread.MIN_PRIORITY);
+		mainMenuThread.start();
+		mainMenu.show();
 		playerThread = new GameThread(player, 1);
+		loadingMap = false;
+		
+		while (! mainMenu.loaded())
+			Thread.yield();
+		
+		exitCode = 1;
 		
 		//ApplySettings.applySettings(settingsWindow);
 		//ApplySettings.loadSettings(settingsWindow);
@@ -534,11 +541,9 @@ public final class Main
 			player.getPlayerEntity().ignoreBounds(true);
 			
 			playerThread.start();
+			loadMessage = "Done";
 			triggerHandlerThread.start();
-			RenderLoop renderLoop = new RenderLoop();
-			Thread renderThread = new Thread(renderLoop);
-			renderThread.setPriority(Thread.MAX_PRIORITY);
-			renderThread.start();
+			
 			(new Thread(physicsHandler)).start();
 			GameThread gameMainThread = new GameThread(gameMain, -1);
 			gameMainThread.start();
@@ -564,7 +569,7 @@ public final class Main
 	/**
 	 * Handles map errors
 	 * 
-	 * @param exitCode
+	 * @param exitCode The exit code
 	 */
 	public static void mapExitCode(int exitCode)
 	{
@@ -629,7 +634,8 @@ public final class Main
 	
 	/**
 	 * Prints a line to the in-game console
-	 * @param str
+	 * 
+	 * @param str A message
 	 */
 	public static void println(String str)
 	{
@@ -642,8 +648,9 @@ public final class Main
 	
 	/**
 	 * Prints a line to the in-game console
-	 * @param str
-	 * @param c
+	 * 
+	 * @param str A message
+	 * @param c The message's color
 	 */
 	public static void println(String str, Color c)
 	{
@@ -657,8 +664,8 @@ public final class Main
 	/**
 	 * Returns the prefix of a String
 	 * 
-	 * @param str
-	 * @return
+	 * @param str A <code>String</code>
+	 * @return Its prefix
 	 */
 	public static String getPrefix(String str)
 	{
@@ -671,7 +678,7 @@ public final class Main
 	/**
 	 * Gets the name of the next log
 	 * 
-	 * @return
+	 * @return The name of the next log
 	 */
 	public static String getNextLogName()
 	{
@@ -684,9 +691,9 @@ public final class Main
 	}
 	
 	/**
-	 * Adds an Entity to the player
+	 * Adds an <code>Entity</code> to the player
 	 * 
-	 * @param playerEntity
+	 * @param playerEntity An <code>Entity</code>
 	 */
 	public static void addPlayer(Entity playerEntity)
 	{
@@ -696,10 +703,10 @@ public final class Main
 	/**
 	 * Loads a map
 	 * 
-	 * @param mapname
-	 * @param xbias
-	 * @param ybias
-	 * @return
+	 * @param mapname The name of the map
+	 * @param xbias The player's x offset
+	 * @param ybias The player's y offset
+	 * @return The return status
 	 */
 	public static int loadMap(String mapname, double xbias, double ybias)
 	{
@@ -883,16 +890,16 @@ public final class Main
 	}
 	
 	/**
-	 * Reinitializes the GameWindow
+	 * Reinitializes the <code>GameWindow</code>
 	 * 
-	 * @param width
-	 * @param height
-	 * @param bordered
+	 * @param width The width of the window
+	 * @param height The height of the window
+	 * @param bordered Whether the window is bordered
 	 */
 	public static synchronized void reinitalize(int w, int h, boolean bordered)
 	{
 		window.dispose();
-		window = new GameWindow(GameMain.NAME, w, h, bordered, window.getImageHandler().getCacheSize());
+		window = new GameWindow(GameMain.NAME, w, h, bordered, window.getHandler().getCacheSize());
 		resolutionScaleX = (double) GameWindow.XRES_GL / 1920.0;
         resolutionScaleY = (double) GameWindow.YRES_GL / 1080.0;
 		System.out.println("Reinitalized game window.");
@@ -904,7 +911,7 @@ public final class Main
 	 * along with printing the previous one, if
 	 * any
 	 * 
-	 * @return the new resource monitor
+	 * @return The new resource monitor
 	 */
 	public static ResourceMonitor newResourceMonitor()
 	{
@@ -920,7 +927,7 @@ public final class Main
 	/**
 	 * Returns the current resource monitor
 	 * 
-	 * @return the current resource monitor
+	 * @return The current resource monitor
 	 */
 	public static ResourceMonitor getCurrentResourceMonitor()
 	{
@@ -930,7 +937,7 @@ public final class Main
 	/**
 	 * Exits the program with debug messages
 	 * 
-	 * @param code
+	 * @param code The exit code
 	 */
 	public static void exit(int code)
 	{

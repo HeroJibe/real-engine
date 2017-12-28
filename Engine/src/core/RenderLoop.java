@@ -47,17 +47,77 @@ public class RenderLoop
 					//mousePos.getX() - Main.getGameWindow().getX(), mousePos.getY() - Main.getGameWindow().getY()
 					numEntities = entityHandler.getNumEntities();
 					
-					Main.debugMessage = ("Player (" + Math.round(player.getPlayerEntity().getX() / Main.resolutionScaleX) 
-							+ ", " + Math.round(player.getPlayerEntity().getY() / Main.resolutionScaleY) 
-							+ ", " +  Math.round(player.getPlayerEntity().getXVel()) 
-							+ ", " + Math.round(player.getPlayerEntity().getYVel()) + ")"
-							+ "   Camera (" + Main.getGameWindow().getCameraX()
+					boolean doPlayer = false;
+					player = Main.getPlayer();
+					if (Main.getPlayer() != null)
+					{
+						if (Main.getPlayer().getPlayerEntity() != null)
+						{
+							doPlayer = true;
+						}
+					}
+					
+					//boolean doDebug =
+						//	(Main.getGameWindow() != null) &&
+						//	(entityHandler != null) &&
+						//	(Main.getFpsCounter() != null);
+					//System.out.println("Window: " + Main.getGameWindow() + "\n"
+						//	+ "Entity Handler: " + entityHandler + "\n"
+						//	+ "FPS counter: " + Main.getFpsCounter() + "\n");
+							
+					//Thread.sleep(1000);
+					
+					try
+					{
+						if (doPlayer)
+						{
+							/*
+							//System.out.println(Main.getPlayer().getPlayerEntity());
+							//System.out.println(Math.round(10));
+							//System.out.println(Main.debugMessage);
+							//System.out.println(Main.resolutionScaleX);
+							//if (player != null)
+						//	{
+								//String one = "Player (" + Math.round(player.getPlayerEntity().getX() / Main.resolutionScaleX);
+						//	}
+							//String two = ", " + Math.round(player.getPlayerEntity().getY() / Main.resolutionScaleY);
+							String three = ", " +  Math.round(player.getPlayerEntity().getXVel());
+							//System.out.println(player);
+							///Thread.sleep(1000);
+							//System.out.println(player.getPlayerEntity());
+							String four = ", " +  Math.round(player.getPlayerEntity().getYVel()) + ")";
+							String five = "   Camera (" + Main.getGameWindow().getCameraX();
+							String six = ", " + Main.getGameWindow().getCameraY() + ")";
+							String seven = "   rendering: " + Math.round(entityHandler.getVisibleEntities() / (double) numEntities * 100) + "%";
+							String eight = "   fps: " + Main.getFpsCounter().getFps();
+							*/
+							
+							Main.debugMessage = ("Player (" + Math.round(player.getPlayerEntity().getX() / Main.resolutionScaleX) 
+									+ ", " + Math.round(player.getPlayerEntity().getY() / Main.resolutionScaleY) 
+									+ ", " +  Math.round(player.getPlayerEntity().getXVel()) 
+									+ ", " + Math.round(player.getPlayerEntity().getYVel()) + ")"
+									+ "   Camera (" + Main.getGameWindow().getCameraX()
+									+ ", " + Main.getGameWindow().getCameraY() + ")"
+									+ "   rendering: " + Math.round(entityHandler.getVisibleEntities() / (double) numEntities * 100) + "%"
+									//+ "   memory: " + Math.round((Runtime.getRuntime().maxMemory() - Runtime.getRuntime().freeMemory()) / (double) Runtime.getRuntime().maxMemory() * 100) + "% used"
+									//+ "   threads: " + Main.getThreadsRunning()
+									+ "   fps: " + Main.getFpsCounter().getFps()
+									);
+									
+						}
+						else
+							Main.debugMessage = ("Camera (" + Main.getGameWindow().getCameraX()
 							+ ", " + Main.getGameWindow().getCameraY() + ")"
 							+ "   rendering: " + Math.round(entityHandler.getVisibleEntities() / (double) numEntities * 100) + "%"
 							//+ "   memory: " + Math.round((Runtime.getRuntime().maxMemory() - Runtime.getRuntime().freeMemory()) / (double) Runtime.getRuntime().maxMemory() * 100) + "% used"
 							//+ "   threads: " + Main.getThreadsRunning()
 							+ "   fps: " + Main.getFpsCounter().getFps()
 							);
+					}
+					catch (Exception e) 
+					{
+						e.printStackTrace(System.out);
+					}
 				}
 				
 				/*
@@ -133,7 +193,7 @@ public class RenderLoop
 			}
 			catch (Exception e) 
 			{
-				Main.println("Error!  Render thread stopped (unhandled excpetion): " + e);
+				Main.println("Error!  Error in windiow thread stopped (unhandled excpetion): " + e);
 				e.printStackTrace(System.out);
 			}
 		}

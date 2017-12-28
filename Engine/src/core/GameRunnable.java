@@ -9,7 +9,6 @@ package core;
  */
 public interface GameRunnable
 {
-	
 	/**
 	 * Called by the <code>GameThreadHandler</code> or the
 	 * <code>DelayedGameThreadHandler</code> to execute

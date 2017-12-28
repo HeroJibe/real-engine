@@ -70,13 +70,13 @@
 	</section>
 	<section name="FatJarPackageWizard">
 		<item value="C:\Users\Ethan Vrhel\Desktop\workspace" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
-		<item value="engine - Engine" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
-		<item value="C:\Users\Ethan Vrhel\Desktop\Game\bin\engine.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="map checker - MapChecker" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
+		<item value="C:\Users\Ethan Vrhel\Desktop\Game\bin\mapChecker.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
 		<item value="3" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
-			<item value="C:\Users\Ethan Vrhel\Desktop\Game\bin\engine.jar"/>
 			<item value="C:\Users\Ethan Vrhel\Desktop\Game\bin\mapChecker.jar"/>
+			<item value="C:\Users\Ethan Vrhel\Desktop\Game\bin\engine.jar"/>
 			<item value="Engine\mapChecker.jar"/>
 			<item value="Engine\engine.jar"/>
 			<item value="Engine/engine.jar"/>
@@ -110,6 +110,11 @@
 			<section name="MapChecker">
 				<item value="C:\Users\Ethan Vrhel\Desktop\workspace\MapChecker\javadoc.xml" key="antpath"/>
 				<item value="C:\Users\Ethan Vrhel\Desktop\workspace\MapChecker\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="MapEditor">
+				<item value="C:\Users\Ethan Vrhel\Desktop\workspace\MapEditor\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Ethan Vrhel\Desktop\workspace\MapEditor\doc" key="destdir"/>
 				<item value="" key="href"/>
 			</section>
 			<section name="Engine">

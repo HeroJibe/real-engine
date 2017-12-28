@@ -77,6 +77,9 @@ public class MapLoader
 	private String variableNames[] = new String[MAX_VARIABLES];
 	private int numVariables = 0;
 	
+	public static double xSpawn = 0;
+	public static double ySpawn = 0;
+	
 	/**
 	 * Loads a map into memory
 	 * 
@@ -1698,6 +1701,8 @@ public class MapLoader
 								return -1;
 							}
 							
+							xSpawn = Double.parseDouble(tokens[1]);
+							ySpawn = Double.parseDouble(tokens[2]);
 							Main.player_x = Double.parseDouble(tokens[1]);
 							Main.player_y = Double.parseDouble(tokens[2]);
 						}

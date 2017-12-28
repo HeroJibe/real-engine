@@ -1,12 +1,10 @@
-/**
- * The game main class is the central for
- * executing game-specific events (not base
- * engine ones)
- * 
- * @author Ethan Vrhel
- */
-
 package game;
+
+import java.awt.Color;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import core.GameEventHandler;
 import core.GameRunnable;
@@ -20,13 +18,21 @@ import gamegui.Menu;
 import gamegui.Settings;
 import main.Main;
 
+/**
+ * The <code>GameMain</code> class is the central for
+ * executing game-specific events (not base
+ * engine ones)
+ * 
+ * @author Ethan Vrhel
+ * @see Player
+ */
 public class GameMain
 	implements GameRunnable
 {
 	/**
 	 * The name of the game
 	 */
-	public static final String NAME = "Richard The Gay Chicken";
+	public static final String NAME = "Chicken Nug-Nug";
 	
 	/**
 	 * The version of the game
@@ -65,6 +71,10 @@ public class GameMain
 	private GuiButton resume;
 	private GuiButton settings;
 	private GuiButton exit;
+	
+	private String initialMap;
+	private Chapter initialChapter;
+	private ArrayList<Chapter> chapters;
 	
 	private Menu gameMenu;
 	
@@ -106,6 +116,18 @@ public class GameMain
 		ParticleArguments arg = new ParticleArguments(0, 0, 0, 50, 50, 15, 0, 0.9, -1, false, 10, 5000, null, 1, true, ParticleArguments.SpatialRelation.BOX, ParticleArguments.StopType.COLLISION);
 		ParticleEffect effect = new ParticleEffect("WaterBottom", Main.getResourceHandler().getImage(Main.getResourceHandler().getIndexByName("waterParticle.png", true)), arg);
 		Main.getParticleEffectHandler().addToBuffer(effect);
+		
+		chapters = new ArrayList<Chapter>();
+		
+		try 
+		{
+			readGameDataFile(new File("game\\game.dat"));
+			initialMap = initialChapter.getMap();
+		} 
+		catch (FileNotFoundException e)
+		{
+			Main.println("Failed to read game data file!", Color.RED);
+		}
 	}
 	
 	public void onGameInit()
@@ -186,10 +208,69 @@ public class GameMain
 	/**
 	 * Returns whether the game is paused
 	 * 
-	 * @return
+	 * @return Whether the game is paused
 	 */
 	public boolean paused()
 	{
 		return paused;
+	}
+	
+	/**
+	 * Returns the initial map when the "new" button
+	 * is clicked in the main menu
+	 * 
+	 * @return The initial map
+	 */
+	public String getInitialMap()
+	{
+		return initialMap;
+	}
+	
+	private void readGameDataFile(File file) 
+		throws FileNotFoundException
+	{
+		if (! file.exists())
+			throw new FileNotFoundException();
+		
+		Scanner in = new Scanner(file);
+		System.out.println("reading...");
+		while (in.hasNextLine())
+		{
+			String line = in.nextLine();
+			String[] tokens = line.split(" ");
+			if (tokens[0].equals("Chapter"))
+			{
+				Chapter chapter;
+				String name = "";
+				for (int i = 1; i < tokens.length; i++)
+				{
+					name += tokens[i];
+				}
+				String[] tokens2 = in.nextLine().split(" ");
+				String map = tokens2[1];
+				chapter = new Chapter(name, map);
+				chapters.add(chapter);
+			}
+			else if (tokens[0].equals("InitialChapter"))
+			{
+				String[] tokens2 = in.nextLine().split(" ");
+				String chapterName = "";
+				for (int i = 1; i < tokens2.length; i++)
+				{
+					chapterName += tokens2[i];
+				}
+				//System.out.println("chapter name: " + chapterNa);
+				
+				for (int i = 0; i < chapters.size(); i++)
+				{
+					if (chapters.get(i).getName().equals(chapterName))
+					{
+						initialChapter = chapters.get(i);
+						break;
+					}
+				}
+			}
+		}
+		in.close();
 	}
 }

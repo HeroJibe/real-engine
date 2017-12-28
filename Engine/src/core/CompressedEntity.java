@@ -16,10 +16,16 @@ import net.NetMain;
 public class CompressedEntity 
 {
 	private Entity e;
+	private String compressed;
 	
 	public CompressedEntity(Entity e)
 	{
 		this.e = e;
+	}
+	
+	public CompressedEntity(String c)
+	{
+		this.compressed = c;
 	}
 	
 	/**
@@ -31,7 +37,11 @@ public class CompressedEntity
 	{
 		String compress = toString();
 		if (compress == null)
-			return null;
+		{
+			compress = this.compressed;
+			if (compress == null)
+				return null;
+		}
 		String[] ca = compress.split(", ");
 		Entity e = new Entity();
 		for (int i = 0; i < ca.length; i++)

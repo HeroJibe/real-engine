@@ -1,10 +1,3 @@
-/**
- * The player class controls the playable character
- * in game.
- * 
- * @author Ethan Vrhel
- */
-
 package game;
 
 import java.awt.Image;
@@ -20,6 +13,14 @@ import core.guiElements.GuiImage;
 import main.Main;
 import utilities.KeyBinds;
 
+/**
+ * The player class controls the playable character
+ * in game.
+ * 
+ * @author Ethan Vrhel
+ * @see GameMain
+ * @see Entity
+ */
 public class Player
 	implements GameRunnable, Runnable
 {	
@@ -142,6 +143,7 @@ public class Player
 		this.inputListener = inputListener;
 	}
 	
+	@Override
 	public void onGameInit()
 	{
 		Main.println("Player thread started");
@@ -179,6 +181,7 @@ public class Player
 		Main.getReflectionHandler().update(true);
 	}
 
+	@Override
 	public void onGameUpdate()
 	{		
 		if (playerEntity == null)
@@ -544,6 +547,10 @@ public class Player
 		{}
 	}
 	
+	/**
+	 * This thread handles when the player dies
+	 */
+	@Override
 	public void run()
 	{
 		while (true)
@@ -585,12 +592,21 @@ public class Player
 		}
 	}
 	
-	// Returns the player's entity
+	/**
+	 * Returns the <code>Player</code>'s <code>Entity</code>
+	 * 
+	 * @return The <code>Player</code>'s <code>Entity</code>
+	 */
 	public Entity getPlayerEntity()
 	{
 		return playerEntity;
 	}
 	
+	/**
+	 * Sets the <code>Player</codes>'s <code>Entity</code>
+	 * 
+	 * @param entity The <code>Entity</code>
+	 */
 	public void setPlayerEntity(Entity entity)
 	{
 		this.playerEntity = entity;
@@ -598,8 +614,20 @@ public class Player
 		playerEntity.setY(Main.player_y);
 	}
 	
+	/**
+	 * Translates the <code>Player</code>
+	 * 
+	 * @param x X translation
+	 * @param y Y translation
+	 */
 	public void translate(double x, double y)
 	{
 		playerEntity.translate(x, y);
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Player: " + playerEntity;
 	}
 }

@@ -1,9 +1,3 @@
-/**
- * The GameWindow class draws everything onto the screen
- * 
- * @author Ethan Vrhel
- */
-
 package gui;
 
 import java.awt.Color;
@@ -32,6 +26,12 @@ import core.ResourceHandler;
 import main.Main;
 import utilities.ResourceMonitor;
 
+/**
+ * The GameWindow class draws everything onto the screen
+ * 
+ * @author Ethan Vrhel
+ * @see ImageHandler
+ */
 public class GameWindow 
 	extends JFrame
 	implements WindowListener
@@ -534,7 +534,7 @@ public class GameWindow
     /**
      * Renders everything
      */
-    public void paint()
+    public synchronized void paint()
     {
     	updating = true;
     	if (! render)
@@ -552,11 +552,11 @@ public class GameWindow
     /**
      * Adds a rectangle to the cache
      * 
-     * @param nx
-     * @param ny
-     * @param nw
-     * @param nh
-     * @param nc
+     * @param nx The x position
+     * @param ny The y position
+     * @param nw The width
+     * @param nh The height
+     * @param nc The color
      */
     public void addToCache(int nx, int ny, int nw, int nh, Color nc)
     {
@@ -564,12 +564,13 @@ public class GameWindow
     }
     
     /**
-     * Adds an Image to the cache
+     * Adds an <code>Image</code> to the cache
      * 
-     * @param nx
-     * @param ny
-     * @param image
-     * @param wireframe
+     * @param nx The x position
+     * @param ny The y position
+     * @param image The <code>Image</code>
+     * @param useOffset Whether the renderer should use the screen offset
+     * @param wireframe The wireframe color
      */
     public void addToCache(int nx, int ny, Image image, boolean useOffset, Color wireframe)
     {
@@ -579,9 +580,9 @@ public class GameWindow
     /**
      * Adds text to the cache
      * 
-     * @param nx
-     * @param ny
-     * @param text
+     * @param nx The x position
+     * @param ny The y position
+     * @param text The text
      */
     public void addToCache(int nx, int ny, String text)
     {
@@ -591,7 +592,7 @@ public class GameWindow
     /**
      * Returns the ImageHandler
      * 
-     * @return
+     * @return The <code>ImageHandler</code>
      */
     public ImageHandler getHandler()
     {
@@ -601,7 +602,7 @@ public class GameWindow
     /**
      * Returns the top screen bounds
      * 
-     * @return
+     * @return The top screen bounds
      */
     public int getTopBounds()
     {
@@ -611,7 +612,7 @@ public class GameWindow
     /**
      * Sets the top screen bounds
      * 
-     * @param bounds
+     * @param bounds The bounds
      */
     public void setTopBounds(int bounds)
     {
@@ -621,7 +622,7 @@ public class GameWindow
     /**
      * Returns the bottom screen bounds
      * 
-     * @return
+     * @return The bottom screen bounds
      */
     public int getBottomBounds()
     {
@@ -631,7 +632,7 @@ public class GameWindow
     /**
      * Sets the bottom screen bounds
      * 
-     * @param bounds
+     * @param bounds The bounds
      */
     public void setBottomBounds(int bounds)
     {
@@ -641,7 +642,7 @@ public class GameWindow
     /**
      * Returns the right screen bounds
      * 
-     * @return
+     * @return The right screen bounds
      */
     public int getRightBounds()
     {
@@ -651,7 +652,7 @@ public class GameWindow
     /**
      * Sets the right screen bounds
      * 
-     * @param bounds
+     * @param bounds The bounds
      */
     public void setRightBounds(int bounds)
     {
@@ -661,7 +662,7 @@ public class GameWindow
     /**
      * Returns the left screen bounds
      * 
-     * @return
+     * @return The left screen bounds
      */
     public int getLeftBounds()
     {
@@ -671,7 +672,7 @@ public class GameWindow
     /**
      * Sets the left screen bounds
      * 
-     * @param bounds
+     * @param bounds The bounds
      */
     public void setLeftBounds(int bounds)
     {
@@ -681,7 +682,7 @@ public class GameWindow
     /**
      * Returns the screen x resolution
      * 
-     * @return
+     * @return The x resolution
      */
     public int getScreenResX()
     {
@@ -691,7 +692,7 @@ public class GameWindow
     /**
      * Returns the screen y resolution
      * 
-     * @return
+     * @return The y resolution
      */
     public int getScreenResY()
     {
@@ -699,20 +700,10 @@ public class GameWindow
     }
     
     /**
-     * Returns the ImageHandler
+     * Adds a <code>String</code> to the console
      * 
-     * @return
-     */
-    public ImageHandler getImageHandler()
-    {
-    	return imgHandle;
-    }
-    
-    /**
-     * Adds a String to the console
-     * 
-     * @param str
-     * @param c
+     * @param str The <code>String</code>
+     * @param c The color
      */
     public void addToConsole(String str, Color c)
     {
@@ -728,7 +719,7 @@ public class GameWindow
     /**
      * Types a character
      * 
-     * @param key
+     * @param key A key as a <code>String</code>
      */
     @Deprecated
     public void type(String key)
@@ -757,9 +748,9 @@ public class GameWindow
     }
     
     /**
-     * Returns the RenderingHints
+     * Returns the <code>RenderingHints</code>
      * 
-     * @return
+     * @return The <code>RenderingHints</code>
      */
     public RenderingHints getRenderingHints()
     {
@@ -790,15 +781,6 @@ public class GameWindow
     	}
     }
     
-    /**
-     * Returns the rendering pane
-     * @return
-     */
-    public JPanel getPane()
-    {
-    	return pane;
-    }
-    
     @Override
     public String toString()
     {
@@ -807,6 +789,7 @@ public class GameWindow
     
     /**
      * Returns the camera's x position
+     * 
      * @return The camera's x position
      */
     public double getCameraX()
@@ -816,6 +799,7 @@ public class GameWindow
     
     /**
      * Returns the camera's y position
+     * 
      * @return The camera's y position
      */
     public double getCameraY()
@@ -825,6 +809,7 @@ public class GameWindow
     
     /**
      * Sets the camera's x position
+     * 
      * @param x The x position
      */
     public synchronized void setCameraX(double x)
@@ -834,6 +819,7 @@ public class GameWindow
     
     /**
      * Sets the camera's y position
+     * 
      * @param y The y position
      */
     public synchronized void setCameraY(double y)

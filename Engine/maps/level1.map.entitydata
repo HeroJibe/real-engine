@@ -20,6 +20,6 @@
 0 resources\textures\BlueStoneConvexTR.png 64 64 true "Brush Face" 1024.0 -832.0 0 64.0 64.0 100 false true false 1 true
 0 resources\textures\BlueStoneCornerCR.png 64 64 true "Brush Face" 1216.0 -1088.0 0 64.0 64.0 100 false true false 1 true
 0 null 1 1 true "Clip Face" 1213.0 -832.0 0 3.0 1.0 100 false true false 1 true
-1 resources\textures\elev.png 128 8 true "elevator" 1088.0 -831.0 0 128.0 8.0 100 false false false 50 true
-0 null 1 1 true "clip" 1024.0 -256.0 0 64.0 256.0 100 false true false 1 true
-1 resources\textures\Dance1.png 26 44 true "Player Entity" -5.777912937146832 -876.0 10 26.0 44.0 100 false true false 10 true
+1 resources\textures\elev.png 128 8 true "elevator" 1088.0 -8.0 0 128.0 8.0 100 false false false 50 true
+0 null 1 1 false "clip" 1024.0 -256.0 0 64.0 256.0 100 false true false 1 true
+1 resources\textures\Dance1.png 26 44 true "Player Entity" -4.337052579078159 -876.0 10 26.0 44.0 100 false true false 10 true

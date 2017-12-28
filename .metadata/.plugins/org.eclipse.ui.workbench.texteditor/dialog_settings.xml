@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="UP" key="selection"/>
+		<item value="MainMenu" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="UP"/>
-			<item value="Brush"/>
-			<item value="camera"/>
-			<item value="translateX"/>
-			<item value="AnimatedBrush"/>
+			<item value="mainMenu"/>
+			<item value="exit"/>
+			<item value="compareTo"/>
+			<item value="PLAYER_START"/>
+			<item value="TriggerBreak"/>
+			<item value=".equals(&quot;Trigger&quot;)"/>
 			<item value="Trigger"/>
-			<item value="DRAW_TRIGGERS"/>
-			<item value="getClass"/>
-			<item value="collided"/>
-			<item value="getActualX"/>
-			<item value="getActual"/>
-			<item value="sound"/>
-			<item value="Inset"/>
-			<item value="Insets"/>
-			<item value="isOnScreen"/>
+			<item value="graphics.config"/>
+			<item value="ReflectiveBrush"/>
+			<item value="TiledBrush"/>
+			<item value="CAMERA"/>
+			<item value=".equals(&quot;Entity&quot;)"/>
+			<item value=".equals(&quot;Entity)"/>
+			<item value=".equals"/>
+			<item value="Entity"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

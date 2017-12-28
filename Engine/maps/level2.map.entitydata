@@ -17,4 +17,4 @@
 0 resources\textures\crate.png 64 64 true "Brush Face" -1564.0 1264.0 0 64.0 64.0 100 false false false 1 true
 0 resources\textures\crate.png 64 64 true "Brush Face" -1564.0 1328.0 0 64.0 64.0 100 false false false 1 true
 0 resources\textures\crate.png 64 64 true "Brush Face" -1500.0 1328.0 0 64.0 64.0 100 false false false 1 true
-1 resources\textures\Dance1.png 26 44 true "Player Entity" -1793.853170023109 1348.0 10 26.0 44.0 100 false true false 10 true
+1 resources\textures\Dance1.png 26 44 true "Player Entity" -1794.6055858021086 1348.0 10 26.0 44.0 100 false true false 10 true

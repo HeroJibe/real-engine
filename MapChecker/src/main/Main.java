@@ -19,7 +19,7 @@ public class Main
 	implements Runnable
 {	
 	public static final String NAME = "Real Engine Map Checker";
-	public static final String VERSION_NAME = "1.0.1.00";
+	public static final String VERSION_NAME = "1.1.0.01";
 	public static final boolean DEVELOPMENT_BUILD = true;
 	
 	public static boolean useGUI;
@@ -72,6 +72,7 @@ public class Main
 		new Execute();
 		new Echo();
 		new Configuration();
+		new Clip();
 		
 		window.println("Done.");
 		window.println("Setting up map elements...");
@@ -89,6 +90,7 @@ public class Main
 		new TriggerSound();
 		new TriggerStartTrigger();
 		new TriggerStopTrigger();
+		new TriggerToggleSolid();
 		
 		window.println("Done.");
 		window.println("Loading...");

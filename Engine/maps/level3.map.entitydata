@@ -1,6 +1,6 @@
 0 null 8 128 false "Unnamed Static Entity" -388.0 -64.0 -1 8.0 128.0 100 false false false 1 true
 0 null 8 192 false "Unnamed Static Entity" -644.0 -128.0 -1 8.0 192.0 100 false false false 1 true
-0 null 8 320 false "Unnamed Static Entity" -868.0 -256.0 -1 8.0 320.0 100 false false false 1 true
+0 null 8 256 false "Unnamed Static Entity" -868.0 -192.0 -1 8.0 256.0 100 false false false 1 true
 0 null 8 192 false "Unnamed Static Entity" -1156.0 -128.0 -1 8.0 192.0 100 false false false 1 true
 0 null 1920 256 true "Unnamed Static Entity" -1856.0 -1024.0 0 1920.0 256.0 100 false false false 1 true
 0 null 320 64 true "Unnamed Static Entity" -256.0 0.0 0 320.0 64.0 100 false true false 1 true
@@ -11,6 +11,6 @@
 0 null 320 64 true "Unnamed Static Entity" -1856.0 0.0 0 320.0 64.0 100 false true false 1 true
 0 resources\textures\BlueStoneConvexTL.png 64 64 true "Brush Face" -320.0 0.0 0 64.0 64.0 100 false true false 1 true
 0 resources\textures\warningSign.png 64 64 false "Brush Face" -256.0 -64.0 0 64.0 64.0 100 false true false 1 true
-0 resources\textures\plank.png 64 8 true "Brush Face" -896.0 -256.0 0 64.0 8.0 100 false false false 1 true
+0 resources\textures\plank.png 64 8 true "Brush Face" -896.0 -192.0 0 64.0 8.0 100 false false false 1 true
 0 resources\textures\BlueStoneConvexTR.png 64 64 true "Brush Face" -1536.0 0.0 0 64.0 64.0 100 false true false 1 true
-1 resources\textures\Dance1.png 26 44 true "Player Entity" -1935.1985520639764 2696.0 10 26.0 44.0 100 false true false 10 true
+1 resources\textures\Dance1.png 26 44 true "Player Entity" -1797.6917498899882 -44.0 10 26.0 44.0 100 false true false 10 true

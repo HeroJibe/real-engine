@@ -289,21 +289,6 @@ public abstract class GuiElement
 	public int compareTo(GuiElement compareElement) 
 	{
 		int compareZVal = compareElement.getZBuffer();
-		
-		if (this.z == compareZVal)
-		{
-			if (this.x == compareElement.getX())
-			{
-				if (this.y == compareElement.getY())
-				{
-					return 0;
-				}
-				return (int) (compareElement.getY() - this.y);
-			}
-			return (int) (this.x - compareElement.getX());
-		}
-		
-		
 		return  this.z - compareZVal;
 	}
 	
