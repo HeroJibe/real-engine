@@ -33,6 +33,7 @@ public class Track
 			dir = 1;
 		else
 			dir = 0;
+		setPriority(Thread.MAX_PRIORITY);
 	}
 	
 	public String toString()

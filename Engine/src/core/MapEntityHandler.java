@@ -59,6 +59,7 @@ public class MapEntityHandler
 					if (! entities[i].isRunning())
 					{
 						Thread thread = new Thread(entities[i]);
+						thread.setPriority(entities[i].getPriotity());
 						thread.setDaemon(true);
 						thread.start();
 					}
@@ -79,6 +80,7 @@ public class MapEntityHandler
 				if (! entities[i].isRunning())
 				{
 					Thread t = new Thread(entities[i]);
+					t.setPriority(entities[i].getPriotity());
 					entities[i].me = t;
 					t.start();
 				}
@@ -126,7 +128,7 @@ public class MapEntityHandler
 				if (entities[i].isRunning())
 				{
 					entities[i].stop();
-					Main.println("stopping 1", Color.BLUE);
+					//Main.println("stopping 1", Color.BLUE);
 				}
 			}
 		}
@@ -137,10 +139,8 @@ public class MapEntityHandler
 	 */
 	public void removeAll()
 	{
-		for (int i = 0; i < maxEntities; i++)
-		{
-			entities[i] = null;
-		}
+		entities = new MapEntity[maxEntities];
+		System.gc();
 	}
 	
 	/**

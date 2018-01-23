@@ -7,8 +7,6 @@
 
 package core.MapEntities;
 
-import java.awt.Color;
-
 import core.Entity;
 import core.Trigger;
 import main.Main;
@@ -62,8 +60,16 @@ public abstract class MapEntity
 	protected int h;
 	protected Entity collisionEntity;
 	
+	private int priority;
+	
+	private void setupPriority()
+	{
+		setPriority(Thread.NORM_PRIORITY);
+	}
+	
 	public MapEntity(String name, int type)
 	{
+		setupPriority();
 		this.type = type;	
 		startOnSpawn = true;
 		isRunning = false;
@@ -72,6 +78,7 @@ public abstract class MapEntity
 	
 	public MapEntity(String name, int type, long time)
 	{
+		setupPriority();
 		this.type = type;
 		this.name = name;
 		startOnSpawn = true;
@@ -86,6 +93,7 @@ public abstract class MapEntity
 	
 	public MapEntity(String name, int type, Trigger triggerRecieve)
 	{
+		setupPriority();
 		this.type = type;
 		this.name = name;
 		startOnSpawn = true;
@@ -97,6 +105,7 @@ public abstract class MapEntity
 	
 	public MapEntity(String name, int type, int x, int y, int w, int h)
 	{
+		setupPriority();
 		this.type = type;
 		this.name = name;
 		startOnSpawn = true;
@@ -106,8 +115,9 @@ public abstract class MapEntity
 		this.y = (int) (y * Main.resolutionScaleY);
 	}
 	
-	public void run()
-	{		
+	@Override
+	public final void run()
+	{	
 		if (! shouldStartThread())
 			return;
 		
@@ -180,8 +190,10 @@ public abstract class MapEntity
 			}
 			isRunning = false;
 		}
-		catch (Exception e) {}
-		Main.println("stopped", Color.BLUE);
+		catch (Exception e)
+		{
+			return;
+		}
 	}
 	
 	protected boolean shouldStartThread()
@@ -261,6 +273,16 @@ public abstract class MapEntity
 	public String getName()
 	{
 		return name;
+	}
+	
+	protected void setPriority(int priority)
+	{
+		this.priority = priority;
+	}
+	
+	public int getPriotity()
+	{
+		return priority;
 	}
 	
 	public abstract void function();

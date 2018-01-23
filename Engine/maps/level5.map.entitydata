@@ -1,0 +1,44 @@
+0 null 64 1024 true "Unnamed Static Entity" -64.0 0.0 0 64.0 1024.0 100 false true false 1 true
+0 null 64 768 true "Unnamed Static Entity" 64.0 0.0 0 64.0 768.0 100 false true false 1 true
+0 null 640 64 true "Unnamed Static Entity" 0.0 1024.0 0 640.0 64.0 100 false true false 1 true
+0 null 1024 64 true "Unnamed Static Entity" 704.0 960.0 0 1024.0 64.0 100 false true false 1 true
+0 null 384 64 true "Unnamed Static Entity" 576.0 512.0 0 384.0 64.0 100 false true false 1 true
+0 null 64 256 true "Unnamed Static Entity" 960.0 256.0 0 64.0 256.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 1024.0 192.0 0 512.0 64.0 100 false true false 1 true
+0 null 64 256 true "Unnamed Static Entity" 1536.0 256.0 0 64.0 256.0 100 false true false 1 true
+0 null 256 64 true "Unnamed Static Entity" 1600.0 512.0 0 256.0 64.0 100 false true false 1 true
+0 null 64 256 true "Unnamed Static Entity" 1856.0 576.0 0 64.0 256.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 1728.0 960.0 0 512.0 64.0 100 false true false 1 true
+0 null 320 64 true "Unnamed Static Entity" 1920.0 832.0 0 320.0 64.0 100 false true false 1 true
+0 null 512 64 false "Unnamed Static Entity" 1024.0 256.0 0 512.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBL.png 64 64 true "Brush Face" 64.0 768.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerCL.png 64 64 true "Brush Face" 128.0 704.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBR.png 64 64 true "Brush Face" 128.0 768.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCeiling.png 64 64 true "Brush Face" 192.0 704.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerCL.png 64 64 true "Brush Face" 256.0 640.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBR.png 64 64 true "Brush Face" 256.0 704.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCeiling.png 64 64 true "Brush Face" 320.0 640.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerCL.png 64 64 true "Brush Face" 384.0 576.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBR.png 64 64 true "Brush Face" 384.0 640.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCeiling.png 64 64 true "Brush Face" 448.0 576.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerCL.png 64 64 true "Brush Face" 512.0 512.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBR.png 64 64 true "Brush Face" 512.0 576.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Up.png 64 64 false "Brush Face" 384.0 960.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerFL.png 64 64 true "Brush Face" -64.0 1024.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerFR.png 64 64 true "Brush Face" 640.0 1024.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexTL.png 64 64 true "Brush Face" 640.0 960.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Up.png 64 64 false "Brush Face" 640.0 896.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBR.png 64 64 true "Brush Face" 960.0 512.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerCL.png 64 64 true "Brush Face" 960.0 192.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerCR.png 64 64 true "Brush Face" 1536.0 192.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBL.png 64 64 true "Brush Face" 1536.0 512.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCornerCR.png 64 64 true "Brush Face" 1856.0 512.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBL.png 64 64 true "Brush Face" 1856.0 832.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" 1792.0 576.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" 1216.0 512.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Up.png 64 64 false "Brush Face" 1344.0 640.0 0 64.0 64.0 100 false true false 1 true
+1 resources\textures\Dance1.png 26 44 true "Player Entity" 2228.6259506001234 903.0 10 26.0 44.0 100 false true false 10 true
+0 null 128 64 false "Unnamed Static Entity" 192.0 768.0 100 128.0 64.0 100 false true false 1 true
+0 null 128 64 false "Unnamed Static Entity" 320.0 704.0 100 128.0 64.0 100 false true false 1 true
+0 null 128 64 false "Unnamed Static Entity" 448.0 640.0 100 128.0 64.0 100 false true false 1 true
+0 null 1024 64 false "Unnamed Static Entity" 704.0 896.0 100 1024.0 64.0 100 false true false 1 true

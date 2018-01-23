@@ -1,12 +1,13 @@
 Map
 ForceSeperate
 Name = level4
-Version = 13302
+Version = 13303
 
 Entity = PLAYER_START -64 -64
 Entity = CAMERA 1856 2112 584 732
 
 Trigger = STATIC TriggerLoad true 0 -256 64 512 level3.map -1700 0 LoadLevel3
+Trigger = STATIC TriggerLoad true -1600 512 64 64 level5.map 0 0 LoadLevel5
 
 // Nothing
 TiledBrush = STATIC Nothing.png -2112 -768 0 64 64 true 26 8
@@ -24,7 +25,7 @@ Brush = STATIC BlueStoneConvexTL.png -1344 0 0 64 64 true
 TiledBrush = STATIC plankvert.png -1424 0 -1 8 64 false 1 6
 TiledBrush = STATIC plankvert.png -1784 0 -1 8 64 false 1 3
 
-TiledBrush = STATIC Spike1.png -1344 -64 0 64 64 false 4 1
+TiledBrush = STATIC Spike1.png -1344 -64 100 64 64 false 4 1
 Trigger = STATIC TriggerHurt true -1344 -48 256 48 100
 
 // First up

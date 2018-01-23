@@ -31,14 +31,15 @@ public class TriggerLoad
 	
 	public void onTouch(Entity entity)
 	{
-		int exitCode = Main.loadMap(mapToLoad, xbias, ybias);
+		int exitCode = Main.loadMap(mapToLoad, 0, 0);
 		if (exitCode == 1)
 		{
-			Main.getPlayer().getPlayerEntity().setX(Main.player_x + (xbias * Main.resolutionScaleX));
-			Main.getPlayer().getPlayerEntity().setY(Main.player_y + (ybias * Main.resolutionScaleY));
+			Main.getPlayer().getPlayerEntity().setX(Main.player_x + xbias);//(xbias * Main.resolutionScaleX));
+			Main.getPlayer().getPlayerEntity().setY(Main.player_y + ybias);//(ybias * Main.resolutionScaleY));
+			//System.out.println("set to: " + Main.getPlayer().getPlayerEntity());
 			Main.loadingMap = false;
 		}
-		if (exitCode == 0)
+		else if (exitCode == 0)
 		{
 			Main.loadMessage = ("Error: exception while loading map: no map loaded");
 		}

@@ -1,5 +1,7 @@
 package core;
 
+import java.awt.Color;
+
 import core.guiElements.ButtonHandlers.ButtonAnimationHandler;
 import game.Player;
 import gui.GameWindow;
@@ -8,8 +10,17 @@ import main.Main;
 public class RenderLoop 
 	implements Runnable
 {
+	/**
+	 * The maximum FPS
+	 */
 	public static int maximumFPS = -1;
+	
+	/**
+	 * The frequency of garbage collection
+	 */
 	public static int gCollectFreq = 100;
+	
+	private static boolean constructed = false;
 	
 	private EntityHandler entityHandler;
 	private Player player;
@@ -20,12 +31,27 @@ public class RenderLoop
 	private static int sv;
 	private int tick;
 	
+	private boolean valid;
+	
 	private static Entity cameraEntity;
 	
+	/**
+	 * Creates a new <code>RenderLoop</code>.  This
+	 * method will initialize the <code>cameraEntity</code>
+	 * to <code>null</code>
+	 */
 	public RenderLoop()
 	{
+		if (constructed)
+		{
+			Main.println("Error!  The RenderLoop has been constructed twice!", Color.RED);
+			valid = false;
+			return;
+		}
+		
+		valid = true;
+		constructed = true;
 		entityHandler = Main.getEntityHandler();
-		Main.getGameWindow();
 		player = Main.getPlayer();
 		guiHandler = Main.getGuiHandler();
 		bAnimationHandler = Main.getButtonAnimationHandler();
@@ -33,8 +59,18 @@ public class RenderLoop
 		cameraEntity = null;
 	}
 	
+	@Override
 	public void run()
-	{	
+	{
+		if (! valid)
+		{
+			Main.println("Error!  A second RenderThread has been started!", Color.RED);
+			System.out.println("Error!  A second RenderThread has been started!");
+			Main.println("Stopping...", Color.RED);
+			System.out.println("Stopping...");
+			return;
+		}
+		
 		Main.println("Render thread started");
 		tick = 0;
 		
@@ -102,17 +138,12 @@ public class RenderLoop
 									//+ "   memory: " + Math.round((Runtime.getRuntime().maxMemory() - Runtime.getRuntime().freeMemory()) / (double) Runtime.getRuntime().maxMemory() * 100) + "% used"
 									//+ "   threads: " + Main.getThreadsRunning()
 									+ "   fps: " + Main.getFpsCounter().getFps()
+									+ " on map \"" + Main.getMapName() + "\""
 									);
 									
 						}
 						else
-							Main.debugMessage = ("Camera (" + Main.getGameWindow().getCameraX()
-							+ ", " + Main.getGameWindow().getCameraY() + ")"
-							+ "   rendering: " + Math.round(entityHandler.getVisibleEntities() / (double) numEntities * 100) + "%"
-							//+ "   memory: " + Math.round((Runtime.getRuntime().maxMemory() - Runtime.getRuntime().freeMemory()) / (double) Runtime.getRuntime().maxMemory() * 100) + "% used"
-							//+ "   threads: " + Main.getThreadsRunning()
-							+ "   fps: " + Main.getFpsCounter().getFps()
-							);
+							Main.debugMessage = ("fps: " + Main.getFpsCounter().getFps() + " (no map loaded)");
 					}
 					catch (Exception e) 
 					{
@@ -127,8 +158,10 @@ public class RenderLoop
 				 */
 				if (cameraEntity != null)
 				{
-					Main.getGameWindow().setCameraX(-1 * (int) Math.ceil(cameraEntity.getX() - (GameWindow.XRES_GL / 2)));
-					Main.getGameWindow().setCameraY( -1 * (int) Math.ceil(cameraEntity.getY() - (GameWindow.YRES_GL / 2)));
+					Main.getGameWindow().setCameraX(-1 * (int) Math.ceil(cameraEntity.getX() - 
+							((GameWindow.XRES_GL) / 2)));
+					Main.getGameWindow().setCameraY( -1 * (int) Math.ceil(cameraEntity.getY() - 
+							((GameWindow.YRES_GL) / 2)));
 				}
 				
 				if (Main.getGameWindow().getCameraX() > Main.getGameWindow().cameraXBounds[1])
@@ -199,6 +232,12 @@ public class RenderLoop
 		}
 	}
 	
+	/**
+	 * Sets the camera <code>Entity</code> that the camera
+	 * in <code>GameWindow</code> will focus on.
+	 * 
+	 * @param e The <code>Entity</code>
+	 */
 	public static void setCameraEntity(Entity e)
 	{
 		cameraEntity = e;

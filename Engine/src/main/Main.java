@@ -42,12 +42,12 @@ public final class Main
 	/**
 	 * The numerical version of the engine
 	 */
-	public static final int ENGINE_VERSION = 13302;
+	public static final int ENGINE_VERSION = 13303;
 	
 	/**
 	 * The build of the engine
 	 */
-	public static final int ENGINE_BUILD = 46;
+	public static final int ENGINE_BUILD = 47;
 	
 	/**
 	 * The name of the engine
@@ -57,7 +57,7 @@ public final class Main
 	/**
 	 * The String version of the engine
 	 */
-	public static final String ENGINE_VERSION_NAME = "1.3.3.02";
+	public static final String ENGINE_VERSION_NAME = "1.3.3.03";
 	
 	/**
 	 * Whether the engine is in debug mode
@@ -137,8 +137,8 @@ public final class Main
 	public static boolean overrideScale = false;				// Toggles scaling override
 	public static double resolutionScaleX;						// Scaling of the resolution for translating entities on the X axis
 	public static double resolutionScaleY;						// Scaling of the resolution for translating entities on the Y axis
-	public static boolean lighting = false;						// Toggles shading
-	public static boolean useDynamicLighting = false;			// Toggles dynamic lighting
+	public static boolean lighting = true;						// Toggles shading
+	public static boolean useDynamicLighting = true;			// Toggles dynamic lighting
 	public static boolean useBoth = false;						// Use dynamic and static lighting
 	
 	private static File logFile;
@@ -215,6 +215,8 @@ public final class Main
 	
 	/**
 	 * The main method (duh.)
+	 * 
+	 * @param args The program arguments
 	 */
 	public static void main(String[] args)
 	{
@@ -321,7 +323,7 @@ public final class Main
 		gameEventHandler = new GameEventHandler(64);
 		fpsCounter = new FramesCounter();
 		animationHandler = new AnimationHandler(64);
-		lightHandler = new LightHandler(16, 32, 0.1);
+		//lightHandler = new LightHandler(16, 32, 0.1);
 		shaderHandler = new ShaderHandler(4);
 		gameSoundHandler = new GameSoundHandler(64);
 		particleEffectHandler = new ParticleEffectHandler(8);
@@ -335,7 +337,7 @@ public final class Main
 		
 		RenderLoop renderLoop = new RenderLoop();
 		Thread renderThread = new Thread(renderLoop);
-		renderThread.setPriority(Thread.MAX_PRIORITY);
+		//renderThread.setPriority(Thread.MAX_PRIORITY);
 		renderThread.start();
 		
 		//(new Thread(lightHandler)).start();
@@ -348,7 +350,7 @@ public final class Main
 		animationHandlerThread.start();
 		//animationHandlerThread.start();
 		//(new Thread(animationHandler)).start();
-		(new GameThread(particleEffectHandler, 0)).start();
+		(new GameThread(particleEffectHandler, -1)).start();
 		//(new Thread(reflectionHandler)).start();
 		
 		settingsWindow = new Settings();
@@ -360,6 +362,8 @@ public final class Main
 		
 		println("Done.");
 		
+		//Light ligh = new Light(Light.CONSTANT, 800, 800, 100, 1000, 1000);
+		//lightHandler.addLight(ligh);
 		
 		if (! overrideScale)
 		{
@@ -506,7 +510,7 @@ public final class Main
 		loadingMap = false;
 		game.MainMenu mainMenu = new game.MainMenu();
 		Thread mainMenuThread = new Thread(mainMenu);
-		mainMenuThread.setPriority(Thread.MIN_PRIORITY);
+		//mainMenuThread.setPriority(Thread.MIN_PRIORITY);
 		mainMenuThread.start();
 		mainMenu.show();
 		playerThread = new GameThread(player, 1);
@@ -549,8 +553,12 @@ public final class Main
 			gameMainThread.start();
 			gameThreadHandler.init();
 			delayedGameThreadHandler.init();
-			(new Thread(gameThreadHandler)).start();
-			(new Thread(delayedGameThreadHandler)).start();
+			Thread gmThrdHndl = new Thread(gameThreadHandler);
+			gmThrdHndl.setPriority(Thread.MAX_PRIORITY - 1);
+			gmThrdHndl.start();
+			Thread dlGmThrdHndl = new Thread(delayedGameThreadHandler);
+			dlGmThrdHndl.setPriority(Thread.MAX_PRIORITY - 1);
+			dlGmThrdHndl.start();
 		}
 		else
 		{
@@ -623,6 +631,8 @@ public final class Main
 	// Gets the name of the current loaded map
 	public static String getMapName()
 	{
+		if (mapLoader == null)
+			return null;
 		return mapLoader.getMapName();
 	}
 	
@@ -713,7 +723,7 @@ public final class Main
 		loadMessage = "Loading map \"" + mapname + "\"...";
 		loadingMap = true;
 		mapLoader.printToTemp();
-		mapLoader.readMap(resourceHandler.getByName(mapname), false);
+		mapLoader.readMap(resourceHandler.getByName(mapname), true);
 		int exitCode = mapLoader.loadMap(false, mapLoader.getLoadSaved());
 		if (exitCode == 1)
 		{

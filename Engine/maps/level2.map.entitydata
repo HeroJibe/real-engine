@@ -1,4 +1,7 @@
-0 null 1664 1216 true "Unnamed Static Entity" -1856.0 -256.0 0 1664.0 1216.0 100 false false false 1 true
+0 null 1664 256 true "Unnamed Static Entity" -1856.0 -256.0 0 1664.0 256.0 100 false false false 1 true
+0 null 1664 320 true "Unnamed Static Entity" -1856.0 0.0 0 1664.0 320.0 100 false false false 1 true
+0 null 1664 320 true "Unnamed Static Entity" -1856.0 320.0 0 1664.0 320.0 100 false false false 1 true
+0 null 1664 320 true "Unnamed Static Entity" -1856.0 640.0 0 1664.0 320.0 100 false false false 1 true
 0 null 64 1536 true "Unnamed Static Entity" 0.0 64.0 0 64.0 1536.0 100 false false false 1 true
 0 null 192 64 true "Unnamed Static Entity" -128.0 -256.0 0 192.0 64.0 100 false true false 1 true
 0 null 64 1152 true "Unnamed Static Entity" -192.0 -192.0 0 64.0 1152.0 100 false true false 1 true
@@ -13,8 +16,14 @@
 0 resources\textures\BlueStoneCornerCL.png 64 64 true "Brush Face" -192.0 -256.0 0 64.0 64.0 100 false true false 1 true
 0 resources\textures\BlueStoneConvexBR.png 64 64 true "Brush Face" -192.0 960.0 0 64.0 64.0 100 false true false 1 true
 0 resources\textures\BlueStoneCornerFR.png 64 64 true "Brush Face" -64.0 1536.0 0 64.0 64.0 100 false true false 1 true
-0 resources\textures\crate.png 64 64 true "Brush Face" -128.0 1328.0 0 64.0 64.0 100 false false false 1 true
-0 resources\textures\crate.png 64 64 true "Brush Face" -1564.0 1264.0 0 64.0 64.0 100 false false false 1 true
-0 resources\textures\crate.png 64 64 true "Brush Face" -1564.0 1328.0 0 64.0 64.0 100 false false false 1 true
-0 resources\textures\crate.png 64 64 true "Brush Face" -1500.0 1328.0 0 64.0 64.0 100 false false false 1 true
-1 resources\textures\Dance1.png 26 44 true "Player Entity" -1794.6055858021086 1348.0 10 26.0 44.0 100 false true false 10 true
+0 resources\textures\crate.png 64 64 true "Brush Face" -128.0 1328.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\crate.png 64 64 true "Brush Face" -1564.0 1264.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\crate.png 64 64 true "Brush Face" -1564.0 1328.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\crate.png 64 64 true "Brush Face" -1500.0 1328.0 0 64.0 64.0 100 false true false 1 true
+1 resources\textures\Dance1.png 26 44 true "Player Entity" -1797.5975948945156 1348.0 10 26.0 44.0 100 false true false 10 true
+0 null 192 64 false "Unnamed Static Entity" -128.0 -192.0 100 192.0 64.0 100 false true false 1 true
+0 null 64 1216 false "Unnamed Static Entity" -128.0 -192.0 100 64.0 1216.0 100 false true false 1 true
+0 null 128 64 false "Unnamed Static Entity" -64.0 -64.0 100 128.0 64.0 100 false true false 1 true
+0 resources\textures\occlusionBR.png 64 64 false "Low Detail Brush Face" -128.0 -64.0 100 64.0 64.0 100 false true false 1 true
+0 null 64 1408 false "Unnamed Static Entity" -128.0 0.0 100 64.0 1408.0 100 false true false 1 true
+0 null 1792 128 false "Unnamed Static Entity" -1856.0 1408.0 100 1792.0 128.0 100 false true false 1 true

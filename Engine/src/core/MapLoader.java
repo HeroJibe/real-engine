@@ -286,6 +286,8 @@ public class MapLoader
 			forcedSeperate = false;
 			
 			clearVariables();
+			
+			System.gc();
 		}
 			
 		if (loadsaved && ! prefab)
@@ -688,6 +690,99 @@ public class MapLoader
 						}
 						else
 							Main.getEntityHandler().addDynamicEntity(se);
+					}
+					else if (tokens[0].equals("LowDetailTiledBrush") && ! loadsaved)
+					{
+						tokens = args.split(delims);
+						
+						int type = -1;
+						String name = "Low Detail Tiled Brush Face";
+						String texture;
+						double x;
+						double y;
+						int width;
+						int height;
+						int tileW = 1;
+						int tileH = 1;
+						int z;
+						boolean solid;
+						int lod;
+						if (tokens[0].equals("STATIC"))
+						{
+							type = Entity.STATIC;
+						} 
+						else if (tokens[0].equals("DYNAMIC"))
+						{
+							type = Entity.DYNAMIC;
+						}
+					
+						texture = tokens[1];
+					
+						x = getEntityReplacement(tokens[2]);
+						y = getEntityReplacement(tokens[3]) + prefabOffsetY;
+						z = Integer.parseInt(tokens[4]);
+						width = (int) getEntityReplacement(tokens[5]);
+						height = (int) getEntityReplacement(tokens[6]);
+						solid = Boolean.parseBoolean(tokens[7]);
+						tileW = (int) getEntityReplacement(tokens[8]);
+						tileH = (int) getEntityReplacement(tokens[9]);
+						lod = (int) getEntityReplacement(tokens[10]);
+						if (type == Entity.DYNAMIC)
+						{
+							Integer.parseInt(tokens[11]);
+							name = tokens[12];
+						}
+						
+						//(Entity.DYNAMIC, resourceHandler.getImage(resourceHandler.getIndexByName("player.png")), true, "Player Entity", 640, 360, 10, 64, 64, 100, false);
+						boolean transparency;
+						BufferedImage buffImg = ImageIO.read(Main.getResourceHandler().getByName(texture));
+						if (buffImg.getColorModel().hasAlpha())
+							transparency = true;
+						else
+							transparency = false;
+						Image rawImg = buffImg.getScaledInstance((int) (width), 
+								(int) (height), Image.SCALE_DEFAULT);
+						
+						BufferedImage img = new BufferedImage((int) (width * tileW),
+								(int) (height * tileH), BufferedImage.TYPE_INT_ARGB);
+						Graphics g = img.getGraphics();
+						for (int j = 0; j < tileH; j++)
+						{
+							for (int k = 0; k < tileW; k++)
+							{
+								g.drawImage(rawImg, (int) (k * width), 
+										(int) (j * height), null);
+							}
+						}
+						
+						
+						Entity e = new Entity(type, img, width * tileW, 
+								height * tileH, solid, x, y, z, 100, false);
+						e.setLOD(lod);
+						e.setVisible(true);
+						e.setTransparancy(transparency);
+						e.setMaterial(Main.getMaterialHandler().getMaterialByTexture(texture));
+						if (type == Entity.STATIC)
+						{
+							if (! forcedSeperate)
+							{
+								staticEntityCache[staticEntityIndex] = e;
+								staticEntityIndex++;
+								Entity se2 = new Entity(Entity.STATIC, solid, name, x, y,
+										100);
+								se2.setWidth(img.getWidth());
+								se2.setHeight(img.getHeight());
+								se2.setVisible(false);
+								Main.getEntityHandler().addStaticEntity(se2);
+							}
+							else
+							{
+								Main.getEntityHandler().addStaticEntity(e);
+							}
+						}
+						else
+							Main.getEntityHandler().addDynamicEntity(e);
+						
 					}
 					else if (tokens[0].equals("ReflectiveBrush") && ! loadsaved)
 					{
@@ -1714,10 +1809,10 @@ public class MapLoader
 								return -1;
 							}
 							
-							Main.getGameWindow().cameraXBounds[0] = Integer.parseInt(tokens[1]);
-							Main.getGameWindow().cameraXBounds[1] = Integer.parseInt(tokens[2]);
-							Main.getGameWindow().cameraYBounds[0] = Integer.parseInt(tokens[3]);
-							Main.getGameWindow().cameraYBounds[1] = Integer.parseInt(tokens[4]);
+							Main.getGameWindow().cameraXBounds[0] = (int) (Integer.parseInt(tokens[1]) * Main.resolutionScaleX);
+							Main.getGameWindow().cameraXBounds[1] = (int) (Integer.parseInt(tokens[2]) * Main.resolutionScaleX);
+							Main.getGameWindow().cameraYBounds[0] = (int) (Integer.parseInt(tokens[3]) * Main.resolutionScaleY);
+							Main.getGameWindow().cameraYBounds[1] = (int) (Integer.parseInt(tokens[4]) * Main.resolutionScaleY);
 						}
 						else if (entityType.equals("VARIABLE"))
 						{
@@ -1764,6 +1859,7 @@ public class MapLoader
 							boolean playerCollide = Boolean.parseBoolean(tokens[5]);
 							String name = tokens[6];
 							Track track = new Track(name, type, dest, delay, e, playerCollide);
+							
 							Main.getMapEntityHandler().addEntity(track);
 							Main.println("added 1", Color.BLUE);
 						}
@@ -2094,8 +2190,12 @@ public class MapLoader
 	 * @param loadsaved Whether the map loads
 	 * from .entitydata file
 	 */
+	@SuppressWarnings("unused")
+	@Deprecated
 	public void updateState(boolean loadsaved)
 	{
+		if (true)
+			return;
 		data = new File(mapFile.toString() 	+ ".dat");
 		try
 		{

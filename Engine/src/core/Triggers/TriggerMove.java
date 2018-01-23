@@ -27,6 +27,7 @@ public class TriggerMove
 		requiresThread = true;
 	}
 	
+	@Override
 	public void onGameUpdate() 
 	{
 		if (done && ! once)
@@ -38,6 +39,7 @@ public class TriggerMove
 		done = true;
 	}
 
+	@Override
 	public void onGameInit() 
 	{
 

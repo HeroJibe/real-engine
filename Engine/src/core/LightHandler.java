@@ -96,20 +96,13 @@ public class LightHandler
 	@Override
 	public void run()
 	{
-		while (GameMain.gameRunning)
+		while (true)
 		{
 			if ((Main.lighting && Main.useDynamicLighting) || (Main.lighting && Main.useBoth));
 			{
 				updateBrightness(false, CALCULATE_LRL);
 			}
-			try 
-			{
-				Thread.sleep(1);
-			} 
-			catch (InterruptedException e)
-			{
-				e.printStackTrace();
-			}
+			Thread.yield();
 		}
 	}
 	

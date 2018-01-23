@@ -1,0 +1,81 @@
+Map
+ForceSeperate
+Name = level5
+Version = 13303
+
+Entity = PLAYER_START 0 64
+Entity = CAMERA -320 64 0 0
+
+// Kill the player if they go the wrong way
+Trigger = STATIC TriggerHurt true 0 -64 64 64 100 checkInside
+Trigger = STATIC TriggerGravity true 0 64 64 64 0.5 gravity_start
+
+Trigger = STATIC TriggerLoad true 2240 896 64 64 level6.map 0 0 LoadLevel6
+
+TiledBrush = STATIC BlueStoneLeftWall.png -64 0 0 64 64 true 1 16
+TiledBrush = STATIC BlueStoneRightWall.png 64 0 0 64 64 true 1 12
+Brush = STATIC BlueStoneConvexBL.png 64 768 0 64 64 true 
+
+Brush = STATIC BlueStoneCornerCL.png 128 704 0 64 64 true
+Brush = STATIC BlueStoneConvexBR.png 128 768 0 64 64 true
+
+Brush = STATIC BlueStoneCeiling.png 192 704 0 64 64 true
+Brush = STATIC BlueStoneCornerCL.png 256 640 0 64 64 true
+Brush = STATIC BlueStoneConvexBR.png 256 704 0 64 64 true
+TiledBrush = STATIC Spike1_top.png 192 768 100 64 64 false 2 1
+Trigger = STATIC TriggerHurt true 192 768 128 32 100 spikeTopStart1
+
+Brush = STATIC BlueStoneCeiling.png 320 640 0 64 64 true
+Brush = STATIC BlueStoneCornerCL.png 384 576 0 64 64 true
+Brush = STATIC BlueStoneConvexBR.png 384 640 0 64 64 true
+TiledBrush = STATIC Spike1_top.png 320 704 100 64 64 false 2 1
+Trigger = STATIC TriggerHurt true 320 704 128 32 100 spikeTopStart2
+
+Brush = STATIC BlueStoneCeiling.png 448 576 0 64 64 true
+Brush = STATIC BlueStoneCornerCL.png 512 512 0 64 64 true
+Brush = STATIC BlueStoneConvexBR.png 512 576 0 64 64 true
+TiledBrush = STATIC Spike1_top.png 448 640 100 64 64 false 2 1
+Trigger = STATIC TriggerHurt true 448 640 128 32 100 spikeTopStart3
+
+Brush = STATIC Up.png 384 960 0 64 64 false
+Trigger = STATIC TriggerGravity true 384 960 64 64 -0.5 up_start_death
+
+Brush = STATIC BlueStoneCornerFL.png -64 1024 0 64 64 true
+TiledBrush = STATIC BlueStoneFloor.png 0 1024 0 64 64 true 10 1
+
+Brush = STATIC BlueStoneCornerFR.png 640 1024 0 64 64 true
+Brush = STATIC BlueStoneConvexTL.png 640 960 0 64 64 true
+TiledBrush = STATIC BlueStoneFloor.png 704 960 0 64 64 true 16 1
+
+TiledBrush = STATIC Spike1.png 704 896 100 64 64 false 16 1
+Trigger = STATIC TriggerHurt true 704 928 1024 32 100
+
+Brush = STATIC Up.png 640 896 0 64 64 false
+Trigger = STATIC TriggerGravity true 640 896 64 64 -0.5 up_start_safe
+
+TiledBrush = STATIC BlueStoneCeiling.png 576 512 0 64 64 true 6 1
+Brush = STATIC BlueStoneConvexBR.png 960 512 0 64 64 true
+TiledBrush = STATIC BlueStoneLeftWall.png 960 256 0 64 64 true 1 4
+Brush = STATIC BlueStoneCornerCL.png 960 192 0 64 64 true
+TiledBrush = STATIC BlueStoneCeiling.png 1024 192 0 64 64 true 8 1
+Brush = STATIC BlueStoneCornerCR.png 1536 192 0 64 64 true
+TiledBrush = STATIC BlueStoneRightWall.png 1536 256 0 64 64 true 1 4
+Brush = STATIC BlueStoneConvexBL.png 1536 512 0 64 64 true
+TiledBrush = STATIC BlueStoneCeiling.png 1600 512 0 64 64 true 4 1
+Brush = STATIC BlueStoneCornerCR.png 1856 512 0 64 64 true
+TiledBrush = STATIC BlueStoneRightWall.png 1856 576 0 64 64 true 1 4
+Brush = STATIC BlueStoneConvexBL.png 1856 832 0 64 64 true
+TiledBrush = STATIC BlueStoneFloor.png 1728 960 0 64 64 true 8 1
+TiledBrush = STATIC BlueStoneCeiling.png 1920 832 0 64 64 true 5 1
+
+Brush = STATIC Down.png 1792 576 0 64 64 false
+Trigger = STATIC TriggerGravity true 1792 576 64 64 0.5
+
+TiledBrush = STATIC Spike1_top.png 1024 256 0 64 64 false 8 1
+Trigger = STATIC TriggerHurt true 1024 256 512 32 100
+
+Brush = STATIC Down.png 1216 512 0 64 64 false
+Trigger = STATIC TriggerGravity true 1216 512 64 64 0.5
+
+Brush = STATIC Up.png 1344 640 0 64 64 false
+Trigger = STATIC TriggerGravity true 1344 640 64 64 -0.5

@@ -366,9 +366,11 @@ public class GameWindow
     		}
     		*/
     		
+    		/*
     	    currentFont = g.getFont();
     	    newFont = currentFont.deriveFont(currentFont.getSize() * fontSize);
     	    g.setFont(newFont);
+    	    */
     		
     		bufferedRendering = false;
     		if (Main.getShaderHandler() != null)
@@ -399,19 +401,19 @@ public class GameWindow
     						{    	
     							if (imgHandle.useOffset(i))
     							{
-    								if (imgHandle.getX(i) + cameraX - imgHandle.getImage(i).getWidth(null) < XRES_GL - clipX / 2 && 
-    										imgHandle.getX(i) + cameraX + imgHandle.getImage(i).getWidth(null) > clipX / 2)
-    								{
-    									if (imgHandle.getY(i) + cameraY - imgHandle.getImage(i).getHeight(null) < YRES_GL - clipY / 2 && 
-    											imgHandle.getY(i) + cameraY + imgHandle.getImage(i).getHeight(null) > clipY / 2)
-    									{
+    								//if (imgHandle.getX(i) + cameraX - imgHandle.getImage(i).getWidth(null) < XRES_GL - clipX / 2 && 
+    								//		imgHandle.getX(i) + cameraX + imgHandle.getImage(i).getWidth(null) > clipX / 2)
+    								//{
+    								//	if (imgHandle.getY(i) + cameraY - imgHandle.getImage(i).getHeight(null) < YRES_GL - clipY / 2 && 
+    								//			imgHandle.getY(i) + cameraY + imgHandle.getImage(i).getHeight(null) > clipY / 2)
+    								//	{
     										g.drawImage(imgHandle.getImage(i), imgHandle.getX(i) + (int) cameraX, imgHandle.getY(i) + (int) cameraY, null);
-    									}
-    								}
+    								//	}
+    								//}
     							}
 								else
 								{
-    								g.drawImage(imgHandle.getImage(i), imgHandle.getX(i), imgHandle.getY(i), null);
+    								g.drawImage(imgHandle.getImage(i), imgHandle.getX(i) + (int) cameraX, imgHandle.getY(i) + (int) cameraY, null);
 								}
     						}
     						else
@@ -420,8 +422,8 @@ public class GameWindow
     							int y = imgHandle.getY(i);
     							int width = imgHandle.getImage(i).getWidth(pane);
     							int height = imgHandle.getImage(i).getHeight(pane);
-    							g.drawRect(x, y, width, height);
-    							g.drawLine(x, y + height, x + width, y);
+    							g.drawRect(x + (int) cameraX, y + (int) cameraY, width, height);
+    							g.drawLine(x + (int) cameraX, y + height + (int) cameraY, x + (int) cameraX + width, y + (int) cameraY);
     						}
     						
     					}
@@ -438,15 +440,7 @@ public class GameWindow
     			
     			}
     		}
-    		
-    		if ((Main.lighting && ! Main.useDynamicLighting) || (Main.lighting && Main.useBoth))
-    		{
-    			if (lighting != null)
-    			{
-    				g.drawImage(lighting, 0, 0, null);
-    			}
-    		}    		
-    		
+
     		if (Main.DEBUG && ! Main.loadingMap)
     		{
     			g.setColor(Color.BLACK);

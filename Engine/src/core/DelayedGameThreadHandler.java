@@ -24,7 +24,7 @@ public class DelayedGameThreadHandler
 	}
 	
 	/**
-	 * Initializes all GameThreads
+	 * Initializes all <code>GameThread</code>'s
 	 */
 	public void init()
 	{

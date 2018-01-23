@@ -38,9 +38,9 @@ public class MainMenu
 		Main.getGuiHandler().add(newGame);
 		Main.getGuiHandler().add(settings);
 		Main.getGuiHandler().add(exit);
-		Main.getGuiHandler().add(background);
+		//Main.getGuiHandler().add(background);
 		newGame.setVisible(true);
-		GuiElement[] buttons2 = {newGame, settings, exit, background};
+		GuiElement[] buttons2 = {newGame, settings, exit};//, background};
 		elems = buttons2;
 	}
 	

@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="MainMenu" key="selection"/>
+		<item value="gameThread" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="gameThread"/>
+			<item value="setPriority0"/>
+			<item value="setPriority"/>
+			<item value=".start"/>
+			<item value="gameThreadHandler"/>
+			<item value="GameThread"/>
+			<item value="TriggerLoad"/>
+			<item value="CAMERA"/>
+			<item value="adding"/>
+			<item value="me"/>
+			<item value="Thread"/>
 			<item value="mainMenu"/>
 			<item value="exit"/>
 			<item value="compareTo"/>
 			<item value="PLAYER_START"/>
-			<item value="TriggerBreak"/>
-			<item value=".equals(&quot;Trigger&quot;)"/>
-			<item value="Trigger"/>
-			<item value="graphics.config"/>
-			<item value="ReflectiveBrush"/>
-			<item value="TiledBrush"/>
-			<item value="CAMERA"/>
-			<item value=".equals(&quot;Entity&quot;)"/>
-			<item value=".equals(&quot;Entity)"/>
-			<item value=".equals"/>
-			<item value="Entity"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

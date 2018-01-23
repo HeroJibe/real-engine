@@ -23,6 +23,7 @@ public class Jitter
 
 	public BufferedImage shade(BufferedImage buf) 
 	{
+		Math.random();
 		loaded = true;
 		int mX = 0;
 		if (this.mX != 0)

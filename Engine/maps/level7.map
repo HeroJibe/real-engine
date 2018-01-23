@@ -1,0 +1,87 @@
+Map
+ForceSeperate
+Name = level7
+
+Version = 13303
+
+Entity = PLAYER_START 0 -64
+Entity = CAMERA 1856 2368 440 512
+
+Trigger = STATIC TriggerLoad true 64 -512 64 1024 level6.map 0 900	 LoadLevel6
+
+TiledBrush = STATIC BlueStoneFloor.png -512 0 0 64 64 true 9 1
+TiledBrush = STATIC BlueStoneCeiling.png -512 -512 0 64 64 true 9 1
+Brush = STATIC BlueStoneConvexTL.png -512 0 0 64 64 true
+TiledBrush = STATIC BlueStoneCeiling.png -1024 -512 0 64 64 true 8 1
+
+// First pit
+TiledBrush = STATIC BlueStoneLeftWall.png -1088 -256 0 64 64 true 1 7
+Brush = STATIC BlueStoneConvexTR.png -1088 -320 0 64 64 true 
+TiledBrush = STATIC BlueStoneLeftWall.png -1088 64 0 64 64 true 1 8
+TiledBrush = STATIC BlueStoneRightWall.png -512 64 0 64 64 true 1 8
+TiledBrush = STATIC BlueStoneFloor.png -1024 576 0 64 64 true 8 1
+
+Brush = STATIC Up.png -960 512 0 64 64 false
+Trigger = STATIC TriggerGravity true -960 512 64 64 -0.5
+
+Brush = STATIC Down.png -1024 512 0 64 64 false
+Trigger = STATIC TriggerGravity true -1024 512 64 64 0.5
+Brush = STATIC Down.png -1024 384 0 64 64 false
+Trigger = STATIC TriggerGravity true -1024 384 64 64 0.5
+Brush = STATIC Down.png -1024 256 0 64 64 false
+Trigger = STATIC TriggerGravity true -1024 256 64 64 0.5
+Brush = STATIC Down.png -1024 128 0 64 64 false
+Trigger = STATIC TriggerGravity true -1024 128 64 64 0.5
+Brush = STATIC Down.png -1024 0 0 64 64 false
+Trigger = STATIC TriggerGravity true -1024 0 64 64 0.5
+Brush = STATIC Down.png -1024 -128 0 64 64 false
+Trigger = STATIC TriggerGravity true -1024 -128 64 64 0.5
+Brush = STATIC Down.png -1024 -256 0 64 64 false
+Trigger = STATIC TriggerGravity true -1024 -256 64 64 0.5
+
+// First Divider
+TiledBrush = STATIC BlueStoneCeiling.png -1152 -512 0 64 64 true 2 1
+TiledBrush = STATIC Spike1_top.png -1152 -448 0 64 64 false 16 1
+Trigger = STATIC TriggerHurt true -1152 -448 1024 32 100
+
+// Second pit
+TiledBrush = STATIC BlueStoneLeftWall.png -1728 -256 0 64 64 true 1 7
+Brush = STATIC BlueStoneConvexTR.png -1728 -320 0 64 64 true 
+TiledBrush = STATIC BlueStoneLeftWall.png -1728 64 0 64 64 true 1 8
+TiledBrush = STATIC BlueStoneRightWall.png -1152 -256 0 64 64 true 1 7
+Brush = STATIC BlueStoneConvexTL.png -1152 -320 0 64 64 true 
+TiledBrush = STATIC BlueStoneRightWall.png -1152 64 0 64 64 true 1 8
+TiledBrush = STATIC BlueStoneFloor.png -1664 576 0 64 64 true 8 1
+
+// Second Divider
+TiledBrush = STATIC BlueStoneCeiling.png -1728 -512 0 64 64 true 9 1
+
+Brush = DYNAMIC plank.png -1664 -192 0 64 8 true 20 false platform
+Entity = TRACK XPLANE 0.5 1 platform true platformTrack
+
+Brush = DYNAMIC plank.png -1216 -192 0 64 8 true 20 false platform1
+Entity = TRACK XPLANE 0.5 1 platform1 true platform1Track
+
+Brush = DYNAMIC plank.png -1536 512 0 64 8 true 20 false platform2
+Entity = TRACK XPLANE 0.5 1 platform2 true platform2Track
+
+Brush = DYNAMIC plank.png -1408 256 0 64 8 true 20 false platform3
+Entity = TRACK XPLANE 0.5 1 platform3 true platform3Track
+
+Brush = STATIC Up.png -1664 448 0 64 64 false 
+Trigger = STATIC TriggerGravity true -1664 448 64 64 -0.5
+
+TiledBrush = STATIC Down.png -1664 -448 0 64 64 false 4 1
+Trigger = STATIC TriggerGravity true -1664 -448 256 64 0.5
+
+TiledBrush = STATIC plankvert.png -1380 -448 0 8 64 true 1 5
+
+TiledBrush = STATIC BlueStoneFloor.png -2048 -320 0 64 64 true 5 1
+TiledBrush = STATIC BlueStoneCeiling.png -2048 -512 0 64 64 true 5 1
+TiledBrush = STATIC BlueStoneFloor.png -2368 -320 0 64 64 true 5 1
+TiledBrush = STATIC BlueStoneCeiling.png -2368 -512 0 64 64 true 5 1
+
+TiledBrush = STATIC Spike1.png -1664 512 0 64 64 false 8 1
+Trigger = STATIC TriggerHurt true -1664 544 512 32 100
+
+

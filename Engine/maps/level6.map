@@ -1,0 +1,67 @@
+Map
+ForceSeperate
+Name = level6
+Version = 13303
+
+Entity = PLAYER_START 64 -64
+Entity = CAMERA 0 0 -160 128
+
+Trigger = STATIC TriggerLoad true 0 -64 64 64 level5.map 2100 852 LoadLevel5
+Trigger = STATIC TriggerLoad true 0 448 64 1024 level7.map 0 0 LoadLevel7
+
+TiledBrush = STATIC BlueStoneFloor.png 0 0 0 64 64 true 7 1
+Brush = STATIC BlueStoneConvexTR.png 448 0 0 64 64 true 
+TiledBrush = STATIC BlueStoneLeftWall.png 448 64 0 64 64 true 1 4
+Brush = STATIC BlueStoneConvexTL.png 1024 0 0 64 64 true
+TiledBrush = STATIC BlueStoneRightWall.png 1024 64 0 64 64 true 1 4
+TiledBrush = STATIC BlueStoneFloor.png 1088 0 0 64 64 true 6 1
+Brush = STATIC BlueStoneConvexTR.png 1472 0 0 64 64 true
+Brush = STATIC BlueStoneCeiling.png 1536 -128 0 64 64 true
+TiledBrush = STATIC BlueStoneRightWall.png 1600 -64 0 64 64 true 1 2
+TiledBrush = STATIC BlueStoneLeftWall.png 1472 64 0 64 64 true 1 8
+TiledBrush = STATIC BlueStoneRightWall.png 1600 64 0 64 64 true 1 8
+Brush = STATIC BlueStoneConvexBR.png 1472 576 0 64 64 true
+Brush = STATIC BlueStoneConvexBL.png 1408 576 0 64 64 true
+TiledBrush = STATIC BlueStoneRightWall.png 1408 448 0 64 64 true 1 2
+TiledBrush = STATIC BlueStoneRightWall.png 1600 576 0 64 64 true 1 5
+TiledBrush = STATIC BlueStoneFloor.png 1024 896 0 64 64 true 9 1
+TiledBrush = STATIC BlueStoneCeiling.png 0 384 0 64 64 true 8 1
+TiledBrush = STATIC BlueStoneCeiling.png 512 384 0 64 64 true 8 1
+TiledBrush = STATIC BlueStoneCeiling.png 1024 384 0 64 64 true 6 1
+TiledBrush = STATIC BlueStoneFloor.png 512 896 0 64 64 true 8 1
+TiledBrush = STATIC BlueStoneFloor.png 0 896 0 64 64 true 8 1
+
+TiledBrush = STATIC BlueStoneFloor.png 512 320 0 64 64 true 8 1
+TiledBrush = STATIC Spike1.png 512 256 100 64 64 false 8 1	
+Trigger = STATIC TriggerHurt true 512 288 512 32 100
+
+TiledBrush = STATIC Spike1.png 512 832 100 64 64 false 12 1	
+Trigger = STATIC TriggerHurt true 512 864 768 32 100
+
+TiledBrush = STATIC Spike1_top.png 512 448 100 64 64 false 12 1	
+Trigger = STATIC TriggerHurt true 512 448 768 32 100
+
+Brush = STATIC crate.png 1024 448 -100 64 64 true
+
+Brush = STATIC Up.png 1152 768 0 64 64 false
+Trigger = STATIC TriggerGravity true 1152 768 64 64 -0.5
+
+Brush = STATIC Down.png 896 576 0 64 64 false
+Trigger = STATIC TriggerGravity true 896 576 64 64 0.5
+
+TiledBrush = STATIC crate.png 832 704 -100 64 64 true 1 3
+
+Brush = DYNAMIC crate.png 704 576 0 64 64 true 19 false succ
+Entity = TRACK YPLANE 0.5 1 succ true cuc
+
+TiledBrush = STATIC plank.png 512 0 0 64 8 true 3 1
+TiledBrush = STATIC plank.png 896 128 0 64 8 true 2 1
+
+TiledBrush = STATIC BlueStoneCeiling.png 0 -128 0 64 64 true 8 1
+TiledBrush = STATIC BlueStoneCeiling.png 512 -128 0 64 64 true 8 1
+TiledBrush = STATIC BlueStoneCeiling.png 512 -128 0 64 64 true 8 1
+TiledBrush = STATIC BlueStoneCeiling.png 1024 -128 0 64 64 true 8 1
+
+//TiledBrush = STATIC plank.png 512 32 100 64 8 false 8 1
+
+Brush = DYNAMIC crate.png 500 -64 -64 64 64 true 5 true platform

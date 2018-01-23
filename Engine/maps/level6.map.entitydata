@@ -1,0 +1,38 @@
+0 null 64 192 true "Unnamed Static Entity" 832.0 704.0 -100 64.0 192.0 100 false true false 1 true
+0 resources\textures\crate.png 64 64 true "Brush Face" 1024.0 448.0 -100 64.0 64.0 100 false true false 1 true
+1 resources\textures\crate.png 64 64 true "platform" 743.099086530506 256.0 -64 64.0 64.0 100 false true false 5 true
+0 null 448 64 true "Unnamed Static Entity" 0.0 0.0 0 448.0 64.0 100 false true false 1 true
+0 null 64 256 true "Unnamed Static Entity" 448.0 64.0 0 64.0 256.0 100 false true false 1 true
+0 null 64 256 true "Unnamed Static Entity" 1024.0 64.0 0 64.0 256.0 100 false true false 1 true
+0 null 384 64 true "Unnamed Static Entity" 1088.0 0.0 0 384.0 64.0 100 false true false 1 true
+0 null 64 128 true "Unnamed Static Entity" 1600.0 -64.0 0 64.0 128.0 100 false true false 1 true
+0 null 64 512 true "Unnamed Static Entity" 1472.0 64.0 0 64.0 512.0 100 false true false 1 true
+0 null 64 512 true "Unnamed Static Entity" 1600.0 64.0 0 64.0 512.0 100 false true false 1 true
+0 null 64 128 true "Unnamed Static Entity" 1408.0 448.0 0 64.0 128.0 100 false true false 1 true
+0 null 64 320 true "Unnamed Static Entity" 1600.0 576.0 0 64.0 320.0 100 false true false 1 true
+0 null 576 64 true "Unnamed Static Entity" 1024.0 896.0 0 576.0 64.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 0.0 384.0 0 512.0 64.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 512.0 384.0 0 512.0 64.0 100 false true false 1 true
+0 null 384 64 true "Unnamed Static Entity" 1024.0 384.0 0 384.0 64.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 512.0 896.0 0 512.0 64.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 0.0 896.0 0 512.0 64.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 512.0 320.0 0 512.0 64.0 100 false true false 1 true
+0 null 192 8 true "Unnamed Static Entity" 512.0 0.0 0 192.0 8.0 100 false false false 1 true
+0 null 128 8 true "Unnamed Static Entity" 896.0 128.0 0 128.0 8.0 100 false false false 1 true
+0 null 512 64 true "Unnamed Static Entity" 0.0 -128.0 0 512.0 64.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 512.0 -128.0 0 512.0 64.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 512.0 -128.0 0 512.0 64.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" 1024.0 -128.0 0 512.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexTR.png 64 64 true "Brush Face" 448.0 0.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexTL.png 64 64 true "Brush Face" 1024.0 0.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexTR.png 64 64 true "Brush Face" 1472.0 0.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneCeiling.png 64 64 true "Brush Face" 1536.0 -128.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBR.png 64 64 true "Brush Face" 1472.0 576.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexBL.png 64 64 true "Brush Face" 1408.0 576.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Up.png 64 64 false "Brush Face" 1152.0 768.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" 896.0 576.0 0 64.0 64.0 100 false true false 1 true
+1 resources\textures\crate.png 64 64 true "succ" 704.0 693.25 0 64.0 64.0 100 false true false 19 true
+1 resources\textures\Dance1.png 26 44 true "Player Entity" 62.714634271686215 851.949999999998 10 26.0 44.0 100 false true false 10 true
+0 null 512 64 false "Unnamed Static Entity" 512.0 256.0 100 512.0 64.0 100 false true false 1 true
+0 null 768 64 false "Unnamed Static Entity" 512.0 832.0 100 768.0 64.0 100 false true false 1 true
+0 null 768 64 false "Unnamed Static Entity" 512.0 448.0 100 768.0 64.0 100 false true false 1 true

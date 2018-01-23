@@ -2,6 +2,7 @@ package utilities;
 
 import java.io.PrintStream;
 import gui.GameWindow;
+import main.Main;
 
 public class ResourceMonitor 
 {
@@ -90,7 +91,12 @@ public class ResourceMonitor
 		if (fpsSum > 0)
 			out.println("average fps: " + (avgFps / fpsSum));
 		else
-			out.println("average fps: 0");
+			out.println("average fps: 0");	
+		
+		double skipped = (Main.getEntityHandler().getSkippedFrames() * 1.0) / Main.getEntityHandler().getCalledFrames();
+		double prec = Math.round(skipped * 1000.0);
+		out.println("skipped frames: " + (prec / 10.0) + "% (" + Main.getEntityHandler().getSkippedFrames() + 
+				"/" + Main.getEntityHandler().getCalledFrames() + ")");
 		out.println("____________________________________");
 		out.println("rendering: " + getPrecent(Type.RENDER) + "%");
 		out.println("post-processing: " + getPrecent(Type.POST_PROCESS) + "%");

@@ -13,4 +13,4 @@
 0 resources\textures\warningSign.png 64 64 false "Brush Face" -256.0 -64.0 0 64.0 64.0 100 false true false 1 true
 0 resources\textures\plank.png 64 8 true "Brush Face" -896.0 -192.0 0 64.0 8.0 100 false false false 1 true
 0 resources\textures\BlueStoneConvexTR.png 64 64 true "Brush Face" -1536.0 0.0 0 64.0 64.0 100 false true false 1 true
-1 resources\textures\Dance1.png 26 44 true "Player Entity" -1797.6917498899882 -44.0 10 26.0 44.0 100 false true false 10 true
+1 resources\textures\Dance1.png 26 44 true "Player Entity" -1806.810090433127 -44.0 10 26.0 44.0 100 false true false 10 true

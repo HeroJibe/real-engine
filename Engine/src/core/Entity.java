@@ -97,7 +97,7 @@ public class Entity
 	protected boolean renderInReflections = true;	// Whether the Entity should render in reflections
 	protected int LOD = 0;							// The Entity's LOD value
 	
-	public static Comparator<Entity> EntityZComparator = new Comparator<Entity>()
+	public static final Comparator<Entity> EntityZComparator = new Comparator<Entity>()
 	{
 		public int compare(Entity entity1, Entity entity2)
 		{

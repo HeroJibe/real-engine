@@ -1,16 +1,27 @@
 Map
 ForceSeperate
 Name = level2
-Version = 13302
+Version = 13303
 
 Entity = PLAYER_START 0 -64
 Entity = CAMERA 1856 1856 -520 256
 
-Trigger = STATIC TriggerLoad true 64 0 64 128 level1.map 20 -870 LoadLevel1
+Trigger = STATIC TriggerLoad true -256 -128 64 256 level1.map 20 -870 LoadLevel1
 Trigger = STATIC TriggerLoad true -1856 960 64 512 level3.map -20 10 LoadLevel3
 
-TiledBrush = STATIC Nothing.png -1856 -256 0 64 64 true 26 19
-TiledBrush = STATIC Nothing.png 0 64 0 64 64 true 1 24
+// Nothing
+LowDetailTiledBrush = STATIC Nothing.png -1856 -256 0 64 64 true 26 4 1
+LowDetailTiledBrush = STATIC Nothing.png -1856 0 0 64 64 true 26 5 1
+LowDetailTiledBrush = STATIC Nothing.png -1856 320 0 64 64 true 26 5 1
+LowDetailTiledBrush = STATIC Nothing.png -1856 640 0 64 64 true 26 5 1
+LowDetailTiledBrush = STATIC Nothing.png 0 64 0 64 64 true 1 24 1
+
+// Occlusion
+LowDetailTiledBrush = STATIC occlusionTop.png -128 -192 100 64 64 false 3 1 2
+LowDetailTiledBrush = STATIC occlusionLeft.png -128 -192 100 64 64 false 1 19 2
+LowDetailTiledBrush = STATIC occlusionBottom.png -64 -64 100 64 64 false 2 1 2
+LowDetailBrush = STATIC occlusionBR.png -128 -64 100 64 64 false 2
+LowDetailTiledBrush = STATIC occlusionRight.png -128 0 100 64 64 false 1 22 2
 
 Brush = STATIC BlueStoneFloor.png 0 0 0 64 64 true
 Brush = STATIC BlueStoneConvexTL.png -64 0 0 64 64 true
@@ -27,6 +38,7 @@ Brush = STATIC BlueStoneCornerFR.png -64 1536 0 64 64 true
 TiledBrush = STATIC BlueStoneCeiling.png -1856 960 0 64 64 true 26 1
 
 ReflectiveBrush = water.png -1856 1408 0 64 64 false 0.6 28 2
+LowDetailTiledBrush = STATIC waterOcclusion.png -1856 1408 100 64 128 false 28 1 2
 TiledBrush = STATIC plank.png -1856 1392 0 64 8 true 28 1
 
 Brush = STATIC crate.png -128 1328 0 64 64 true

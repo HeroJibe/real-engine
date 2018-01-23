@@ -32,7 +32,7 @@ public class GameMain
 	/**
 	 * The name of the game
 	 */
-	public static final String NAME = "Chicken Nug-Nug";
+	public static final String NAME = "Chicken Run";
 	
 	/**
 	 * The version of the game

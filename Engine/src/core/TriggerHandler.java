@@ -1,9 +1,17 @@
 
 package core;
 
+import java.awt.Color;
+
 import main.Main;
 
-public class TriggerHandler
+/**
+ * Stores <code>Trigger</code> objects
+ * 
+ * @author Ethan Vrhel
+ * @see Trigger
+ */
+public final class TriggerHandler
 	implements GameRunnable
 {
 	private Trigger triggers[];
@@ -11,13 +19,18 @@ public class TriggerHandler
 	private int triggersDyn;
 	private int numTriggers;
 	
+	/**
+	 * Creates a new <code>TriggerHandler</code>
+	 * 
+	 * @param maxTriggers The maximum of <code>Trigger</code>'s
+	 */
 	public TriggerHandler(int maxTriggers)
 	{
 		triggers = new Trigger[maxTriggers];
 		this.maxTriggers = maxTriggers;
 	}
 	
-	public synchronized void update()
+	private synchronized void update()
 	{
 		for (int i = 0; i < triggersDyn; i++)
 		{
@@ -28,16 +41,23 @@ public class TriggerHandler
 		}
 	}
 	
+	@Override
 	public void onGameInit()
 	{
 		
 	}
 	
+	@Override
 	public void onGameUpdate()
 	{
 		update();
 	}
 	
+	/**
+	 * Adds a <code>Trigger</code> to the cache
+	 * 
+	 * @param toAdd A <code>Trigger</code>
+	 */
 	public void addTrigger(Trigger toAdd)
 	{	
 		for (int i = 0; i < maxTriggers; i++)
@@ -51,20 +71,24 @@ public class TriggerHandler
 				return;
 			}
 		}
-		Main.println("Trigger cache not big enough");
+		Main.println("Trigger cache not big enough", Color.RED);
 	}
 	
+	/**
+	 * Removes each <code>Trigger</code> in
+	 * the cache
+	 */
 	public void clearAllTriggers()
 	{
-		for (int i = 0; i < maxTriggers; i++)
-		{
-			triggers[i] = null;
-		}
+		triggers = new Trigger[maxTriggers];
+		System.gc();
 		triggersDyn = 0;
 		numTriggers = 0;
 	}
 	
-	// Enables all trigger entities
+	/**
+	 * Enables each <code>Trigger</code>
+	 */
 	public void enableAll()
 	{
 		for (int i = 0; i < maxTriggers; i++)
@@ -82,7 +106,9 @@ public class TriggerHandler
 		//Main.println("enabled " + enabled + " triggers");
 	}
 	
-	// Disables all trigger entities
+	/**
+	 * Disables each <code>Trigger</code>
+	 */
 	public void disableAll()
 	{
 		for (int i = 0; i < maxTriggers; i++)
@@ -100,6 +126,15 @@ public class TriggerHandler
 		return triggers;
 	}
 	
+	/**
+	 * Returns a <code>Trigger</code> by its
+	 * name
+	 * 
+	 * @param name The name of a <code>Trigger</code>
+	 * @return A <code>Trigger</code>, or <code>null</code>
+	 * if no <code>Trigger</code> is found that matches
+	 * the name
+	 */
 	public Trigger getByName(String name)
 	{
 		for (int i = 0; i < maxTriggers; i++)
@@ -113,6 +148,13 @@ public class TriggerHandler
 		return null;
 	}
 	
+	/**
+	 * Returns the number of 
+	 * <code>Trigger</code>'s
+	 * 
+	 * @return The number of
+	 * <code>Trigger</code>'s
+	 */
 	public int getNumTriggers()
 	{
 		return numTriggers;

@@ -3,6 +3,7 @@ package core;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.Arrays;
+import java.util.Random;
 
 import core.guiElements.GuiElement;
 import main.Main;
@@ -20,7 +21,20 @@ public final class EntityHandler
 	/**
 	 * Whether the engine will sort along the z plane
 	 */
-	public static final boolean Z_SORT = true;
+	static final boolean Z_SORT = true;
+	
+	/**
+	 * The loss of frames per update
+	 */
+	static int frameLoss = 0;
+	
+	/**
+	 * The frame randomizer
+	 */
+	static final Random frameRandomizer = new Random();
+	
+	private long frames = 0;
+	private long skipped = 0;
 	
 	/**
 	 * The current LOD value for rendering
@@ -46,7 +60,7 @@ public final class EntityHandler
 	/**
 	 * Whether the handler is updating
 	 */
-	public boolean updating = false;
+	boolean updating = false;
 	
 	public EntityHandler(int maxEntities)
 	{
@@ -62,6 +76,7 @@ public final class EntityHandler
 	{
 		calculationTime++;
 		updating = true;
+		frames++;
 		
 		if (Z_SORT)
 		{
@@ -132,7 +147,16 @@ public final class EntityHandler
 				}
 			}
 		}
-		Main.getGameWindow().paint();
+		
+		if (frameLoss != 0)
+		{
+			if (frameRandomizer.nextInt(frameLoss) == 0)
+				Main.getGameWindow().paint();
+			else
+				skipped++;
+		}
+		else
+			Main.getGameWindow().paint();
 		
 		// Wait until the GameWindow is done updating to avoid flickering
 		while (Main.getGameWindow().updating) 
@@ -316,11 +340,8 @@ public final class EntityHandler
 	 */
 	void removeAllEntities()
 	{
-		for (int i = 0; i < entities.length; i++)
-		{
-			entities[i] = null;
-		}
-		
+		entities = new Entity[maxEntities];
+		System.gc();
 		numEntities = 0;
 		entitiesDyn = 0;
 	}
@@ -482,5 +503,15 @@ public final class EntityHandler
 			}
 		}
 		return false;
+	}
+	
+	public long getCalledFrames()
+	{
+		return frames;
+	}
+	
+	public long getSkippedFrames()
+	{
+		return skipped;
 	}
 }

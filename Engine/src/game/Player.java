@@ -314,7 +314,7 @@ public class Player
 			{				
 				if (inputListener.isKeyPressed(KeyBinds.UP) && isOnGround && playerEntity.getYVel() == 0)
 				{				
-					mat1.playSound();
+					//mat1.playSound();
 					if (Main.getPhysicsHandler().getGravity() >= 0)
 						playerEntity.setYVel(jumpPower);
 					else
@@ -571,9 +571,11 @@ public class Player
 						1080 / 2 - g.getHeight(null) / 2, 100, 
 						256, 56);
 				Main.getGuiHandler().add(e);
-				while (Main.getInputListener().isAKeyPressed()) {Thread.yield();}
+				long time = System.currentTimeMillis();
+				while (Main.getInputListener().isAKeyPressed() && (System.currentTimeMillis() - time < 2000)) {Thread.yield();}
 				while (! Main.getInputListener().isAKeyPressed() 
-						&& ! Main.getInputListener().isKeyPressed(KeyBinds.PAUSE_MENU)) {Thread.yield();}
+						&& ! Main.getInputListener().isKeyPressed(KeyBinds.PAUSE_MENU) &&
+						(System.currentTimeMillis() - time < 2000)) {Thread.yield();}
 				//Main.getEntityHandler().removeAllEntities();
 				Main.getPhysicsHandler().setGravity(Main.getPhysicsHandler().lastGravity);
 				Main.loadMap(Main.getMapName(), 0, 0);

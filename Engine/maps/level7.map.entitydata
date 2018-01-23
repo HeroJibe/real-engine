@@ -1,0 +1,40 @@
+0 null 576 64 true "Unnamed Static Entity" -512.0 0.0 0 576.0 64.0 100 false true false 1 true
+0 null 576 64 true "Unnamed Static Entity" -512.0 -512.0 0 576.0 64.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" -1024.0 -512.0 0 512.0 64.0 100 false true false 1 true
+0 null 64 448 true "Unnamed Static Entity" -1088.0 -256.0 0 64.0 448.0 100 false true false 1 true
+0 null 64 512 true "Unnamed Static Entity" -1088.0 64.0 0 64.0 512.0 100 false true false 1 true
+0 null 64 512 true "Unnamed Static Entity" -512.0 64.0 0 64.0 512.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" -1024.0 576.0 0 512.0 64.0 100 false true false 1 true
+0 null 128 64 true "Unnamed Static Entity" -1152.0 -512.0 0 128.0 64.0 100 false true false 1 true
+0 null 1024 64 false "Unnamed Static Entity" -1152.0 -448.0 0 1024.0 64.0 100 false true false 1 true
+0 null 64 448 true "Unnamed Static Entity" -1728.0 -256.0 0 64.0 448.0 100 false true false 1 true
+0 null 64 512 true "Unnamed Static Entity" -1728.0 64.0 0 64.0 512.0 100 false true false 1 true
+0 null 64 448 true "Unnamed Static Entity" -1152.0 -256.0 0 64.0 448.0 100 false true false 1 true
+0 null 64 512 true "Unnamed Static Entity" -1152.0 64.0 0 64.0 512.0 100 false true false 1 true
+0 null 512 64 true "Unnamed Static Entity" -1664.0 576.0 0 512.0 64.0 100 false true false 1 true
+0 null 576 64 true "Unnamed Static Entity" -1728.0 -512.0 0 576.0 64.0 100 false true false 1 true
+0 null 256 64 false "Unnamed Static Entity" -1664.0 -448.0 0 256.0 64.0 100 false true false 1 true
+0 null 8 320 true "Unnamed Static Entity" -1380.0 -448.0 0 8.0 320.0 100 false false false 1 true
+0 null 320 64 true "Unnamed Static Entity" -2048.0 -320.0 0 320.0 64.0 100 false true false 1 true
+0 null 320 64 true "Unnamed Static Entity" -2048.0 -512.0 0 320.0 64.0 100 false true false 1 true
+0 null 320 64 true "Unnamed Static Entity" -2368.0 -320.0 0 320.0 64.0 100 false true false 1 true
+0 null 320 64 true "Unnamed Static Entity" -2368.0 -512.0 0 320.0 64.0 100 false true false 1 true
+0 null 512 64 false "Unnamed Static Entity" -1664.0 512.0 0 512.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexTL.png 64 64 true "Brush Face" -512.0 0.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexTR.png 64 64 true "Brush Face" -1088.0 -320.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Up.png 64 64 false "Brush Face" -960.0 512.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" -1024.0 512.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" -1024.0 384.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" -1024.0 256.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" -1024.0 128.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" -1024.0 0.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" -1024.0 -128.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Down.png 64 64 false "Brush Face" -1024.0 -256.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexTR.png 64 64 true "Brush Face" -1728.0 -320.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\BlueStoneConvexTL.png 64 64 true "Brush Face" -1152.0 -320.0 0 64.0 64.0 100 false true false 1 true
+0 resources\textures\Up.png 64 64 false "Brush Face" -1664.0 448.0 0 64.0 64.0 100 false true false 1 true
+1 resources\textures\plank.png 64 8 true "platform1" -1362.5 -192.0 0 64.0 8.0 100 false false false 20 true
+1 resources\textures\plank.png 64 8 true "platform2" -1395.0 512.0 0 64.0 8.0 100 false false false 20 true
+1 resources\textures\plank.png 64 8 true "platform3" -1524.5 256.0 0 64.0 8.0 100 false false false 20 true
+1 resources\textures\plank.png 64 8 true "platform" -1551.0 -192.0 0 64.0 8.0 100 false false false 20 true
+1 resources\textures\Dance1.png 32 64 true "Player Entity" -1024.2449257115818 -446.0 10 26.0 44.0 100 false true false 10 true
